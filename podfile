@@ -1,0 +1,12 @@
+platform :ios, '9.0'
+target 'RTPg' do
+pod 'Masonry'#自动约束
+pod 'AFNetworking'#网络框架
+pod 'MBProgressHUD' #提示框
+pod 'TZImagePickerController'  #第三方本地图片引用
+pod 'RSKImageCropper' #第三方本地图片裁剪
+pod 'MJRefresh' #第三方下拉刷新
+pod 'IQKeyboardManager' #键盘自动管理
+pod 'JSONModel'
+pod 'SDWebImage' #第三方图片加载
+end
