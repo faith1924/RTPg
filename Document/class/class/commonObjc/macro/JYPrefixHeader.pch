@@ -1,0 +1,16 @@
+//
+//  JYPrefixHeader.pch
+//  RTPg
+//
+//  Created by 汪栋梁 on 2019/4/2.
+//  Copyright © 2019年 汪栋梁. All rights reserved.
+//
+
+#ifndef JYPrefixHeader_pch
+#define JYPrefixHeader_pch
+
+#import "JYMacro.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* JYPrefixHeader_pch */

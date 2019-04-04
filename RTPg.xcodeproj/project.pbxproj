@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923E993422543F9400ECE430 /* AppDelegate+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 923E993322543F9400ECE430 /* AppDelegate+Service.m */; };
+		92848F592255BED600F98BD1 /* JYAfClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 92848F582255BED600F98BD1 /* JYAfClient.m */; };
+		92848F5F2255BFA500F98BD1 /* JYAFNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92848F5E2255BFA500F98BD1 /* JYAFNetManager.m */; };
 		92908C0422530E70005B8865 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C0322530E70005B8865 /* AppDelegate.m */; };
 		92908C0722530E70005B8865 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C0622530E70005B8865 /* ViewController.m */; };
 		92908C0A22530E70005B8865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92908C0822530E70005B8865 /* Main.storyboard */; };
@@ -16,6 +19,21 @@
 		92908C1522530E72005B8865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C1422530E72005B8865 /* main.m */; };
 		92908C1F22530E72005B8865 /* RTPgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C1E22530E72005B8865 /* RTPgTests.m */; };
 		92908C2A22530E72005B8865 /* RTPgUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C2922530E72005B8865 /* RTPgUITests.m */; };
+		92DD966A2255DE0C008A4B2F /* JYRequesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD96692255DE0C008A4B2F /* JYRequesModel.m */; };
+		92DD966D2255E31B008A4B2F /* JYResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD966C2255E31B008A4B2F /* JYResultModel.m */; };
+		92DD96702255E6E5008A4B2F /* JYDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD966F2255E6E5008A4B2F /* JYDataBase.m */; };
+		92DD96762255F4BB008A4B2F /* NSObject+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD96752255F4BB008A4B2F /* NSObject+Runtime.m */; };
+		92DD967C225601B2008A4B2F /* NSObject+Achieve.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD967B225601B2008A4B2F /* NSObject+Achieve.m */; };
+		92DD9684225606A4008A4B2F /* NSObject+WYCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD967E225606A4008A4B2F /* NSObject+WYCoding.m */; };
+		92DD9685225606A4008A4B2F /* WYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD967F225606A4008A4B2F /* WYFileManager.m */; };
+		92DD9686225606A4008A4B2F /* WYProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD9683225606A4008A4B2F /* WYProperty.m */; };
+		92FB5E73225346CB00CCDC8B /* JYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E71225346CB00CCDC8B /* JYTabBarController.m */; };
+		92FB5E77225346F000CCDC8B /* JYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E76225346F000CCDC8B /* JYTabBar.m */; };
+		92FB5E7A2253477600CCDC8B /* JYNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E792253477600CCDC8B /* JYNavigationBar.m */; };
+		92FB5E7D2253478D00CCDC8B /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E7C2253478D00CCDC8B /* JYNavigationController.m */; };
+		92FB5E8022534DAB00CCDC8B /* NSString+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E7F22534DAB00CCDC8B /* NSString+iPhone.m */; };
+		92FB5E862253532B00CCDC8B /* JYKeychainObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E842253532B00CCDC8B /* JYKeychainObjc.m */; };
+		92FB5E892253548B00CCDC8B /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FB5E882253548A00CCDC8B /* KeyChainHelper.m */; };
 		DD3A9A046F90A56BFAFAC446 /* libPods-RTPg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CD01E3E95D42FBE90ED77D /* libPods-RTPg.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +58,16 @@
 		45F11E81250647427C4FE43A /* Pods-RTPg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTPg.release.xcconfig"; path = "Pods/Target Support Files/Pods-RTPg/Pods-RTPg.release.xcconfig"; sourceTree = "<group>"; };
 		53AA7336430DDBE60AF3B7BA /* Pods-RTPg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTPg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RTPg/Pods-RTPg.debug.xcconfig"; sourceTree = "<group>"; };
 		85CD01E3E95D42FBE90ED77D /* libPods-RTPg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTPg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9226EECA22536010006AE25D /* JYUserDefineMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYUserDefineMacro.h; sourceTree = "<group>"; };
+		9226EECB22536623006AE25D /* JYPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYPrefixHeader.pch; sourceTree = "<group>"; };
+		9226EECC22536754006AE25D /* JYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYMacro.h; sourceTree = "<group>"; };
+		923E993222543F9400ECE430 /* AppDelegate+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Service.h"; sourceTree = "<group>"; };
+		923E993322543F9400ECE430 /* AppDelegate+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Service.m"; sourceTree = "<group>"; };
+		923E9935225443A900ECE430 /* JYAppKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYAppKey.h; sourceTree = "<group>"; };
+		92848F572255BED600F98BD1 /* JYAfClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYAfClient.h; sourceTree = "<group>"; };
+		92848F582255BED600F98BD1 /* JYAfClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYAfClient.m; sourceTree = "<group>"; };
+		92848F5D2255BFA500F98BD1 /* JYAFNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYAFNetManager.h; sourceTree = "<group>"; };
+		92848F5E2255BFA500F98BD1 /* JYAFNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYAFNetManager.m; sourceTree = "<group>"; };
 		92908BFF22530E70005B8865 /* RTPg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTPg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92908C0222530E70005B8865 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		92908C0322530E70005B8865 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,6 +85,46 @@
 		92908C2522530E72005B8865 /* RTPgUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RTPgUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92908C2922530E72005B8865 /* RTPgUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTPgUITests.m; sourceTree = "<group>"; };
 		92908C2B22530E72005B8865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92DD96682255DE0C008A4B2F /* JYRequesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYRequesModel.h; sourceTree = "<group>"; };
+		92DD96692255DE0C008A4B2F /* JYRequesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYRequesModel.m; sourceTree = "<group>"; };
+		92DD966B2255E31B008A4B2F /* JYResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYResultModel.h; sourceTree = "<group>"; };
+		92DD966C2255E31B008A4B2F /* JYResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYResultModel.m; sourceTree = "<group>"; };
+		92DD966E2255E6E5008A4B2F /* JYDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYDataBase.h; sourceTree = "<group>"; };
+		92DD966F2255E6E5008A4B2F /* JYDataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYDataBase.m; sourceTree = "<group>"; };
+		92DD96742255F4BB008A4B2F /* NSObject+Runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Runtime.h"; sourceTree = "<group>"; };
+		92DD96752255F4BB008A4B2F /* NSObject+Runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Runtime.m"; sourceTree = "<group>"; };
+		92DD967A225601B2008A4B2F /* NSObject+Achieve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Achieve.h"; sourceTree = "<group>"; };
+		92DD967B225601B2008A4B2F /* NSObject+Achieve.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Achieve.m"; sourceTree = "<group>"; };
+		92DD967E225606A4008A4B2F /* NSObject+WYCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WYCoding.m"; sourceTree = "<group>"; };
+		92DD967F225606A4008A4B2F /* WYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYFileManager.m; sourceTree = "<group>"; };
+		92DD9680225606A4008A4B2F /* WYProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYProperty.h; sourceTree = "<group>"; };
+		92DD9681225606A4008A4B2F /* WYFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYFileManager.h; sourceTree = "<group>"; };
+		92DD9682225606A4008A4B2F /* NSObject+WYCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WYCoding.h"; sourceTree = "<group>"; };
+		92DD9683225606A4008A4B2F /* WYProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYProperty.m; sourceTree = "<group>"; };
+		92FB5E70225346CB00CCDC8B /* JYTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYTabBarController.h; sourceTree = "<group>"; };
+		92FB5E71225346CB00CCDC8B /* JYTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYTabBarController.m; sourceTree = "<group>"; };
+		92FB5E75225346F000CCDC8B /* JYTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYTabBar.h; sourceTree = "<group>"; };
+		92FB5E76225346F000CCDC8B /* JYTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYTabBar.m; sourceTree = "<group>"; };
+		92FB5E782253477600CCDC8B /* JYNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYNavigationBar.h; sourceTree = "<group>"; };
+		92FB5E792253477600CCDC8B /* JYNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYNavigationBar.m; sourceTree = "<group>"; };
+		92FB5E7B2253478D00CCDC8B /* JYNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
+		92FB5E7C2253478D00CCDC8B /* JYNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
+		92FB5E7E22534DAB00CCDC8B /* NSString+iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+iPhone.h"; sourceTree = "<group>"; };
+		92FB5E7F22534DAB00CCDC8B /* NSString+iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+iPhone.m"; sourceTree = "<group>"; };
+		92FB5E842253532B00CCDC8B /* JYKeychainObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYKeychainObjc.m; sourceTree = "<group>"; };
+		92FB5E852253532B00CCDC8B /* JYKeychainObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYKeychainObjc.h; sourceTree = "<group>"; };
+		92FB5E872253548A00CCDC8B /* KeyChainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainHelper.h; sourceTree = "<group>"; };
+		92FB5E882253548A00CCDC8B /* KeyChainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainHelper.m; sourceTree = "<group>"; };
+		92FB5E8C2253556700CCDC8B /* JYColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYColorMacro.h; sourceTree = "<group>"; };
+		92FB5E8D2253557F00CCDC8B /* JYFontMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYFontMacro.h; sourceTree = "<group>"; };
+		92FB5E8E225355A100CCDC8B /* JYKitsMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYKitsMacro.h; sourceTree = "<group>"; };
+		92FB5E8F225355C300CCDC8B /* JYNotiMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYNotiMacro.h; sourceTree = "<group>"; };
+		92FB5E90225355D800CCDC8B /* JYErrorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYErrorMacro.h; sourceTree = "<group>"; };
+		92FB5E91225355F600CCDC8B /* JYAnimateMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYAnimateMacro.h; sourceTree = "<group>"; };
+		92FB5E922253560A00CCDC8B /* JYBusinessMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYBusinessMacro.h; sourceTree = "<group>"; };
+		92FB5E932253563B00CCDC8B /* JYSystemMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYSystemMacro.h; sourceTree = "<group>"; };
+		92FB5E942253571A00CCDC8B /* JYHeaderMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYHeaderMacro.h; sourceTree = "<group>"; };
+		92FB5E9522535AA000CCDC8B /* JYMarginMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYMarginMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +161,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		923E993022543F1600ECE430 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				923E993222543F9400ECE430 /* AppDelegate+Service.h */,
+				923E993322543F9400ECE430 /* AppDelegate+Service.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		923E993122543F1600ECE430 /* objcClass */ = {
+			isa = PBXGroup;
+			children = (
+				92908C0222530E70005B8865 /* AppDelegate.h */,
+				92908C0322530E70005B8865 /* AppDelegate.m */,
+			);
+			path = objcClass;
+			sourceTree = "<group>";
+		};
+		923E993C22545BC400ECE430 /* networkService */ = {
+			isa = PBXGroup;
+			children = (
+				92848F572255BED600F98BD1 /* JYAfClient.h */,
+				92848F582255BED600F98BD1 /* JYAfClient.m */,
+				92848F5D2255BFA500F98BD1 /* JYAFNetManager.h */,
+				92848F5E2255BFA500F98BD1 /* JYAFNetManager.m */,
+				92DD96682255DE0C008A4B2F /* JYRequesModel.h */,
+				92DD96692255DE0C008A4B2F /* JYRequesModel.m */,
+				92DD966B2255E31B008A4B2F /* JYResultModel.h */,
+				92DD966C2255E31B008A4B2F /* JYResultModel.m */,
+				92DD966E2255E6E5008A4B2F /* JYDataBase.h */,
+				92DD966F2255E6E5008A4B2F /* JYDataBase.m */,
+			);
+			path = networkService;
+			sourceTree = "<group>";
+		};
 		92908BF622530E70005B8865 = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +222,6 @@
 		92908C0122530E70005B8865 /* RTPg */ = {
 			isa = PBXGroup;
 			children = (
-				92908C0222530E70005B8865 /* AppDelegate.h */,
-				92908C0322530E70005B8865 /* AppDelegate.m */,
 				92908C0522530E70005B8865 /* ViewController.h */,
 				92908C0622530E70005B8865 /* ViewController.m */,
 				92908C0822530E70005B8865 /* Main.storyboard */,
@@ -181,6 +282,8 @@
 		92908C3B22530F7F005B8865 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				92FB5E6C2253454200CCDC8B /* SysUI */,
+				92FB5E6B2253451800CCDC8B /* commonUI */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -188,24 +291,29 @@
 		92908C3C22530F7F005B8865 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				92908C3E22530FA4005B8865 /* system */,
-				92908C3D22530F9A005B8865 /* common */,
+				92908C3E22530FA4005B8865 /* SysObjc */,
+				92908C3D22530F9A005B8865 /* commonObjc */,
 			);
 			path = class;
 			sourceTree = "<group>";
 		};
-		92908C3D22530F9A005B8865 /* common */ = {
+		92908C3D22530F9A005B8865 /* commonObjc */ = {
 			isa = PBXGroup;
 			children = (
+				92FB5E8A2253552C00CCDC8B /* macro */,
+				92FB5E82225352FF00CCDC8B /* objc */,
+				92FB5E81225352F700CCDC8B /* category */,
 			);
-			path = common;
+			path = commonObjc;
 			sourceTree = "<group>";
 		};
-		92908C3E22530FA4005B8865 /* system */ = {
+		92908C3E22530FA4005B8865 /* SysObjc */ = {
 			isa = PBXGroup;
 			children = (
+				923E993022543F1600ECE430 /* category */,
+				923E993122543F1600ECE430 /* objcClass */,
 			);
-			path = system;
+			path = SysObjc;
 			sourceTree = "<group>";
 		};
 		92908C3F22530FC1005B8865 /* third */ = {
@@ -220,6 +328,96 @@
 			children = (
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		92DD967D225606A4008A4B2F /* WYCoding */ = {
+			isa = PBXGroup;
+			children = (
+				92DD967E225606A4008A4B2F /* NSObject+WYCoding.m */,
+				92DD967F225606A4008A4B2F /* WYFileManager.m */,
+				92DD9680225606A4008A4B2F /* WYProperty.h */,
+				92DD9681225606A4008A4B2F /* WYFileManager.h */,
+				92DD9682225606A4008A4B2F /* NSObject+WYCoding.h */,
+				92DD9683225606A4008A4B2F /* WYProperty.m */,
+			);
+			path = WYCoding;
+			sourceTree = "<group>";
+		};
+		92FB5E6B2253451800CCDC8B /* commonUI */ = {
+			isa = PBXGroup;
+			children = (
+				92FB5E70225346CB00CCDC8B /* JYTabBarController.h */,
+				92FB5E71225346CB00CCDC8B /* JYTabBarController.m */,
+				92FB5E75225346F000CCDC8B /* JYTabBar.h */,
+				92FB5E76225346F000CCDC8B /* JYTabBar.m */,
+				92FB5E782253477600CCDC8B /* JYNavigationBar.h */,
+				92FB5E792253477600CCDC8B /* JYNavigationBar.m */,
+				92FB5E7B2253478D00CCDC8B /* JYNavigationController.h */,
+				92FB5E7C2253478D00CCDC8B /* JYNavigationController.m */,
+			);
+			path = commonUI;
+			sourceTree = "<group>";
+		};
+		92FB5E6C2253454200CCDC8B /* SysUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SysUI;
+			sourceTree = "<group>";
+		};
+		92FB5E81225352F700CCDC8B /* category */ = {
+			isa = PBXGroup;
+			children = (
+				92FB5E7E22534DAB00CCDC8B /* NSString+iPhone.h */,
+				92FB5E7F22534DAB00CCDC8B /* NSString+iPhone.m */,
+				92DD96742255F4BB008A4B2F /* NSObject+Runtime.h */,
+				92DD96752255F4BB008A4B2F /* NSObject+Runtime.m */,
+				92DD967A225601B2008A4B2F /* NSObject+Achieve.h */,
+				92DD967B225601B2008A4B2F /* NSObject+Achieve.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		92FB5E82225352FF00CCDC8B /* objc */ = {
+			isa = PBXGroup;
+			children = (
+				92DD967D225606A4008A4B2F /* WYCoding */,
+				923E993C22545BC400ECE430 /* networkService */,
+				92FB5E8B2253552C00CCDC8B /* keyChain */,
+			);
+			path = objc;
+			sourceTree = "<group>";
+		};
+		92FB5E8A2253552C00CCDC8B /* macro */ = {
+			isa = PBXGroup;
+			children = (
+				92FB5E8C2253556700CCDC8B /* JYColorMacro.h */,
+				92FB5E8D2253557F00CCDC8B /* JYFontMacro.h */,
+				92FB5E8E225355A100CCDC8B /* JYKitsMacro.h */,
+				92FB5E8F225355C300CCDC8B /* JYNotiMacro.h */,
+				92FB5E90225355D800CCDC8B /* JYErrorMacro.h */,
+				92FB5E91225355F600CCDC8B /* JYAnimateMacro.h */,
+				92FB5E922253560A00CCDC8B /* JYBusinessMacro.h */,
+				92FB5E932253563B00CCDC8B /* JYSystemMacro.h */,
+				92FB5E942253571A00CCDC8B /* JYHeaderMacro.h */,
+				92FB5E9522535AA000CCDC8B /* JYMarginMacro.h */,
+				9226EECA22536010006AE25D /* JYUserDefineMacro.h */,
+				9226EECC22536754006AE25D /* JYMacro.h */,
+				9226EECB22536623006AE25D /* JYPrefixHeader.pch */,
+				923E9935225443A900ECE430 /* JYAppKey.h */,
+			);
+			path = macro;
+			sourceTree = "<group>";
+		};
+		92FB5E8B2253552C00CCDC8B /* keyChain */ = {
+			isa = PBXGroup;
+			children = (
+				92FB5E872253548A00CCDC8B /* KeyChainHelper.h */,
+				92FB5E882253548A00CCDC8B /* KeyChainHelper.m */,
+				92FB5E852253532B00CCDC8B /* JYKeychainObjc.h */,
+				92FB5E842253532B00CCDC8B /* JYKeychainObjc.m */,
+			);
+			path = keyChain;
 			sourceTree = "<group>";
 		};
 		A97C376B64A11D49AA181DFC /* Pods */ = {
@@ -370,6 +568,8 @@
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+				"${PODS_ROOT}/UMCCommonLog/UMCommonLog/UMCommonLog.bundle",
+				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -377,6 +577,8 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMCommonLog.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -409,8 +611,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				92908C0D22530E70005B8865 /* RTPg.xcdatamodeld in Sources */,
+				92DD9684225606A4008A4B2F /* NSObject+WYCoding.m in Sources */,
 				92908C0722530E70005B8865 /* ViewController.m in Sources */,
+				92DD96762255F4BB008A4B2F /* NSObject+Runtime.m in Sources */,
+				92848F592255BED600F98BD1 /* JYAfClient.m in Sources */,
+				92FB5E7D2253478D00CCDC8B /* JYNavigationController.m in Sources */,
+				92FB5E73225346CB00CCDC8B /* JYTabBarController.m in Sources */,
+				92FB5E8022534DAB00CCDC8B /* NSString+iPhone.m in Sources */,
+				92DD9686225606A4008A4B2F /* WYProperty.m in Sources */,
+				92FB5E862253532B00CCDC8B /* JYKeychainObjc.m in Sources */,
+				92DD966A2255DE0C008A4B2F /* JYRequesModel.m in Sources */,
+				92848F5F2255BFA500F98BD1 /* JYAFNetManager.m in Sources */,
 				92908C1522530E72005B8865 /* main.m in Sources */,
+				92FB5E77225346F000CCDC8B /* JYTabBar.m in Sources */,
+				92DD966D2255E31B008A4B2F /* JYResultModel.m in Sources */,
+				92DD967C225601B2008A4B2F /* NSObject+Achieve.m in Sources */,
+				92DD9685225606A4008A4B2F /* WYFileManager.m in Sources */,
+				923E993422543F9400ECE430 /* AppDelegate+Service.m in Sources */,
+				92FB5E7A2253477600CCDC8B /* JYNavigationBar.m in Sources */,
+				92DD96702255E6E5008A4B2F /* JYDataBase.m in Sources */,
+				92FB5E892253548B00CCDC8B /* KeyChainHelper.m in Sources */,
 				92908C0422530E70005B8865 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,8 +805,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/wangdongliang/Desktop/RTPg/Document/class/class/commonObjc/macro/JYPrefixHeader.pch;
 				INFOPLIST_FILE = RTPg/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -600,8 +825,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/wangdongliang/Desktop/RTPg/Document/class/class/commonObjc/macro/JYPrefixHeader.pch;
 				INFOPLIST_FILE = RTPg/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -615,7 +845,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
 				INFOPLIST_FILE = RTPgTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPgTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -630,7 +864,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
 				INFOPLIST_FILE = RTPgTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPgTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -644,7 +882,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
 				INFOPLIST_FILE = RTPgUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPgUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -658,7 +900,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DJD482YY4W;
 				INFOPLIST_FILE = RTPgUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.RTPgUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
