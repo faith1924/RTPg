@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param type 保存目录
  @return 保存状态
  */
-+ (BOOL)saveFilePath:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
++ (BOOL)saveFileParameters:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
 
 
 /**
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param type 保存目录
  @return 返回数据
  */
-+ (id)getFilePath:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
++ (id)getFileParameters:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
 
 /**
  删除指定数据
@@ -49,10 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param type 保存目录
  @return 返回删除结果
  */
-+ (BOOL)deleteDiskFilePath:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
++ (BOOL)deleteDiskFileParameters:(NSMutableDictionary *)params URL:(NSString *)url Type:(sankBoxtype)type;
 
 #pragma -mark 返回单个文件的大小
-+ (long long)diskFileSizeAtPath:(NSString *)filePat;
++ (long long)diskFileSizeAtPath:(NSString *)path;
 
 #pragma -mark 获取所有缓存大小
 + (float )diskCacheSize;

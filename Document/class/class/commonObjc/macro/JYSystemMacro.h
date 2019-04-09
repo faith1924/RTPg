@@ -9,6 +9,11 @@
 #ifndef JYSystemMacro_h
 #define JYSystemMacro_h
 
+#define SafeAreaBottomHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 34 : 0)
+#define SafeAreaTopHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 88 : 64)
+#define SafeNaviTopHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 24 : 0)
+#define SafeTabbarBottomHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 83 : 49)
+#define StatusBarHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 44 : 20)
 
 #define JYWeakify(objc)                __weak  typeof(self) weakSelf = objc;
 #define JYStrongify(objc)              __strong typeof(self) strongSelf = objc;
@@ -16,7 +21,7 @@
 #define WSF     __weak  typeof(self) weakSelf = self;
 #define SSF     __strong typeof(self) strongSelf = self;
 
-#define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define JYIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 //获取屏幕参数
 #define JYScreenFrame            [UIScreen mainScreen].bounds
@@ -58,5 +63,18 @@ static __inline__ CGFloat MainScreenHeight()
 #define WDLLog(...)
 
 #endif
+
+#define JYCodingImplementation \
+- (instancetype)initWithCoder:(NSCoder *)aDecoder\
+{\
+if (self = [super init]) {\
+[self wy_decode:aDecoder];\
+}\
+return self;\
+}\
+- (void)encodeWithCoder:(NSCoder *)aCoder\
+{\
+[self wy_encode:aCoder];\
+}
 
 #endif /* JYSystemMacro_h */

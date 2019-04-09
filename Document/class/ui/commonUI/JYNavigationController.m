@@ -10,7 +10,7 @@
 
 //默认颜色
 #define bg_Color [UIColor whiteColor]
-#define item_Color [UIColor whiteColor]
+#define item_Color [UIColor blackColor]
 #define item_Font [UIFont systemFontOfSize:16]
 
 @interface JYNavigationController ()

@@ -1,5 +1,7 @@
 platform :ios, '9.0'
 target 'RTPg' do
+pod 'AVOSCloud'  # 数据存储、短信、云引擎调用等基础服务模块
+pod 'AVOSCloudIM' # 即时通讯模块
 pod 'Masonry'#自动约束
 pod 'AFNetworking'#网络框架
 pod 'MBProgressHUD' #提示框
@@ -16,4 +18,5 @@ pod 'UMCSecurityPlugins'
 pod 'UMCShare/UI' # 集成微信(完整版14.4M)
 pod 'UMCShare/Social/WeChat' # 集成QQ/QZone/TIM(完整版7.6M)
 pod 'UMCShare/Social/QQ' # 集成QQ/QZone/TIM(完整版7.6M)
+pod 'JPush' #极光推送
 end

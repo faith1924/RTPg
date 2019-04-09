@@ -17,16 +17,17 @@
  */
 
 // 友盟推送
-#define UMessageAppKey      @"57d6583a67e58e3d75001f15"
+#define JPushKey      @"57d6583a67e58e3d75001f15"
 
 // 友盟分享
-//#define UMSocialAppKey      @"5ca40a83203657bcf800114c"
-//
-//#define WechatAppKey        @"wx406b36767a2d7615"
-//#define WechatAppSecret     @"4402d0be403a89f7c0527764371bf46a"
-//#define WeChatRedirectURL   @"http://mobile.umeng.com/social"
-//#define QQAppKey            @"101390775"
-//#define QQAppSecrect        @"09193c1b916f14e07e888c84f16fa797"
-//#define QQRedirectURL       @"http://mobile.umeng.com/social"
+#define UMSocialAppKey      @"5ca40a83203657bcf800114c"
+
+#define WechatAppKey        @"wx5f1db39324aca113"
+#define WechatAppSecret     @"84e0e24c45ad1d6ad56a00d7717b12cb"
+#define WeChatRedirectURL   @"http://mobile.umeng.com/social"
+
+#define QQAppKey            @"101564767"
+#define QQAppSecrect        @"09193c1b916f14e07e888c84f16fa797"
+#define QQRedirectURL       @"http://mobile.umeng.com/social"
 
 #endif /* JYAppKey_h */

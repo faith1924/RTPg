@@ -1,8 +1,8 @@
 //
-//  JYNavigationBar.h
+//  JYBasicView.h
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/2.
+//  Created by md212 on 2019/4/9.
 //  Copyright © 2019年 汪栋梁. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JYNavigationBar : UINavigationBar
+@interface JYBasicView : UIView
 
 @end
 

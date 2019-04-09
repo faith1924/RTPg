@@ -16,17 +16,19 @@ NS_ASSUME_NONNULL_BEGIN
  归档
 
  @param objc 对象
- @param key 路径
+ @param key 关键字
+ @param path 路径
  */
-- (void)JYAchieveDecode:(id )objc KEY:(NSString *)key;
+- (void)JYAchieveDecode:(id )objc KEY:(NSString *)key filePath:(NSString *)path;
 
 /**
  解档/反归档
 
  @param objc 对象
- @param key 路径
+ @param key 关键字
+ @param path 路径
  */
-- (void)JYAchieveEncode:(id )objc KEY:(NSString *)key;
+- (void)JYAchieveEncode:(id )objc KEY:(NSString *)key filePath:(NSString *)path;
 @end
 
 NS_ASSUME_NONNULL_END

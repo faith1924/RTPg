@@ -120,8 +120,6 @@ if ([controller isKindOfClass:[vcClass class]]) { \
 #define _ps(o) DLOG(@"CGSize: {%.0f, %.0f}", (o).width, (o).height)
 #define _pr(o) DLOG(@"NSRect: {{%.0f, %.0f}, {%.0f, %.0f}}", (o).origin.x, (o).origin.x, (o).size.width, (o).size.height)
 
-#define GETTOKEN  [ABALocalizationData getToken]
-
 #define PARAMS(params,key,value)  [params setObject:value forKey:key]
 
 #define PushNewVC(VC)  VC * newViewControl = [[VC alloc]init];
@@ -190,7 +188,7 @@ if ([controller isKindOfClass:[vcClass class]]) { \
 [fmt stringFromDate:[NSDate date]];})
 
 #ifdef DEBUG
-#define JYLog(format, ...) NSLog(format, ## __VA_ARGS__)
+# define JYLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
 #define JYLog(format, ...)
 #endif

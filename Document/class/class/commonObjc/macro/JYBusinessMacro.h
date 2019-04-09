@@ -12,10 +12,22 @@
 // ====================================设置一些内连函数+全局枚举==========================================
 
 //UITabbarController初始化可选模式
-typedef NS_ENUM(NSInteger, tabType){
+typedef NS_ENUM(NSInteger, JYtabBarControlType){
     defaultModel = 0,
     defaultValue1 = 1,//中间带有按钮
 };
+
+
+typedef NS_ENUM(NSInteger, JYTabBarType){
+    JYTabBarCenterButtonDefault,//居中
+    JYTabBarCenterButtonHalf,//一半
+    JYTabBarCenterButtonLittle//超过一点点
+};
+
+#define defaultImage [UIImage imageNamed:@"loadingImage"]
+#define NgBarTitleSize 16
+#define defaultNumberData 10
+#define tableHeaderSpaceH 10
 
 /**
  typedef NS_ENUM(NSInteger, FW_LIVE_TYPE)
