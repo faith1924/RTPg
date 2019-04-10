@@ -33,8 +33,8 @@
 #define JYScaleW                 (JYScreenW)*(JYScreenScale)
 #define JYScaleH                 (JYScreenH)*(JYScreenScale)
 
-#define JYScaleWidth             [[UIScreen mainScreen] bounds].size.width/375.00
-#define JYScaleHeight            [[UIScreen mainScreen] bounds].size.height/667.00
+#define JYScale_Width             [[UIScreen mainScreen] bounds].size.width/375.00
+#define JYScale_Height            [[UIScreen mainScreen] bounds].size.height/667.00
 
 // 主窗口的宽、高
 #define JYMainScreenWidth    MainScreenWidth()

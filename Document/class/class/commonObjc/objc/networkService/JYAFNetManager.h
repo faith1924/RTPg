@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^Success)(NSDictionary *responseJson);
+typedef void(^Success)(id success);
 typedef void(^Failure)(NSError * error);
 
 NS_ASSUME_NONNULL_BEGIN
@@ -21,12 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
  Post异步请求方法1
 
  @param params 请求参数
- @param responseJson 成功回调
- @param error 失败回调
+ @param success 成功回调
+ @param failure 失败回调
  */
 - (void)POSTWithParameters:(NSMutableDictionary *)params
-                   Success:(Success )responseJson
-                   Failure:(Failure )error;
+                   Success:(Success )success
+                   Failure:(Failure )failure;
 
 
 /**
@@ -34,13 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param url 请求地址
  @param params 请求参数
- @param responseJson 成功回调
- @param error 失败回调
+ @param success 成功回调
+ @param failure 失败回调
  */
 - (void)POSTWithURL:(NSString *)url
          Parameters:(NSMutableDictionary *)params
-            Success:(Success)responseJson
-            Failure:(Failure)error;
+            Success:(Success)success
+            Failure:(Failure)failure;
 
 
 /**
@@ -48,13 +48,13 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param params 上传参数
  @param url 上传地址
- @param responseJson 成功回调
- @param error 失败回调
+ @param success 成功回调
+ @param failure 失败回调
  */
 - (void)POSTWithSubmitDocumentParameters:(NSMutableDictionary *)params
                               UrlAddress:(NSString *)url
-                                 Success:(Success)responseJson
-                                 Failure:(Failure)error;
+                                 Success:(Success)success
+                                 Failure:(Failure)failure;
 
 
 
@@ -64,26 +64,26 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param url 请求地址
  @param params 请求参数
- @param responseJson 成功回调
- @param error 失败回调
+ @param success 成功回调
+ @param failure 失败回调
  */
 - (void)GetWithURL:(NSString *)url
         Parameters:(NSMutableDictionary *)params
-        Success:(Success)responseJson
-        Failure:(Failure)error;
+        Success:(Success)success
+        Failure:(Failure)failure;
 
  /**
   Get同步请求
  
   @param url 请求地址
   @param params 请求参数
-  @param responseJson 成功回调
-  @param error 失败回调
+  @param success 成功回调
+  @param failure 失败回调
   */
 - (void)syncGetWithURL:(NSString *)url
             Parameters:(NSMutableDictionary *)params
-               Success:(Success)responseJson
-               Failure:(Failure)error;
+               Success:(Success)success
+               Failure:(Failure)failure;
 @end
 
 

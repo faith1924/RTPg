@@ -13,9 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JYBasicCell : UITableViewCell
 
-@property (strong , nonatomic) JYBasicModel * model;
-
-- (void)setupUI;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,6 +9,24 @@
 #import "JYRequesModel.h"
 
 @implementation JYRequesModel
+- (instancetype)init{
+    if (self = [super init]) {
+        _parameters = [[NSMutableDictionary alloc]init];
+        _link = @"";
+        _filePath = @"";
+    }
+    return self;
+}
+
+
+- (NSMutableDictionary * )parameters{
+    if (_parameters == nil) {
+        _parameters = [[NSMutableDictionary alloc]init];
+    }
+    return _parameters;
+}
+
+
 - (NSString *)getFilePath{
     if (_link == nil && _parameters == nil) {
         return nil;

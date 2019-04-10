@@ -1,6 +1,6 @@
 #ifndef codeConfuse.h
 #define codeConfuse.h
-//confuse string at Tue Apr  9 18:19:24 CST 2019
-#define saveContext IyhTKfgxmYhCweVO
-#define confuseTest nHOMBoQNZQxOnJGI
+//confuse string at Wed Apr 10 18:42:13 CST 2019
+#define saveContext QXZATCsPwncDYPTO
+#define confuseTest xuTEHORupiyFefwr
 #endif

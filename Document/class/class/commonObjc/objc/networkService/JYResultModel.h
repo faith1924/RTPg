@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JYResultModel : NSObject
 
-@property (strong , nonatomic , readonly) NSMutableDictionary  * result;
+@property (strong , nonatomic) id result;
 
-@property (strong , nonatomic , readonly) NSError  * error;
+@property (strong , nonatomic) NSError  * error;
 
 @end
 

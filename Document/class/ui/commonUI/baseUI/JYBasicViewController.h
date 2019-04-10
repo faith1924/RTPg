@@ -22,8 +22,7 @@
 /**
  *  获取加载参数
  */
-- (NSDictionary *)getParams;
-- (NSString *)getUrl;
+- (JYRequesModel *)getReqModel;
 
 @end
 
@@ -40,12 +39,17 @@
 /**
  *  是否显示导航栏
  */
-@property(nonatomic,assign)BOOL isShowViewNavigationBar;
+@property(nonatomic,assign)BOOL isShowBar;
 
 /**
  *  打开日志打印
  */
 @property(nonatomic,assign)BOOL isArrowPrintLog;
+
+/**
+ 请求类型
+ */
+@property(nonatomic , assign )BOOL reqType; //0 get 1 post
 
 /**
  *  是否开启全继承左滑返回手势 默认NO
@@ -74,10 +78,6 @@
  */
 @property(nonatomic,assign) BOOL isShowEmpty;
 
-/**
- *  是否把导航栏往上推 contentView默认从导航栏底部开始 如果为0 就从0开始
- */
-@property (assign , nonatomic) BOOL isPullUpNavigationbar;
 
 /**
  *  页面加载

@@ -10,8 +10,11 @@
 #import <UMAnalytics/MobClick.h>
 
 @interface JYBasicViewController ()<JYBasicViewControllerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
+
 @property (strong ,nonatomic) NSString * loadStatus;//页面加载状态
+
 @property (strong , nonatomic) UIButton * button;
+
 @end
 @implementation JYBasicViewController
 - (void)viewDidLoad {
@@ -36,8 +39,9 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.view.backgroundColor = kWhiteColor;
-    self.isArrowPrintLog = YES;
+    self.isArrowPrintLog = NO;
     self.OpenTheLeftBackOfAll = YES;
+    self.reqType = 0;
     
     self.contentView = [[JYUIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
     self.contentView.delegate = self;
@@ -50,8 +54,7 @@
     _viewNavigationBar.title = self.title;
     [_viewNavigationBar setBtnWithImageArr:@[@"back_btn_blue@"] withDelegate:self withActionArr:@[@"popBackView"] isLeft:YES];
     
-    [self setIsPullUpNavigationbar:YES];
-    [self setIsShowViewNavigationBar:YES];
+    [self setIsShowBar:YES];
     [self.view addSubview:_viewNavigationBar];
     [self.view addSubview:self.contentView];
 }
@@ -113,31 +116,25 @@
  *  点方法
  *
  */
-- (void)setIsShowViewNavigationBar:(BOOL)isShowViewNavigationBar{
-    _isShowViewNavigationBar = isShowViewNavigationBar;
-    _viewNavigationBar.height = _isShowViewNavigationBar == NO?0:SafeAreaTopHeight;
-    if (_isPullUpNavigationbar == YES) {
+- (void)setIsShowBar:(BOOL)isShowBar{
+    _isShowBar = isShowBar;
+    _viewNavigationBar.height = (_isShowBar == NO?0:SafeAreaTopHeight);
+    if (_isShowBar == YES) {
+        self.viewNavigationBar.top = 0;
+        self.viewNavigationBar.left = 0;
         self.contentView.top = _viewNavigationBar.bottom;
         self.contentView.height = self.view.height - _viewNavigationBar.bottom;
     }else{
         self.contentView.top = 0;
+        self.contentView.left = 0;
         self.contentView.height = self.view.height;
     }
-    _viewNavigationBar.hidden = !_isShowViewNavigationBar;
+    _viewNavigationBar.hidden = !_isShowBar;
 }
-- (void)setIsPullUpNavigationbar:(BOOL)isPullUpNavigationbar{
-    _isPullUpNavigationbar = isPullUpNavigationbar;
-    if (_isPullUpNavigationbar == YES) {
-        self.contentView.top = _viewNavigationBar.bottom;
-        self.contentView.height = self.view.height - _viewNavigationBar.bottom;
-    }else{
-        self.contentView.top = 0;
-        self.contentView.height = self.view.height;
-    }
-}
+
 - (void)setViewNavigationBar:(JYUINavigationBar *)viewNavigationBar{
     _viewNavigationBar = viewNavigationBar;
-    _viewNavigationBar.frame = CGRectMake(0, 0, JYScreenW, SafeAreaTopHeight);
+    self.isShowBar = YES;
     [self.view addSubview:_viewNavigationBar];
 }
 - (void)setIsArrowPrintLog:(BOOL)isArrowPrintLog{
@@ -150,9 +147,8 @@
     if (loadDelegate) {
         _loadDelegate = loadDelegate;
         
-        _reqModel.parameters = [self.loadDelegate getParams];
-        _reqModel.link = [self.loadDelegate getUrl];
-        
+        self.reqModel = [self.loadDelegate getReqModel];
+
         [self loadData:^(id data, BOOL status) {
             if (status) {
                 JYLog(@"数据加载完成");
@@ -163,20 +159,28 @@
 
 #pragma mark JYBasicViewControllerDelegate
 - (void)loadData:(void(^)(id data,BOOL status))complete{
-#ifdef DEBUG
-    NSAssert(_reqModel.link, @"url is nil");
-#else
-#endif
     __block JYWeakify(self);
     _loadStatus = @"开始请求";
-    [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *responseJson) {
-        [weakSelf loadDataSuccess:responseJson];
-        if (complete) {
-            complete(responseJson,YES);
-        }
-    } Failure:^(NSError *error) {
-        [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
-    }];
+    
+    if (_reqType == NO) {
+        [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *success) {
+            [weakSelf loadDataSuccess:success];
+            if (complete) {
+                complete(success,YES);
+            }
+        } Failure:^(NSError *error) {
+            [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
+        }];
+    }else{
+        [[JYAFNetManager manager] GetWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(id success) {
+            [weakSelf loadDataSuccess:success];
+            if (complete) {
+                complete(success,YES);
+            }
+        } Failure:^(NSError *error) {
+             [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
+        }];
+    }
 }
 - (void)loadDataSuccess:(id)data{
     _loadStatus = @"请求成功";
@@ -189,7 +193,8 @@
     }else{
         [self.emptyView removeFromSuperview];
     }
-    NSLog(@"请求失败：data = %@\nparams = %@\nurlString = %@",data,params,urlString);
+    
+    JYLog(@"请求失败：data = %@\nparams = %@\nurlString = %@",data,params,urlString);
 }
 
 /**

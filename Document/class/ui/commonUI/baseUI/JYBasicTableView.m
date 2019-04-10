@@ -11,8 +11,7 @@
 
 @interface JYBasicTableView ()<JYBasicTableViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (strong ,nonatomic) NSString * loadStatus;//页面加载状态
-@property (strong ,nonatomic) NSMutableDictionary * params;
-@property (strong ,nonatomic) NSString * urlString;
+
 @property (weak , nonatomic) id<JYBasicTableViewDelegate>loadDelegate;
 
 @property (strong , nonatomic) UIView * headerView;
@@ -34,6 +33,11 @@
             }
             if ([self.dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
                 self.tableFooterView = [self.dataDelegate listContentFooterView:self];
+            }
+            if (self.listDelegate) {
+                if ([self.listDelegate respondsToSelector:@selector(getReqModel)]) {
+                    self.reqModel = [self.listDelegate getReqModel];
+                }
             }
         }else{
             self.loadDelegate = self;
@@ -110,20 +114,15 @@
         }
     }
 }
-#pragma mark WDLBasicViewControllerDelegate
+#pragma mark JYBasicViewControllerDelegate
 - (void)loadData{
-    _params = [self.listDelegate getTableViewParams];
-    _urlString = [self.listDelegate getTableViewUrl];
-#ifdef DEBUG
-    NSAssert(_urlString, @"url is nil");
-#else
-#endif
-    [_params setObject:WDLTurnIntToString(self.page) forKey:@"page"];
+    self.reqModel = [self.listDelegate getReqModel];
+
     JYWeakify(self);
     _loadStatus = @"开始请求";
     [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *responseJson) {
         if ([weakSelf.listDelegate respondsToSelector:@selector(loadDataSuccess:withParams:withUrlString:)] && weakSelf.listDelegate) {
-            [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.params  withUrlString:weakSelf.urlString];
+            [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters  withUrlString:weakSelf.reqModel.link];
         }else{
             [weakSelf loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters withUrlString:weakSelf.reqModel.link];
         }
@@ -134,9 +133,9 @@
 - (void)loadDataSuccess:(id)data withParams:(NSMutableDictionary *)params withUrlString:(NSString *)urlString{
     _loadStatus = @"请求成功";
     if (self.page <= 1) {
-        [self initArrWithDic:data[@"retData"] withParams:params withUrlString:urlString];
+        [self initArrWithDic:data withParams:params withUrlString:urlString];
     }else{
-        [self appendArrWithDic:data[@"retData"] withParams:params withUrlString:urlString];
+        [self appendArrWithDic:data withParams:params withUrlString:urlString];
     }
     [self endRefresh];
 }
@@ -167,17 +166,17 @@
     }
     return modelArr;
 }
-- (void)initArrWithDic:(NSMutableDictionary *)dic
+- (void)initArrWithDic:(id )arr
             withParams:(NSMutableDictionary *)params
          withUrlString:(NSString *)urlString{
-    _totalPage = [dic[@"listInfo"][@"pageCoun"] intValue];
-    _EPCount = MIN([dic[@"listInfo"][@"pageNum"] intValue], defaultNumberData);
+    _totalPage = 1;
+    _EPCount = defaultNumberData;
     [self.listArray removeAllObjects];
-    [self.listArray addObjectsFromArray:dic[@"list"]];
-    self.listModel = [self getModelWithArr:dic[@"list"]];
+    [self.listArray addObjectsFromArray:arr];
+    self.listModel = [self getModelWithArr:arr];
     
     if (self.listModel.count == 0) {
-        [self loadDataFail:dic withParams:params withUrl:urlString];
+        [self loadDataFail:arr withParams:params withUrl:urlString];
     }else{
         [self.emptyView removeFromSuperview];
         if (self.listModel.count < self.EPCount || self.EPCount == 0 || self.totalPage == 0) {
@@ -306,10 +305,13 @@
     return self.listModel.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    JYBasicCell * cell = [self.dataDelegate listContentView:self cellForRowAtIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.listModel[indexPath.row];
-    return cell;
+    if ([self.dataSource respondsToSelector:@selector(listContentView:cellForRowAtIndexPath:)]) {
+        return [self.dataDelegate listContentView:self cellForRowAtIndexPath:indexPath];
+    }else{
+        JYBasicCell * cell = [self.dataDelegate listContentView:self cellForRowAtIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //缓存选中的cell
@@ -320,11 +322,11 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     JYBasicModel * model = self.listModel[indexPath.row];
-    return MAX(model.cellHeight, 10);
+    return MAX(model.cellHeight.floatValue, 10);
 }
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     JYBasicModel * model = self.listModel[indexPath.row];
-    return MAX(model.cellHeight, 10);
+    return MAX(model.cellHeight.floatValue, 10);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if ([self.dataDelegate respondsToSelector:@selector(heightForSectionHeaderHeight:)]) {

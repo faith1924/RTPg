@@ -7,8 +7,12 @@
 //
 
 #import "JYBasicModel.h"
-#import "NSObject+WYCoding.h"
 
 @implementation JYBasicModel
-JYCodingImplementation
+- (instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err{
+    if (self = [super initWithDictionary:dict error:err]) {
+        _cellHeight = [NSNumber numberWithInt:1];
+    }
+    return self;
+}
 @end

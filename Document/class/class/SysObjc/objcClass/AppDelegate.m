@@ -24,6 +24,8 @@
     [self JYConfigurationPushInfoWithLaunchOptions:launchOptions];
     
     [self JYConfigureThirdSDK];
+    
+    [self JYConfigurationLeanCloud];
 
     JYTabBarController * rootVC = [[JYTabBarController alloc]initWithTabbarType:defaultModel];
     self.window.rootViewController = rootVC;

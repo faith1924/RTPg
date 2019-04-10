@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DebugMacro.h"
 #import "JYAppKey.h"
 #import "JYBusinessMacro.h"
 #import "JYColorMacro.h"

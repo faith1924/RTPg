@@ -26,9 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)upperMd5Hash;
 
-
-
-
 @end
 
 NS_ASSUME_NONNULL_END

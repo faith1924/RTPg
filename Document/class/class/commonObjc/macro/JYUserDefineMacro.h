@@ -187,10 +187,5 @@ if ([controller isKindOfClass:[vcClass class]]) { \
 [fmt setDateFormat:@"YYYY-MM-dd hh:mm:ss"];\
 [fmt stringFromDate:[NSDate date]];})
 
-#ifdef DEBUG
-# define JYLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#define JYLog(format, ...)
-#endif
 
 #endif /* JYUserDefineMacro_h */

@@ -98,8 +98,8 @@ UIView * shareView;
     }
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-    float ori = (JYScreenW - 60*JYScaleWidth * 5 - 10*JYScaleWidth * 6)/2;
-    CGRect tFrame = CGRectMake(ori,25*JYScaleWidth, 0, 0);
+    float ori = (JYScreenW - 60*JYScale_Width * 5 - 10*JYScale_Width * 6)/2;
+    CGRect tFrame = CGRectMake(ori,25*JYScale_Width, 0, 0);
     
     UIButton * button;
     UILabel * platformLabel;
@@ -107,7 +107,7 @@ UIView * shareView;
     for (int x = 0; x < dataArr.count; x++) {
         imagePath = [_dataArr[x] objectForKey:dataArr[x]];
         
-        tFrame = CGRectMake(x%5 * 70*JYScaleWidth + 15*JYScaleWidth,x/5*91*JYScaleWidth+ 25*JYScaleWidth, 60*JYScaleWidth,60*JYScaleWidth);
+        tFrame = CGRectMake(x%5 * 70*JYScale_Width + 15*JYScale_Width,x/5*91*JYScale_Width+ 25*JYScale_Width, 60*JYScale_Width,60*JYScale_Width);
         button = [JYCommonKits initButtonnWithButtonTitle:@"" andLabelColor:nil andLabelFont:0 andSuperView:self.contentView andFrame:tFrame];
         [button setBackgroundImage:[UIImage imageNamed:imagePath] forState:UIControlStateNormal];
         button.tag = btnTag + x;
@@ -116,12 +116,12 @@ UIView * shareView;
         button.layer.cornerRadius = 15;
         [button addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         
-        tFrame = CGRectMake(CGRectGetMinX(tFrame),CGRectGetMaxY(button.frame), 60*JYScaleWidth, 30*JYScaleWidth);
-        platformLabel = [JYCommonKits initLabelViewWithLabelDetail:dataArr[x] andLabelColor:kGrayColor andLabelFont:11*JYScaleHeight andLabelFrame:tFrame andJoinView:_contentView];
+        tFrame = CGRectMake(CGRectGetMinX(tFrame),CGRectGetMaxY(button.frame), 60*JYScale_Width, 30*JYScale_Width);
+        platformLabel = [JYCommonKits initLabelViewWithLabelDetail:dataArr[x] andLabelColor:kGrayColor andLabelFont:11*JYScale_Height andLabelFrame:tFrame andJoinView:_contentView];
     }
     
-    tFrame = CGRectMake(0,platformLabel.bottom + 15*JYScaleHeight, JYScreenW, 50*JYScaleHeight);
-    UIButton * cancel = [JYCommonKits initButtonnWithButtonTitle:@"取消" andLabelColor:kGrayColor andLabelFont:16*JYScaleHeight andSuperView:_contentView andFrame:tFrame];
+    tFrame = CGRectMake(0,platformLabel.bottom + 15*JYScale_Height, JYScreenW, 50*JYScale_Height);
+    UIButton * cancel = [JYCommonKits initButtonnWithButtonTitle:@"取消" andLabelColor:kGrayColor andLabelFont:16*JYScale_Height andSuperView:_contentView andFrame:tFrame];
     cancel.backgroundColor = kWhiteColor;
     [cancel addTarget:self action:@selector(hiddenView) forControlEvents:UIControlEventTouchUpInside];
     

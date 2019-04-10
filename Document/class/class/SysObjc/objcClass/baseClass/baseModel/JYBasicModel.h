@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JYBasicModel : NSObject
+@interface JYBasicModel : JSONModel
 
-@property (assign , nonatomic) CGFloat cellHeight;
+@property (strong , nonatomic) NSNumber<Ignore> * cellHeight;
 
 @end
 

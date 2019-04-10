@@ -62,21 +62,35 @@
     JYResultModel * model = [JYResultModel new];
 
     NSError * error = nil;
+    NSDictionary * responseDic;
     
-    NSDictionary * responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
-    
-    if (error || responseDic == nil) {
-        if (error) {
-            
-        }else{
-            failure(error,model);
-        }
+    if (responseObject && [responseObject isKindOfClass:[NSDictionary class]])
+    {
+        responseDic = (NSDictionary *)responseObject;
+        model.result = responseDic;
+        
     }else{
-        if (responseDic && [responseDic isKindOfClass:[NSDictionary class]]) {
-            
+        NSDictionary * responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+        
+        if (responseDic && [responseDic isKindOfClass:[NSDictionary class]])
+        {
+            model.result = responseDic.mutableCopy;
         }
     }
     
+    if (error || responseDic == nil)
+    {
+        failure(error,model);
+        
+    }else{
+        if ([responseDic[@"error_code"] integerValue] == SUCCESS_CODE)
+        {
+            success(model.result[@"result"][@"data"],model);
+        }else
+        {
+            failure(error,model);
+        }
+    }
 }
 
 /**

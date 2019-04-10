@@ -14,12 +14,7 @@
     [super awakeFromNib];
     // Initialization code
 }
--(void)setModel:(JYBasicModel *)model{
-    _model = model;
-}
-- (void)setupUI{
-    
-}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

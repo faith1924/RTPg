@@ -30,4 +30,13 @@
 #define QQAppSecrect        @"09193c1b916f14e07e888c84f16fa797"
 #define QQRedirectURL       @"http://mobile.umeng.com/social"
 
+//聚合数据
+#define PolymerizationID    @"JH31ff724c85a87ee64b8a626410409f2b"
+#define PolymerizationKey  @"18e0b6d3764d2ba28b617cb614b03b63"
+
+
+//leancloudKey
+#define LeanCloudID    @"kuTJE0AkNyIEyAOtzPlPNa3x-gzGzoHsz"
+#define LeanClooudKey  @"ilEnL0TjrRjt1lJsd8DJi0H8"
+
 #endif /* JYAppKey_h */

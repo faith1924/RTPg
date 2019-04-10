@@ -7,12 +7,17 @@
 //
 
 #import "episodeVC.h"
+#import "ABAHeaderTabView.h"
+#import "ABACellImageView.h"
 
-@interface episodeVC ()<JYBasicViewControllerDelegate,JYTableViewDataSource>
+@interface episodeVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewDelegate>
+{
+    NSArray * typeArr;
+}
 
 @property (strong , nonatomic)  JYBasicTableView * bodyView;
 
-@property (strong , nonatomic) UIView * headerView;
+@property (strong , nonatomic) ABAHeaderTabView * headerView;
 
 @end
 
@@ -20,44 +25,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.loadDelegate = self;
+    [self setupUIWithData:nil];
     // Do any additional setup after loading the view.
 }
 - (void)setupUIWithData:(id)data{
-    _headerView = [JYCommonKits getViewLineWithFrame:CGRectMake(0, 0, JYScreenW, tableHeaderSpaceH) andJoinView:nil];
+    typeArr = @[@"top",@"shehui",@"guonei",@"guoji",@"yule",@"tiyu",@"junshi",@"keji",@"caijing",@"shishang"];
     
-    _bodyView = [[JYBasicTableView alloc]initWithFrame:CGRectMake(0,0, JYScreenW, JYScreenH - self.viewNavigationBar.bottom - 65*JYScaleH) withDelegate:self];
+    self.contentView.backgroundColor = kGreenColor;
+    
+    self.reqModel.link = ServerUrl;
+    [self.reqModel.parameters setObject:PolymerizationKey forKey:@"key"];
+    [self.reqModel.parameters setObject:@"top" forKey:@"type"];
+    
+    _headerView = [[ABAHeaderTabView alloc]initWithFrame:CGRectMake(0,0, JYScreenW, 40*JYScale_Height)];
+    _headerView.titleArr = @[@"头条",@"社会",@"国内",@"国际",@"娱乐",@"体育",@"军事",@"科技",@"财经",@"时尚"].mutableCopy;
+    _headerView.headerTabViewDelegate = self;
+    [self addSubview:_headerView];
+
+    _bodyView = [[JYBasicTableView alloc]initWithFrame:CGRectMake(0,_headerView.bottom, JYScreenW,self.contentView.height - _headerView.height) withDelegate:self];
+    _bodyView.backgroundColor = kRedColor;
+
+    _bodyView.listDelegate = self;
     _bodyView.dataDelegate = self;
-    _bodyView.emptyTitle = @"暂未添加地址";
+
     [self addSubview:_bodyView];
 }
-#pragma mark WDLBasicViewControllerDelegate
--(NSString *)getUrl{
-    return @"https://www.apiopen.top/satinApi";
+
+#pragma mark标题按钮
+- (void)headerTabView:(ABAHeaderTabView *)headerTabView didSelectRowAtIndexPath:(NSInteger )indexPath{
+    [self.reqModel.parameters setObject:typeArr[indexPath] forKey:@"type"];
+    [self.bodyView reloadData];
 }
--(NSMutableDictionary *)getParams{
-    return @{@"type":"1",@"page":"1"};
+
+#pragma mark JYTableViewListDelegate
+- (JYRequesModel *)getReqModel{
+    return self.reqModel;
 }
-#pragma mark WDLTableViewListDelegate
-- (NSString *)getTableViewUrl{
-    return @"https://www.apiopen.top/satinApi";
-}
-- (NSString *)getTableViewParams{
-    return @{@"type":"1",@"page":"1"};
-}
-#pragma mark WDLTableViewDataSource
+#pragma mark JYTableViewDataSource
 - (episodeCell *)listContentView:(JYBasicTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     episodeCell * cell = nil;
     static NSString * cellStr = @"cellStr";
     if (cell == nil) {
         cell = [[episodeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
     }
+    cell.model = (episodeModel *)_bodyView.listModel[indexPath.row];
     return cell;
 }
 - (void)listContentView:(JYBasicTableView *)listContentView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.completeBlock) {
-        self.completeBlock(self.bodyView.listArray[indexPath.row]);
-    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(UIView *)listContentHeaderView:(JYBasicTableView *)tableView{
@@ -66,32 +80,6 @@
 -(CGFloat)listContentHeaderHeightView:(JYBasicTableView *)tableView{
     return _headerView.height;
 }
--(NSArray<UITableViewRowAction *> *)listContentView:(JYBasicTableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CashAddressViewModel * model = (CashAddressViewModel *)self.bodyView.listModel[indexPath.row];
-    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        new_Dic(params);
-        PARAMS(params,@"address_id",model.address_id);
-        WDLGetWeakSelf;
-        [self submitDataWithParams:params withUrl:ABAMineAssetDeleteAddress withBlock:^(id data, BOOL status) {
-            if (status == YES) {
-                //移除数据源
-                [weakSelf.bodyView.listArray removeObjectAtIndex:indexPath.row];
-                [weakSelf.bodyView.listModel removeObjectAtIndex:indexPath.row];
-                
-                //移除表格评论
-                [UIView setAnimationsEnabled:NO];
-                [weakSelf.bodyView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                [UIView setAnimationsEnabled:YES];
-                
-                if (weakSelf.bodyView.listModel.count == 0) {
-                    [weakSelf.bodyView updateData];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:NSReloadCashAddressOperation object:@{@"type":@"delete",@"address_id":model.address_id}];
-            }
-        }];
-    }];
-    return @[deleteAction];
-}
 -(UITableViewCellEditingStyle)listContentView:(JYBasicTableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
 }
@@ -99,24 +87,25 @@
     return YES;
 }
 
-- (void)addNewAddressAction{
-    new_ControllerWithOutPush(ABAAddCashAddressViewController);
-    controller.property_type = self.property_type;
-    [self presentViewController:controller animated:YES completion:nil];
-}
 #pragma mark 需要重写以下方法
-- (CashAddressViewModel *)getModelWithObj:(id)obj{
+- (episodeModel *)getModelWithObj:(id)obj{
     NSError * error = nil;
-    CashAddressViewModel * model = [[CashAddressViewModel alloc]initWithDictionary:obj error:&error];
-    if ([model.address_remark isEqualToString:self.address_remark] || [model.address_id isEqualToString:self.address_id]) {
-        model.status = YES;
-    }else{
-        model.status = NO;
+    episodeModel * model = [[episodeModel alloc]initWithDictionary:obj error:&error];
+    
+    //添加配图
+    if (model.thumbnail_pic_s) {
+        [model.imageArr addObject:model.thumbnail_pic_s];
     }
+    if (model.thumbnail_pic_s02) {
+        [model.imageArr addObject:model.thumbnail_pic_s02];
+    }
+    if (model.thumbnail_pic_s03) {
+        [model.imageArr addObject:model.thumbnail_pic_s03];
+    }
+    JYLog(@"allProperties = %@",model.allProperties);
     if (error) {
         NSLog(@"error = %@",error);
-        model = [[CashAddressViewModel alloc]init];
-        model.status = 0;
+        model = [[episodeModel alloc]init];
     }
     return model;
 }
@@ -131,46 +120,79 @@
  */
 
 @end
+
+#define oriWidth 10*JYScale_Width
+#define oriHeight 15*JYScale_Width
+
 @interface episodeCell ()
-@property (strong,nonatomic) UIButton * image;
-@property (strong,nonatomic) UILabel * address_remark;
-@property (strong,nonatomic) UILabel * address;
-@property (strong, nonatomic) UIView * lineView;
+@property (strong , nonatomic) UIView * lineView;
+@property (strong , nonatomic) UILabel * title;
+@property (strong , nonatomic) UIImageView * profileImage;
+@property (strong , nonatomic) UILabel * author;
+@property (strong , nonatomic) UILabel * content;
+
+@property (strong , nonatomic) ABACellImageView * imageBodyView;
+
 @end
 
 @implementation episodeCell
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setupUI];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self setUpUI];
     }
     return self;
 }
--(void)setupUI{
-    _image = [WDLCommonKits initButtonnWithButtonTitle:@"" andLabelColor:nil andLabelFont:0 andSuperView:self.contentView andFrame:CGRectMake(15*SCREEN_WIDTH_375, 0, 17*SCREEN_HEIGHT_667, 17*SCREEN_HEIGHT_667)];
-    [_image setImage:[UIImage imageNamed:@"subscription_select@2x"] forState:UIControlStateNormal];
-    [_image setImage:[UIImage imageNamed:@"subscription_selected@2x"] forState:UIControlStateSelected];
+- (void)setUpUI{
+    _lineView = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0,0, JYScreenW,tableHeaderSpaceH) andJoinView:self.contentView];
+    _lineView.backgroundColor = JYLightColor;
     
-    _address_remark = [WDLCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:ABALightNoteColor andLabelFont:16*SCREEN_HEIGHT_667 andLabelFrame:CGRectMake(_image.right+14*SCREEN_WIDTH_375, 20*SCREEN_HEIGHT_667, 1, 16*SCREEN_HEIGHT_667) andJoinView:self.contentView];
-    _address = [WDLCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:ABADeepTitleColor andLabelFont:12*SCREEN_HEIGHT_667 andLabelFrame:CGRectMake(_address_remark.left,_address_remark.bottom+9*SCREEN_HEIGHT_667, 1, 12*SCREEN_HEIGHT_667) andJoinView:self.contentView];
-    _lineView = [WDLCommonKits getViewLineWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 5*SCREEN_HEIGHT_667) andJoinView:self.contentView];
+    _title = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYDeepColor andLabelFont:18*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _lineView.bottom + oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
+    _title.numberOfLines = 2;
+    
+    _profileImage = [JYCommonKits initWithImageViewWithFrame:CGRectMake(oriWidth, _title.bottom, 20*JYScale_Height,20*JYScale_Height) AndSuperView:self.contentView AndImagePath:@"profile_pic@2x"];
+    _profileImage.layer.masksToBounds = YES;
+    _profileImage.layer.cornerRadius = CGRectGetHeight(_profileImage.frame)/2;
+    
+    _author = [JYCommonKits initLabelViewWithLabelDetail:@"" andTextAlignment:0 andLabelColor:JYLightColor andLabelFont:12*JYScale_Height andLabelFrame:CGRectZero andJoinView:self.contentView];
+    
+    _content = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYMiddleColor andLabelFont:20*JYScale_Height andLabelFrame:CGRectMake(oriWidth, oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
+    
+    _imageBodyView = [[ABACellImageView alloc]initWithFrame:CGRectMake(0, 0, JYScreenW, 1)];
+    [self.contentView addSubview:_imageBodyView];
 }
--(void)setModel:(ABANewModel *)model{
-    [super setModel:model];
-    CashAddressViewModel * newModel = (CashAddressViewModel *)model;
-    _image.selected = newModel.status;
+-(void)setModel:(episodeModel *)model{
+    _model = model;
     
-    _address_remark.text = newModel.address_remark;
-    [_address_remark sizeToFit];
+    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(18*JYScale_Height) withLineSpacing:4 text:model.title];
+    _title.attributedText = mutableString;
+    [_title sizeToFit];
+    [_title setWidth:JYScreenW - oriWidth * 2];
+
+    [_profileImage sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_pic_s] placeholderImage:defaultImage];
+    [_profileImage setWidth:_profileImage.height];
+    [_profileImage setY:_title.bottom];
+    [_author setX:_profileImage.right];
     
-    _address.text = newModel.address;
-    [_address sizeToFit];
-    _address.top = _address_remark.bottom+9*SCREEN_HEIGHT_667;
-    _lineView.top = _address.bottom + 20*SCREEN_HEIGHT_667;
+    _author.text = [NSString stringWithFormat:@"%@",model.date];
+    _author.frame = CGRectMake(_profileImage.right + 10*JYScale_Width, _title.bottom + 10*JYScale_Width, _title.width, 12*JYScale_Height);
+    [_profileImage setCenterY:_author.centerY];
     
-    self.height = _lineView.bottom;
-    model.cellHeight = self.height ;
-    _image.centerY = self.height/2;
+    
+    mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(14*JYScale_Height) withLineSpacing:4 text:model.desc];
+    _content.attributedText = mutableString;
+    _content.numberOfLines = 2;
+    [_content sizeToFit];
+    [_content setWidth:JYScreenW - oriWidth * 2];
+    [_content setY:_author.bottom + 13*JYScale_Width];
+    
+    [_imageBodyView setY:_author.bottom + 5*JYScale_Width];
+    _imageBodyView.imageUrlArr = model.imageArr;
+
+    model.cellHeight = [NSNumber numberWithFloat:_imageBodyView.bottom + 10*JYScale_Width];
 }
 @end
-@implementation CashAddressViewModel
+
+@implementation episodeModel
 @end

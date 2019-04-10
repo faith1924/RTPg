@@ -61,6 +61,7 @@ alpha:a]
 #define JYLightColor [UIColor colorWithRed:138.0f/255.0f green:146.0f/255.0f blue:153.0f/255.0f alpha:1.0f]
 #define JYMiddleColor [UIColor colorWithRed:92.0f/255.0f green:97.0f/255.0f blue:102.0f/255.0f alpha:1.0f]
 #define JYPlaceHolderColor [UIColor colorWithRed:154.0f/255.0f green:163.0f/255.0f blue:171.0f/255.0f alpha:1.0f]
+#define JYBlueColor [UIColor colorWithRed:29.0f/255.0f green:153.0f/255.0f blue:242.0f/255.0f alpha:1.0f]
 
 // =====================================以下为自定义色值）=========================================
 

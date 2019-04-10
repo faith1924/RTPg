@@ -27,6 +27,7 @@
 #import "AppDelegate+Service.h"
 #import "UIView+Extension.h"
 #import "UIView+Geometry.h"
+#import "NSObject+Runtime.h"
 
 //网络请求
 #import "JYResultModel.h"

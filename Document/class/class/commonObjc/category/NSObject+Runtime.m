@@ -37,7 +37,7 @@
                                    }];
         
     }
-    
+    free(properties);
     return propertiesArr;
 }
 

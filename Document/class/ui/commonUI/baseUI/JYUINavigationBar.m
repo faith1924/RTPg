@@ -17,7 +17,7 @@
 
 #define kitHeight 46
 #define kitWidth 50
-#define bgColor ABABtnBlueBackGroundColor
+#define bgColor JYBlueColor
 
 @interface JYUINavigationBar ()
 @property (strong , nonatomic) UIView * navigationItemRightView;

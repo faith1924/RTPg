@@ -32,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)JYConfigureThirdSDK;
 
+/**
+ 配置云服务器leanCloud
+ */
+- (void)JYConfigurationLeanCloud;
 
 @end
 

@@ -9,6 +9,8 @@
 #import "AppDelegate+Service.h"
 #import <UMCommon/UMCommon.h>
 #import <UMShare/UMShare.h>
+#import <AVOSCloud/AVOSCloud.h>
+#import "LeanCloudInterface.h"
 
 @implementation AppDelegate (Service)
 /**
@@ -41,7 +43,7 @@
     
     [UMConfigure setEncryptEnabled:YES];//打开加密传输
     
-    [UMConfigure setLogEnabled:YES];//设置打开日志
+//    [UMConfigure setLogEnabled:YES];//设置打开日志
     
     [UMConfigure initWithAppkey:UMSocialAppKey channel:@"App Store"];
 
@@ -51,6 +53,21 @@
     
     //允许分享http图片
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+}
+
+/**
+ 配置云服务器leanCloud
+ */
+- (void)JYConfigurationLeanCloud{
+    [AVOSCloud setApplicationId:LeanCloudID clientKey:LeanClooudKey];
+
+#ifdef DEBUG
+    [AVOSCloud setAllLogsEnabled:YES];
+#else
+#endif
+    [LeanCloudInterface getClassInfo:@"profile"];
+    
+    
 }
 
 #pragma mark UIApplication delegate

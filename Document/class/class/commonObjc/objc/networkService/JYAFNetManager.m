@@ -15,26 +15,24 @@
     return [[JYAFNetManager alloc]init];
 }
 
-- (void)POSTWithParameters:(NSMutableDictionary *)params Success:(Success)responseJson Failure:(Failure)error{
+- (void)POSTWithParameters:(NSMutableDictionary *)params Success:(Success)success Failure:(Failure)error{
     
 }
 
-- (void)POSTWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)responseJson Failure:(Failure)error{
+- (void)POSTWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)success Failure:(Failure)failure{
     
-    NSAssert(!url, @"url is nil");
+    [self logReq:url params:params];
     
     if (![JYAfClient isExistenceNetwork]) {
         JYLog(@"网络连接不可用");
     }
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    [[AFHTTPSessionManager manager] POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [JYAfClient decodeResult:responseObject URL:url parameters:params successBlock:^(NSMutableDictionary *result, JYResultModel *model) {
-            
+            success(result);
         } failureBlock:^(NSError *error, JYResultModel *model) {
-            
+            failure(error);
         }];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -42,17 +40,37 @@
     }];
 }
 
-- (void)POSTWithSubmitDocumentParameters:(NSMutableDictionary *)params UrlAddress:(NSString *)url Success:(Success)responseJson Failure:(Failure)error{
-    NSAssert(!url, @"url is nil");
+- (void)POSTWithSubmitDocumentParameters:(NSMutableDictionary *)params UrlAddress:(NSString *)url Success:(Success)success Failure:(Failure)error{
+    [self logReq:url params:params];
     
 }
 
-- (void)GetWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)responseJson Failure:(Failure)error{
+- (void)GetWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)success Failure:(Failure)failure{
+    
+    [self logReq:url params:params];
+    
+    if (![JYAfClient isExistenceNetwork]) {
+        JYLog(@"网络连接不可用");
+    }
+    
+    [[AFHTTPSessionManager manager] GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [JYAfClient decodeResult:responseObject URL:url parameters:params successBlock:^(NSMutableDictionary *result, JYResultModel *model) {
+            success(result);
+        } failureBlock:^(NSError *error, JYResultModel *model) {
+            failure(error);
+        }];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [JYAfClient updateErrorToServiceWithUrl:url paramDict:params errorDesc:error.description];
+    }];
+}
+- (void)syncGetWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)success Failure:(Failure)error{
     NSAssert(!url, @"url is nil");
     
 }
-- (void)syncGetWithURL:(NSString *)url Parameters:(NSMutableDictionary *)params Success:(Success)responseJson Failure:(Failure)error{
-    NSAssert(!url, @"url is nil");
-    
+- (void) logReq:(NSString *)url params:(NSMutableDictionary *)params{
+     JYLog(@"\n====================================================\n请求地址：%@\n请求参数：%@\n",url,params);
 }
 @end

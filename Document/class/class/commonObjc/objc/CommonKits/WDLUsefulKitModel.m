@@ -933,7 +933,7 @@ static UIView *progressHudView;
                                 andFrame:(CGRect )frame
                             andSuperView:(UIView *)superView{
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    if (CGRectGetWidth(frame)<16*JYScaleW) {
+    if (CGRectGetWidth(frame)<16*JYScale_Width) {
        label.font = JY_Font_Sys(CGRectGetWidth(frame));
     }
     label.textColor = kBlackColor;
