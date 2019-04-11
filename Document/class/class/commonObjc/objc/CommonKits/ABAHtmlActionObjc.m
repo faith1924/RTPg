@@ -24,7 +24,9 @@
 + (void)receiveMessageFromH5OperationWithData:(NSString *)jsonString
                                withMethorName:(NSString *)methorName
                                   withWebview:(WKWebView *)webView
-                            withCompleteBlock:(void(^)(void))complete{}
+                            withCompleteBlock:(void(^)(void))complete{
+    
+}
 //保存图片
 + (void)saveImg:(NSString *)imageUrl{
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:imageUrl] options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {

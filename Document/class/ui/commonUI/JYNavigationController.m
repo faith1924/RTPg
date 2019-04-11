@@ -26,6 +26,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.interactivePopGestureRecognizer.enabled = YES;
     [self setNavigationBarAppearance];
     // Do any additional setup after loading the view.
 }
@@ -35,7 +37,42 @@
     textAttrs[NSForegroundColorAttributeName] = item_Color;     // 设置item颜色
     textAttrs[NSFontAttributeName] = item_Font;  // 统一设置item字体大小
     [UINavigationBar appearance].titleTextAttributes=textAttrs;
-}/*
+}
+
+#pragma mark - 重载父类进行改写
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (self.viewControllers.count > 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    //先进入子Controller
+    [super pushViewController:viewController animated:animated];
+    //替换掉leftBarButtonItem
+    if ([self.viewControllers count] > 1) {
+        viewController.navigationItem.leftBarButtonItem =[self customLeftBackButton];
+    }
+}
+#pragma mark - 自定义返回按钮图片
+-(UIBarButtonItem*)customLeftBackButton{
+    UIImage* itemImage= [UIImage imageNamed:@"back_btn_blue"]; // Colored Image
+    itemImage = [itemImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIBarButtonItem *leftBtn=[[UIBarButtonItem alloc]initWithImage:itemImage style:UIBarButtonItemStyleDone target:self action:@selector(popself)];
+    self.navigationItem.leftBarButtonItem=leftBtn;
+    return leftBtn;
+}
+
+#pragma mark - 返回按钮事件(pop)
+-(void)popself
+{
+    UIViewController *view = self.topViewController;
+    [view.view endEditing:YES];
+    [self popViewControllerAnimated:YES];
+}
+
+
+
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

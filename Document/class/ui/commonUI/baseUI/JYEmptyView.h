@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JYEmptyView : UIView
 
-@property (strong , nonatomic) UILabel * messageLabel;
-
-@property (strong , nonatomic) NSString * title;
+@property (strong , nonatomic) NSString * message;
 
 @end
 

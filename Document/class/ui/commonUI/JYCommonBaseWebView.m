@@ -76,7 +76,7 @@
         self.navigationDelegate = weakSelf;
         self.UIDelegate = weakSelf;
         self.scrollView.bounces = NO;
-        self.scrollView.scrollEnabled = NO;
+        self.scrollView.scrollEnabled = YES;
         self.scrollView.showsVerticalScrollIndicator = NO;
         [self sizeToFit];
     }

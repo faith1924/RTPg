@@ -58,16 +58,17 @@
 /**
  配置云服务器leanCloud
  */
-- (void)JYConfigurationLeanCloud{
-    [AVOSCloud setApplicationId:LeanCloudID clientKey:LeanClooudKey];
+- (void)JYConfigurationLeanCloud:(void (^)(BOOL))success{
+    [AVOSCloud setApplicationId:LeanCloudID clientKey:LeanCloudKey];
 
 #ifdef DEBUG
-    [AVOSCloud setAllLogsEnabled:YES];
+//    [AVOSCloud setAllLogsEnabled:YES];
 #else
 #endif
-    [LeanCloudInterface getClassInfo:@"profile"];
-    
-    
+    [LeanCloudInterface getClassInfo:@"profile" complete:^(BOOL status) {
+        JYLog(@"\n获取后台状态：%@\n",(status?@"success":@"failure"));
+        success(status);
+    }];
 }
 
 #pragma mark UIApplication delegate

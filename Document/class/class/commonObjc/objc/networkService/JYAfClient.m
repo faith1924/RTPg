@@ -85,9 +85,11 @@
     }else{
         if ([responseDic[@"error_code"] integerValue] == SUCCESS_CODE)
         {
-            success(model.result[@"result"][@"data"],model);
+            success(model.result[@"result"],model);
+            
         }else
         {
+            JYLog(@"\n错误信息：%@,\nerror:%@",responseDic,error);
             failure(error,model);
         }
     }

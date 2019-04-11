@@ -26,11 +26,12 @@ typedef NS_ENUM(NSInteger, JYTabBarType){
 
 #define defaultImage [UIImage imageNamed:@"loadingImage"]
 #define NgBarTitleSize 16
-#define defaultNumberData 50
+#define defaultNumberData 20
 #define tableHeaderSpaceH 10
 
 
 #define SUCCESS_CODE 0
+#define SUCCESS_CODE_200 200
 
 /**
  typedef NS_ENUM(NSInteger, FW_LIVE_TYPE)

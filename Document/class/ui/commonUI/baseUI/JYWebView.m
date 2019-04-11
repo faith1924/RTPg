@@ -1,14 +1,14 @@
 //
-//  JYBasicWKWebView.m
+//  JYWebView.m
 //  RTPg
 //
-//  Created by md212 on 2019/4/9.
+//  Created by md212 on 2019/4/11.
 //  Copyright © 2019年 汪栋梁. All rights reserved.
 //
 
-#import "JYBasicWKWebView.h"
+#import "JYWebView.h"
 
-@implementation JYBasicWKWebView
+@implementation JYWebView
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         if (@available(iOS 11.0, *)) {

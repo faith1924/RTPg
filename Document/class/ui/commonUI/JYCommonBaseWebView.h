@@ -7,10 +7,10 @@
 //
 
 #import "JYCommonBaseWebView.h"
-#import "JYBasicWKWebView.h"
+#import "JYWebView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JYCommonBaseWebView : JYBasicWKWebView
+@interface JYCommonBaseWebView : JYWebView
 @property (strong , nonatomic) NSString * htmlFromPath;
 @property (strong , nonatomic) NSString * urlString;
 @property (strong , nonatomic) NSString * htmlBody;

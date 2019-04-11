@@ -147,7 +147,7 @@
     if (loadDelegate) {
         _loadDelegate = loadDelegate;
         
-        self.reqModel = [self.loadDelegate getReqModel];
+        self.reqModel = [self.loadDelegate getVCReqModel];
 
         [self loadData:^(id data, BOOL status) {
             if (status) {

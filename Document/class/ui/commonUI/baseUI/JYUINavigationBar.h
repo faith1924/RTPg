@@ -13,6 +13,7 @@
 @property (strong , nonatomic) UIView * lineView;
 @property (strong , nonatomic) NSString * title;
 @property (strong , nonatomic) UILabel * titleLabel;
+@property (assign , nonatomic) BOOL isShowBack;
 /**
  mark 最多可以插入三个标签
  

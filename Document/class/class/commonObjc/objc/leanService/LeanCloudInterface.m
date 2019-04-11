@@ -11,16 +11,34 @@
 
 @implementation LeanCloudInterface
 
-
 /**
  从云端获取数据
 
  @param className 配置类名
  */
-+ (void) getClassInfo:(NSString *)className{
++ (void) getClassInfo:(NSString *)className complete:(void(^)(BOOL))success{
     AVQuery *query = [AVQuery queryWithClassName:className];
-    [query getObjectInBackgroundWithId:LeanCloudID block:^(AVObject * _Nullable object, NSError * _Nullable error) {
-        
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"isShow"];
+    [query includeKey:@"url"];
+    [query includeKey:@"prefix"];
+    [query includeKey:@"suffix"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            AVObject * object = objects[0];
+            BOOL flag = [[object objectForKey:@"isShow"] boolValue];
+            if (flag) {
+                [JYProfileObjc setLeanObjectUrl:[object objectForKey:@"url"]];
+                [JYProfileObjc setLeanObjectPrefix:[object objectForKey:@"prefix"]];
+                [JYProfileObjc setLeanObjectSuffix:[object objectForKey:@"suffix"]];
+                success(YES);
+            }else{
+                success(NO);
+            }
+        }else{
+            success(NO);
+            NSLog(@"error = %@",error);
+        }
     }];
 }
 

@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  配置云服务器leanCloud
  */
-- (void)JYConfigurationLeanCloud;
+- (void)JYConfigurationLeanCloud:(void(^)(BOOL complete))success;
 
 @end
 

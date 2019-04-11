@@ -7,10 +7,11 @@
 //
 
 #import "JYTabBarController.h"
-#import "newsVC.h"
+#import "booksVC.h"
 #import "videoVC.h"
 #import "infoVC.h"
-#import "episodeVC.h"
+#import "booksVC.h"
+#import "jokesVC.h"
 #import "JYNavigationController.h"
 
 #define kClassKey   @"rootVCClassString"
@@ -40,25 +41,26 @@
     
     self.delegate = self;
     NSArray *childItemsArray = @[
-                                 @{kClassKey  : @"episodeVC",
-                                   kTitleKey  : @"段子",
-                                   kImgKey    : @"icon_subscription",
-                                   kSelImgKey : @"icon_subscription_pre"},
-                                 
                                  @{kClassKey  : @"newsVC",
                                    kTitleKey  : @"资讯",
+                                   kImgKey    : @"icon_subscription",
+                                   kSelImgKey : @"icon_subscription_pre"},
+
+                                 @{kClassKey  : @"booksVC",
+                                   kTitleKey  : @"图书",
                                    kImgKey    : @"icon_zl",
                                    kSelImgKey : @"icon_zl_pre"},
                                  
-                                 @{kClassKey  : @"videoVC",
-                                   kTitleKey  : @"视频",
+                                 @{kClassKey  : @"jokesVC",
+                                   kTitleKey  : @"笑话",
                                    kImgKey    : @"icon_quotation",
                                    kSelImgKey : @"icon_quotation_pre"},
                                  
                                  @{kClassKey  : @"infoVC",
                                    kTitleKey  : @"我的",
                                    kImgKey    : @"icon_mine",
-                                   kSelImgKey : @"icon_mine_pre"} ];
+                                   kSelImgKey : @"icon_mine_pre"}
+                                 ];
     
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
         UIViewController *vc = [NSClassFromString(dict[kClassKey]) new];

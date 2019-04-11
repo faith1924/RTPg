@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JYRequesModel : NSObject
 
+@property (assign , nonatomic) BOOL reqType;//0post 1get
+
 @property (strong , nonatomic) NSString * link; //请求地址
 
 NS_ASSUME_NONNULL_END

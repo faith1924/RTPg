@@ -159,7 +159,7 @@ if ([controller isKindOfClass:[vcClass class]]) { \
 #define WDLGetKeyWindow      [UIApplication sharedApplication].keyWindow
 #define WDLGetWindow   [[[UIApplication sharedApplication] delegate] window]
 #define WDLGetAppDelegate   ((AppDelegate*)[UIApplication sharedApplication].delegate)
-#define WDLGetUserDefault   [NSUserDefaults standardUserDefaults]
+#define JYGetUserDefault   [NSUserDefaults standardUserDefaults]
 #define WDLNotificationCenter  [NSNotificationCenter defaultCenter]
 
 #define WDLCenterEqualY(v1,v2) v1.center = CGPointMake(v1.center.x, v2.center.y)

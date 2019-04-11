@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JYProfileObjc.h"
 #import "DebugMacro.h"
 #import "JYAppKey.h"
 #import "JYBusinessMacro.h"

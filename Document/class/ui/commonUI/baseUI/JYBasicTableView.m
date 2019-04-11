@@ -10,7 +10,7 @@
 #import "JYBasicModel.h"
 
 @interface JYBasicTableView ()<JYBasicTableViewDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (strong ,nonatomic) NSString * loadStatus;//页面加载状态
+
 
 @property (weak , nonatomic) id<JYBasicTableViewDelegate>loadDelegate;
 
@@ -26,30 +26,31 @@
                  withDelegate:(id)delegate{
     if(self = [super initWithFrame:frame style:UITableViewStylePlain]){
         if (delegate) {
-            self.listDelegate = delegate;
-            self.dataDelegate = delegate;
-            if ([self.dataDelegate respondsToSelector:@selector(listContentHeaderView:)]) {
+            _loadDelegate = delegate;
+            _listDelegate = delegate;
+            _dataDelegate = delegate;
+            if ([_dataDelegate respondsToSelector:@selector(listContentHeaderView:)]) {
                 self.tableHeaderView = [self.dataDelegate listContentHeaderView:self];
             }
-            if ([self.dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
+            if ([_dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
                 self.tableFooterView = [self.dataDelegate listContentFooterView:self];
             }
-            if (self.listDelegate) {
-                if ([self.listDelegate respondsToSelector:@selector(getReqModel)]) {
-                    self.reqModel = [self.listDelegate getReqModel];
-                }
-            }
         }else{
-            self.loadDelegate = self;
+            _loadDelegate = self;
+            _listDelegate = delegate;
+            _dataDelegate = delegate;
         }
+        _totalPage = 100;
+        _EPCount = defaultNumberData;
+        
         self.delegate = self;
         self.dataSource = self;
-        
+
         _refreshHeaderView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
         self.mj_header =_refreshHeaderView;
         
-        _refreshFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
-        self.mj_footer = _refreshFooterView;
+//        _refreshFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
+//        self.mj_footer = _refreshFooterView;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         self.showsVerticalScrollIndicator = NO;
@@ -58,6 +59,7 @@
         self.page = 1;
         _isShowEmpty = YES;
         _emptyTitle = @"未加载到任何数据";
+        
         //监测加载状态
         [self loadData];
     }
@@ -120,22 +122,34 @@
 
     JYWeakify(self);
     _loadStatus = @"开始请求";
-    [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *responseJson) {
-        if ([weakSelf.listDelegate respondsToSelector:@selector(loadDataSuccess:withParams:withUrlString:)] && weakSelf.listDelegate) {
-            [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters  withUrlString:weakSelf.reqModel.link];
-        }else{
-            [weakSelf loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters withUrlString:weakSelf.reqModel.link];
-        }
-    } Failure:^(NSError *error) {
-       [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
-    }];
+    if(self.reqModel.reqType == 0){
+        [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *responseJson) {
+            if ([weakSelf.listDelegate respondsToSelector:@selector(loadDataSuccess:withParams:withUrlString:)] && weakSelf.listDelegate) {
+                [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters  withUrlString:weakSelf.reqModel.link];
+            }else{
+                [weakSelf loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters withUrlString:weakSelf.reqModel.link];
+            }
+        } Failure:^(NSError *error) {
+            [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
+        }];
+    }else{
+        [[JYAFNetManager manager] GetWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(id responseJson) {
+            if ([weakSelf.listDelegate respondsToSelector:@selector(loadDataSuccess:withParams:withUrlString:)] && weakSelf.listDelegate) {
+                [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters  withUrlString:weakSelf.reqModel.link];
+            }else{
+                [weakSelf loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters withUrlString:weakSelf.reqModel.link];
+            }
+        } Failure:^(NSError *error) {
+            [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
+        }];
+    }
 }
 - (void)loadDataSuccess:(id)data withParams:(NSMutableDictionary *)params withUrlString:(NSString *)urlString{
     _loadStatus = @"请求成功";
     if (self.page <= 1) {
-        [self initArrWithDic:data withParams:params withUrlString:urlString];
+        [self initArrWithDic:data[@"data"] withParams:params withUrlString:urlString];
     }else{
-        [self appendArrWithDic:data withParams:params withUrlString:urlString];
+        [self appendArrWithDic:data[@"data"] withParams:params withUrlString:urlString];
     }
     [self endRefresh];
 }
@@ -169,42 +183,41 @@
 - (void)initArrWithDic:(id )arr
             withParams:(NSMutableDictionary *)params
          withUrlString:(NSString *)urlString{
-    _totalPage = 1;
-    _EPCount = defaultNumberData;
     [self.listArray removeAllObjects];
     [self.listArray addObjectsFromArray:arr];
     self.listModel = [self getModelWithArr:arr];
     
-    if (self.listModel.count == 0) {
-        [self loadDataFail:arr withParams:params withUrl:urlString];
-    }else{
-        [self.emptyView removeFromSuperview];
-        if (self.listModel.count < self.EPCount || self.EPCount == 0 || self.totalPage == 0) {
+    if (self.mj_header == nil) {
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
+    }
+    
+    if (self.listModel.count == 0 || self.listModel.count < _EPCount) {
+        self.mj_footer = nil;
+        if (self.listModel.count == 0) {
+            [self loadDataFail:arr withParams:params withUrl:urlString];
+        }
+    }else
+    {
+        if (self.listModel.count == 0)
+        {
+            self.mj_header = nil;
             self.mj_footer = nil;
-            //不分页
-            if (self.totalPage == 0 || self.EPCount == 0 ) {
-                self.mj_header = nil;
-            }
-        }else{
+        }
+        else
+        {
             if (self.mj_footer == nil) {
                 self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
-            }
-            if (self.mj_header == nil) {
-                self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
             }
         }
     }
 }
-- (void)appendArrWithDic:(NSMutableDictionary *)dic
+- (void)appendArrWithDic:(id )dic
               withParams:(NSMutableDictionary *)params
            withUrlString:(NSString *)urlString{
-    _totalPage = [dic[@"listInfo"][@"pageCoun"] intValue];
-    _EPCount = MIN([dic[@"listInfo"][@"pageNum"] intValue], defaultNumberData);
-    NSMutableArray * arr = [dic[@"list"] mutableCopy];
+    NSMutableArray * arr = [dic mutableCopy];
     [self.listArray addObjectsFromArray:arr];
     [self.listModel addObjectsFromArray:[self getModelWithArr:arr]];
-    if (_page >= _totalPage) {
-        _page = _totalPage;
+    if (arr.count < _EPCount) {
         self.mj_footer = nil;
     }else{
         if (self.mj_footer == nil) {
@@ -215,18 +228,9 @@
 - (void)loadDataFail:(id)data withParams:(id)params withUrl:(NSString *)urlString{
     _loadStatus = @"请求失败";
     [self.listModel removeAllObjects];
-    [self endRefresh];
     self.mj_footer = nil;
-    if (_isShowEmpty) {
-        self.emptyView.height = self.height - self.tableHeaderView.height - (_headerView?_headerView.height:0) - (_footerView?_footerView.height:0);
-        _emptyView.bottom = self.height-_footerView.height;
-        _emptyView.messageLabel.centerY = _emptyView.height/2;
-        [self addSubview:_emptyView];
-    }else{
-        self.emptyView.height = 0;
-        [self.emptyView removeFromSuperview];
-    }
-    NSLog(@"请求失败：data = %@\nparams = %@\nurlString = %@",data,params,urlString);
+    self.emptyView.message = _emptyTitle;
+    [self addSubview:_emptyView];
 }
 
 /**
@@ -236,46 +240,33 @@
     self.page = 1;
     [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
     [self loadData];
-    if (_isArrowPrintLog) {
-        NSLog(@"ABABasicUIView:\n当前执行下拉刷新\t方法名：dropDownRefresh\t当前page:%d\n",_page);
-    }
 }
 /**
  *  上拉加载
  */
 - (void)dropUpLoadMore{
-    if (self.page < self.totalPage) {
-        self.page++;
-        [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
-        [self loadData];
-    }else{
-        self.mj_footer = nil;
-    }
-    if (_isArrowPrintLog) {
-        NSLog(@"ABABasicUIView:\n当前执行上拉加载\t方法名：dropUpLoadMore\t当前page:%d\n",_page);
-    }
+    self.page++;
+    [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
+    [self loadData];
 }
 - (void)endRefresh{
+    [_emptyView removeFromSuperview];
     [self reloadData];
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
-}
-- (void)updateData{
-    [self loadData];
 }
 /**
  *  空页面展示
  */
 - (JYEmptyView *)emptyView{
     if (_emptyView == nil) {
-
+        _emptyView = [[JYEmptyView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.height)];
     }
     return _emptyView;
 }
 - (void)setEmptyTitle:(NSString *)emptyTitle{
     if (emptyTitle) {
-        _emptyTitle = emptyTitle;
-        self.emptyView.messageLabel.text = emptyTitle;
+        self.emptyView.message = emptyTitle;
     }
 }
 - (NSMutableArray *)listModel  {
@@ -390,9 +381,11 @@
     }
     self.delegate = nil;
     self.dataSource = nil;
-    self.listDelegate = nil;
-    self.dataDelegate = nil;
-    self.loadDelegate = nil;
+    
+    _emptyView = nil;
+    _listDelegate = nil;
+    _dataDelegate = nil;
+    _loadDelegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 /*

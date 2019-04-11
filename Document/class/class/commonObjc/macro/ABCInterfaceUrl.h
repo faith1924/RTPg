@@ -11,8 +11,9 @@
 #define ABCInterfaceUrl_h
 
 //news
-#define ServerUrl @"http://v.juhe.cn/toutiao/index"
-
-
+#define newsServerUrl @"http://v.juhe.cn/toutiao/index"
+#define bookServerUrl @"http://apis.juhe.cn/goodbook/catalog"
+#define bookListServerUrl @"http://apis.juhe.cn/goodbook/query"
+#define jokeServerUrl @"http://v.juhe.cn/joke/content/text.php"
 
 #endif /* ABCInterfaceUrl_h */

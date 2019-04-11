@@ -20,17 +20,23 @@
 #define bgColor JYBlueColor
 
 @interface JYUINavigationBar ()
+@property (strong , nonatomic) UIView * navigationBackBtn;;
 @property (strong , nonatomic) UIView * navigationItemRightView;
 @property (strong , nonatomic) UIView * navigationItemLeftView;
 @end
 @implementation JYUINavigationBar
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:CGRectMake(0, 0, JYScreenW, SafeAreaTopHeight)]) {
+        self.layer.masksToBounds = YES;
         self.backgroundColor = kWhiteColor;
         [self addSubview:self.titleLabel];
         [self addSubview:self.navigationItemRightView];
         [self addSubview:self.navigationItemLeftView];
         [self addSubview:self.lineView];
+        
+        //返回按钮
+        [self.navigationItemLeftView addSubview:self.navigationBackBtn];
+        [self setIsShowBack:NO];
     }
     return self;
 }
@@ -39,6 +45,10 @@
         _lineView = [JYCommonKits getViewLineWithFrame:CGRectMake(0, SafeAreaTopHeight - 0.5, JYScreenW, 0.5) andJoinView:nil];
     }
     return _lineView;
+}
+-(void)setIsShowBack:(BOOL)isShowBack{
+    _isShowBack = isShowBack;
+    _navigationBackBtn.hidden = !_isShowBack;
 }
 - (void)setTitle:(NSString *)title{
     _title = title;
@@ -142,6 +152,21 @@
         return [self.navigationItemRightView viewWithTag:index+rightOtherTag];
     }
 }
+
+- (UIView *)navigationBackBtn{
+    if (!_navigationBackBtn) {
+        _navigationBackBtn = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0, 0, kitWidth, _navigationItemLeftView.height) andJoinView:nil];
+        
+        UIControl * control = [JYCommonKits initControlWithFrame:CGRectMake(0, 0, kitWidth, kitHeight) andJoinView:_navigationBackBtn];
+        [control addTarget:self action:@selector(popView) forControlEvents:UIControlEventTouchDown];
+        
+        UIImageView * backImage = [JYCommonKits initWithImageViewWithFrame:CGRectMake(0, 0, 18*JYScale_Width, 18*JYScale_Width) AndSuperView:_navigationBackBtn];
+        [backImage setImage:[UIImage imageNamed:@"back_btn_blue"]];
+        backImage.center = control.center;
+    }
+    return _navigationBackBtn;
+}
+
 - (UILabel *)titleLabel{
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,SafeAreaTopHeight - kitHeight, 100, kitHeight)];
@@ -196,5 +221,8 @@
     if (self.clickBtn) {
         self.clickBtn(nil);
     }
+}
+- (void)popView{
+    [[WDLUsefulKitModel getCurrentViewController].navigationController popViewControllerAnimated:YES];
 }
 @end

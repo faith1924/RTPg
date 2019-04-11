@@ -14,15 +14,11 @@
 
 @protocol JYBasicViewControllerDelegate <NSObject>
 
-/**
- *  数据开始加载
- */
-- (void)reloadData;
-
+@optional
 /**
  *  获取加载参数
  */
-- (JYRequesModel *)getReqModel;
+- (JYRequesModel *)getVCReqModel;
 
 @end
 
@@ -94,12 +90,6 @@
  */
 - (void)loadData:(void(^)(id data,BOOL status))complete;
 
-/**
- *  提交请求
- */
-- (void)submitDataWithParams:(NSMutableDictionary *)params
-                     withUrl:(NSString *)urlString
-                   withBlock:(void(^)(id data,BOOL status))complete;
 /**
  *  添加页面;
  */
