@@ -52,7 +52,6 @@
     _viewNavigationBar = [[JYUINavigationBar alloc]initWithFrame:CGRectZero];
     _viewNavigationBar.titleLabel.alpha = 1;
     _viewNavigationBar.title = self.title;
-    [_viewNavigationBar setBtnWithImageArr:@[@"back_btn_blue@"] withDelegate:self withActionArr:@[@"popBackView"] isLeft:YES];
     
     [self setIsShowBar:YES];
     [self.view addSubview:_viewNavigationBar];
@@ -68,6 +67,9 @@
     [super viewDidAppear:animated];
     // 设置基类加载属性
     [self setTheLoadProperties];
+    
+    //重新设置代理
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 - (void)setTheLoadProperties{
     // 将默认关闭全继承左滑返回手势
@@ -84,9 +86,14 @@
  *
  *  @return BOOL
  */
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    return self.childViewControllers.count > 1;
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer{
+    if (self.navigationController && self.navigationController.viewControllers.count == 1) {
+        return NO;
+    }
+    return YES;
 }
+
 /**
  *  返回方法
  *
@@ -229,6 +236,11 @@
             NSLog(@"%@",_loadStatus);
         }
     }
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 /**

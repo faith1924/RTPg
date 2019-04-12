@@ -19,18 +19,14 @@
 + (void) getClassInfo:(NSString *)className complete:(void(^)(BOOL))success{
     AVQuery *query = [AVQuery queryWithClassName:className];
     [query orderByDescending:@"createdAt"];
-    [query includeKey:@"isShow"];
-    [query includeKey:@"url"];
-    [query includeKey:@"prefix"];
-    [query includeKey:@"suffix"];
+    [query includeKey:@"isShowAd"];
+    [query includeKey:@"advertisement"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             AVObject * object = objects[0];
-            BOOL flag = [[object objectForKey:@"isShow"] boolValue];
+            BOOL flag = [[object objectForKey:@"isShowAd"] boolValue];
             if (flag) {
-                [JYProfileObjc setLeanObjectUrl:[object objectForKey:@"url"]];
-                [JYProfileObjc setLeanObjectPrefix:[object objectForKey:@"prefix"]];
-                [JYProfileObjc setLeanObjectSuffix:[object objectForKey:@"suffix"]];
+                [JYGetUserDefault setObject:object[@"advertisement"] forKey:@"advertisement"];
                 success(YES);
             }else{
                 success(NO);

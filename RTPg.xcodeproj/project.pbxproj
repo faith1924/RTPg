@@ -1413,7 +1413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJD482YY4W;
+				DEVELOPMENT_TEAM = W8Z784DU27;
 				INFOPLIST_FILE = RTPgUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1431,7 +1431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJD482YY4W;
+				DEVELOPMENT_TEAM = W8Z784DU27;
 				INFOPLIST_FILE = RTPgUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -2,8 +2,8 @@
 //  WDLUsefulKitModel.m
 //  chengTingApp
 //
-//  Created by 汪栋梁 on 16/7/15.
-//  Copyright © 2016年 汪栋梁. All rights reserved.
+//  Created by atts on 16/7/15.
+//  Copyright © 2016年 atts. All rights reserved.
 //
 
 #import "WDLUsefulKitModel.h"

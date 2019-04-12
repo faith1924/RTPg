@@ -2,8 +2,8 @@
 //  JYNotiMacro.h
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/2.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Created by atts on 2019/4/2.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #ifndef JYNotiMacro_h
@@ -18,5 +18,11 @@
 #define JYNotifAdd(name, methor)                     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(methor) name:name object:nil]
 // 通知移除
 #define JYNotifRemove()                      [[NSNotificationCenter defaultCenter] removeObserver:self]
+
+
+#define AdvertisementNotification    @"addAdvertisement"
+
+
+
 
 #endif /* JYNotiMacro_h */

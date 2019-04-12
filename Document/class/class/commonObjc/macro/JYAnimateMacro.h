@@ -2,8 +2,8 @@
 //  JYAnimateMacro.h
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/2.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Created by atts on 2019/4/2.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #ifndef JYAnimateMacro_h

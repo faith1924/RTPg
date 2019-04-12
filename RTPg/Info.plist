@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>读语</string>
+	<string>书语</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -47,7 +47,7 @@
 			<string>书语</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>RTPg_App</string>
+				<string>com.pinmanot44964</string>
 			</array>
 		</dict>
 	</array>

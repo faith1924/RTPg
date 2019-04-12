@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/9.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "newsVC.h"
@@ -42,10 +42,6 @@
     [self addSubview:_headerView];
     
     _bodyView = [[JYBasicTableView alloc]initWithFrame:CGRectMake(0,_headerView.bottom, JYScreenW,self.contentView.height - _headerView.height - SafeTabbarBottomHeight) withDelegate:self];
-
-    _bodyView.listDelegate = self;
-    _bodyView.dataDelegate = self;
-
     [self addSubview:_bodyView];
 }
 
@@ -75,6 +71,9 @@
     if (model && ![model.url isEqualToString:@""]) {
         new_ControllerWithOutPush(JYWebViewController);
         controller.urlString = model.url;
+        controller.shareThumbnail = ([model.imageArr count]>0?([NSString stringWithFormat:@"%@",model.imageArr[0]]):@"");
+        controller.shareBrief = @"点击更精彩...";
+        controller.shareTitle = model.title;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/11.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "JYWebViewController.h"
@@ -57,12 +57,12 @@
 #pragma mark event
 - (void)shareArticle{
     NSMutableDictionary * shareDic = [NSMutableDictionary new];
-    PARAMS(shareDic, @"shareThumbnail", @"");
-    PARAMS(shareDic, @"shareUrl", @"");
-    PARAMS(shareDic, @"shareTitle", @"");
-    PARAMS(shareDic, @"shareBrief", @"");
+    PARAMS(shareDic, @"shareThumbnail", self.shareThumbnail);
+    PARAMS(shareDic, @"shareUrl", self.urlString);
+    PARAMS(shareDic, @"shareTitle", self.shareTitle);
+    PARAMS(shareDic, @"shareBrief", self.shareBrief);
     
-    [[ABAPopShareCategoryView shareView] initWithShareConfDic:shareDic withShareType:2 withShareArr:[NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"微博",@"QQ",@"QQ空间",@"复制链接",nil]];
+    [[ABAPopShareCategoryView shareView] initWithShareConfDic:shareDic withShareType:2 withShareArr:[NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"复制链接",nil]];
 }
 
 /*

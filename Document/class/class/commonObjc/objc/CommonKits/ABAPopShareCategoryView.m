@@ -172,13 +172,17 @@ UIView * shareView;
     if (_shareType == 1) {
         [self shareImageWithDic:shareDic withPlat:platType withCompleteBlock:^(BOOL status) {
             if (status == YES){
-                [MBProgressHUD showMessage:@"分享成功"];
+                [self hiddenViewWithBlock:^{
+                    [MBProgressHUD showMessage:@"分享成功"];
+                }];
             }
         }];
     }else if (_shareType == 2){
         [self shareContentImageWithDic:shareDic withPlat:platType withCompleteBlock:^(BOOL status) {
             if (status == YES){
-                [MBProgressHUD showMessage:@"分享成功"];
+                [self hiddenViewWithBlock:^{
+                    [MBProgressHUD showMessage:@"分享成功"];
+                }];
             }
         }];
     }
@@ -248,10 +252,14 @@ UIView * shareView;
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     //创建图片内容对象
     UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
-    //如果有缩略图，则设置缩略图
-    //    shareObject.thumbImage = [UIImage imageNamed:@"login_logo"];
-    shareObject.thumbImage = thumbImage;
     
+    //如果有缩略图，则设置缩略图
+    if ([thumbImage isEqualToString:@"icon-60"]) {
+        shareObject.thumbImage = thumbImage;
+    }else{
+        shareObject.thumbImage = thumbImage;
+    }
+
     [shareObject setShareImage:urlString];
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

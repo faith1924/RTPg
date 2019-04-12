@@ -2,8 +2,8 @@
 //  JYTabBarController.m
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/2.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Created by atts on 2019/4/2.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "JYTabBarController.h"
@@ -49,8 +49,8 @@
 
                                  @{kClassKey  : @"booksVC",
                                    kTitleKey  : @"图书",
-                                   kImgKey    : @"icon_zl",
-                                   kSelImgKey : @"icon_zl_pre"},
+                                   kImgKey    : @"icon_books_off",
+                                   kSelImgKey : @"icon_books_on"},
 
                                  @{kClassKey  : @"jokesVC",
                                    kTitleKey  : @"笑话",
@@ -59,14 +59,8 @@
 
                                  @{kClassKey  : @"wchatsVC",
                                    kTitleKey  : @"精选",
-                                   kImgKey    : @"icon_mine",
-                                   kSelImgKey : @"icon_mine_pre"},
-//                                 
-//                                 @{kClassKey  : @"infoVC",
-//                                   kTitleKey  : @"我的",
-//                                   kImgKey    : @"icon_mine",
-//                                   kSelImgKey : @"icon_mine_pre"}
-
+                                   kImgKey    : @"icon_wchat_off",
+                                   kSelImgKey : @"icon_wchat_on"},
                                  ];
     
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {

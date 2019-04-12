@@ -97,6 +97,29 @@
         }
     }];
 }
+
+/** 在发送请求之前，决定是否跳转 */
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+
+    NSString *reqUrl = navigationAction.request.URL.absoluteString;
+    
+    if ([reqUrl hasPrefix:[JYProfileObjc getAdvertisementAp]]  ||
+        [reqUrl hasPrefix:[JYProfileObjc getAdvertisementAps]] ||
+        [reqUrl hasPrefix:[JYProfileObjc getAdvertisementWp]])
+    {
+
+        BOOL bSucc = [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        
+        // 如果跳转失败，则跳转itune下载支付宝Ap p
+        if (!bSucc) {
+            [MBProgressHUD showMessage:@"打开广告失败"];
+        }
+    }
+
+    // 确认可以跳转
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     JYWeakify(self);

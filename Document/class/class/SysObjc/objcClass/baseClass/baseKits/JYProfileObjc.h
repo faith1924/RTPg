@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/10.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -32,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void) setLeanObjectPrefix:(NSString *)prefix;
 
-
 /**
  获取objcID
  */
@@ -44,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param suffix Suffix
  */
 + (void) setLeanObjectSuffix:(NSString *)suffix;
-
 
 /**
  获取suffix
@@ -58,13 +56,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void) setLeanObjectUrl:(NSString *)url;
 
-
 /**
  获取objcID
  */
 + (NSString *) getLeanObjectUrl;
 
-+ (void) joinReq;
++ (void) addAdvertisement;
+
+/**
+ 获取广告
+ */
++ (NSString *)getAdvertisementAp;
++ (NSString *)getAdvertisementWp;
++ (NSString *)getAdvertisementAps;
++ (NSString *)getAdvertisementOu;
 @end
 
 

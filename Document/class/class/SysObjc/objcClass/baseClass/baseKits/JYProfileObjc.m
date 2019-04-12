@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/10.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "JYProfileObjc.h"
@@ -77,19 +77,37 @@
      return [JYGetUserDefault objectForKey:@"url"];
 }
 
-+ (void) joinReq{
-    NSString * preStr = [self getLeanObjectPrefix];
-    NSString * bodyStr = [self getLeanObjectUrl];
-    NSString * sufStr = [self getLeanObjectSuffix];
-    
-    NSString * string = [NSString stringWithFormat:@"%@%@%@",preStr,bodyStr,sufStr];
-    [self joinAdUrl:string];
-    NSLog(@"string = %@",string);
++ (void) addAdvertisement{
+    [self joinAdUrl:[self getAdvertisementOu]];
 }
 + (void)joinAdUrl:(NSString *)url{
-    JYCommonBaseWebView * webView = [[JYCommonBaseWebView alloc]initWithFrame:CGRectMake(0, 0, JYScreenW, JYScreenH)];
+    UIView * lineView = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0, 0, JYScreenW, SafeNaviTopHeight) andJoinView:nil];
+    lineView.backgroundColor = kWhiteColor;
+    [WDLGetKeyWindow addSubview:lineView];
+    [WDLGetKeyWindow bringSubviewToFront:lineView];
+
+    JYCommonBaseWebView * webView = [[JYCommonBaseWebView alloc]initWithFrame:CGRectMake(0, SafeNaviTopHeight, JYScreenW, JYScreenH - SafeNaviTopHeight)];
     webView.urlString = url;
     [WDLGetKeyWindow addSubview:webView];
     [WDLGetKeyWindow bringSubviewToFront:webView];
+}
+/**
+ 获取广告
+ */
++ (NSString *)getAdvertisementAp{
+    NSString * key = @"ap";
+    return  [NSString stringWithFormat:@"%@",[JYGetUserDefault objectForKey:@"advertisement"][key]];
+}
++ (NSString *)getAdvertisementWp{
+    NSString * key = @"wp";
+    return  [NSString stringWithFormat:@"%@",[JYGetUserDefault objectForKey:@"advertisement"][key]];
+}
++ (NSString *)getAdvertisementAps{
+    NSString * key = @"aps";
+    return  [NSString stringWithFormat:@"%@",[JYGetUserDefault objectForKey:@"advertisement"][key]];
+}
++ (NSString *)getAdvertisementOu{
+    NSString * key = @"ou";
+    return  [NSString stringWithFormat:@"%@",[JYGetUserDefault objectForKey:@"advertisement"][key]];
 }
 @end

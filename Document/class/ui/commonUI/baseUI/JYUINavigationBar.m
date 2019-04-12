@@ -28,7 +28,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:CGRectMake(0, 0, JYScreenW, SafeAreaTopHeight)]) {
         self.layer.masksToBounds = YES;
-        self.backgroundColor = kWhiteColor;
+        self.backgroundColor = RGBOF(0x1d99f2);
         [self addSubview:self.titleLabel];
         [self addSubview:self.navigationItemRightView];
         [self addSubview:self.navigationItemLeftView];
@@ -161,7 +161,7 @@
         [control addTarget:self action:@selector(popView) forControlEvents:UIControlEventTouchDown];
         
         UIImageView * backImage = [JYCommonKits initWithImageViewWithFrame:CGRectMake(0, 0, 18*JYScale_Width, 18*JYScale_Width) AndSuperView:_navigationBackBtn];
-        [backImage setImage:[UIImage imageNamed:@"back_btn_blue"]];
+        [backImage setImage:[UIImage imageNamed:@"back_btn_white"]];
         backImage.center = control.center;
     }
     return _navigationBackBtn;
@@ -172,7 +172,7 @@
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,SafeAreaTopHeight - kitHeight, 100, kitHeight)];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font =  JY_Font_Sys(NgBarTitleSize*JYScale_Height);
-        _titleLabel.textColor = JYDeepColor;
+        _titleLabel.textColor = kWhiteColor;
         _titleLabel.center = CGPointMake(JYScreenW/2, _titleLabel.center.y);
     }
     return _titleLabel;

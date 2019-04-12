@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/9.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "JYBasicViewController.h"
@@ -23,9 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface newsModel :JYBasicModel
-@property (strong , nonatomic) NSString <Optional> * author_name;//作者
 @property (strong , nonatomic) NSString <Optional> * category;//分类
-@property (strong , nonatomic) NSString <Optional> * desc;//描述
 @property (strong , nonatomic) NSString <Optional> * date;//发布时间
 
 @property (strong , nonatomic) NSString <Optional> * thumbnail_pic_s;//配图

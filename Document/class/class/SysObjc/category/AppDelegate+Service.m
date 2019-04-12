@@ -2,8 +2,8 @@
 //  AppDelegate+Service.m
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/3.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Created by atts on 2019/4/3.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "AppDelegate+Service.h"
@@ -34,6 +34,9 @@
                           channel:@"App Store"
                  apsForProduction:YES
             advertisingIdentifier:nil];
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [JPUSHService setBadge:0];
 }
 /**
  第三方登录、分享
@@ -50,8 +53,7 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WechatAppKey appSecret:WechatAppSecret redirectURL:WeChatRedirectURL];
 
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQAppKey appSecret:nil redirectURL:QQRedirectURL];
-    
-    //允许分享http图片
+
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
 }
 

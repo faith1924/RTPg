@@ -2,8 +2,8 @@
 //  JYNavigationController.m
 //  RTPg
 //
-//  Created by 汪栋梁 on 2019/4/2.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Created by atts on 2019/4/2.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "JYNavigationController.h"
@@ -28,6 +28,11 @@
     [super viewDidLoad];
     
     self.interactivePopGestureRecognizer.enabled = YES;
+    
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+
+    [self.navigationController.interactivePopGestureRecognizer addTarget:self action:@selector(popself)];
+    
     [self setNavigationBarAppearance];
     // Do any additional setup after loading the view.
 }

@@ -3,7 +3,7 @@
 //  RTPg
 //
 //  Created by md212 on 2019/4/9.
-//  Copyright © 2019年 汪栋梁. All rights reserved.
+//  Copyright © 2019年 atts. All rights reserved.
 //
 
 #import "wchatsVC.h"
@@ -68,6 +68,9 @@
     if (model && ![model.url isEqualToString:@""]) {
         new_ControllerWithOutPush(JYWebViewController);
         controller.urlString = model.url;
+        controller.shareThumbnail = @"";
+        controller.shareBrief = model.source;
+        controller.shareTitle = model.title;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
