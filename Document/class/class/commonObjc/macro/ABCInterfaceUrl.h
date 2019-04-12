@@ -15,5 +15,5 @@
 #define bookServerUrl @"http://apis.juhe.cn/goodbook/catalog"
 #define bookListServerUrl @"http://apis.juhe.cn/goodbook/query"
 #define jokeServerUrl @"http://v.juhe.cn/joke/content/text.php"
-
+#define wchatsServerUrl @"http://v.juhe.cn/weixin/query"
 #endif /* ABCInterfaceUrl_h */

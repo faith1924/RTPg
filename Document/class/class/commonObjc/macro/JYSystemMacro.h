@@ -21,7 +21,7 @@
 #define WSF     __weak  typeof(self) weakSelf = self;
 #define SSF     __strong typeof(self) strongSelf = self;
 
-#define JYIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define JYIsiPhoneX (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? YES : NO)
 
 //获取屏幕参数
 #define JYScreenFrame            [UIScreen mainScreen].bounds
@@ -33,8 +33,8 @@
 #define JYScaleW                 (JYScreenW)*(JYScreenScale)
 #define JYScaleH                 (JYScreenH)*(JYScreenScale)
 
-#define JYScale_Width             [[UIScreen mainScreen] bounds].size.width/375.00
-#define JYScale_Height            [[UIScreen mainScreen] bounds].size.height/667.00
+#define JYScale_Width            [[UIScreen mainScreen] bounds].size.width/375.00
+#define JYScale_Height           [[UIScreen mainScreen] bounds].size.height/667.00
 
 // 主窗口的宽、高
 #define JYMainScreenWidth    MainScreenWidth()

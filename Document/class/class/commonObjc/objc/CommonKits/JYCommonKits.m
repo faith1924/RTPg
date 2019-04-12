@@ -117,7 +117,7 @@
         [button setTitle:[NSString stringWithFormat:@"%@",btnTitle] forState:UIControlStateNormal];
     }
     if([titleColor isKindOfClass:[UIColor class]]){
-        [button setTitleColor:kGrayColor forState:UIControlStateNormal];
+        [button setTitleColor:titleColor forState:UIControlStateNormal];
     }else{
         [button setTitleColor:kBlackColor forState:UIControlStateNormal];
     }
@@ -163,7 +163,7 @@
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
     if([titleColor isKindOfClass:[UIColor class]]){
-        [label setTextColor:kGrayColor];
+        [label setTextColor:titleColor];
     }else{
         [label setTextColor:kBlackColor];
     }
@@ -204,7 +204,7 @@
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
     if([titleColor isKindOfClass:[UIColor class]]){
-        [label setTextColor:kGrayColor];
+        [label setTextColor:titleColor];
     }else{
         [label setTextColor:kBlackColor];
     }
@@ -246,7 +246,7 @@
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
     if([titleColor isKindOfClass:[UIColor class]]){
-        [label setTextColor:kGrayColor];
+        [label setTextColor:titleColor];
     }else{
         [label setTextColor:kBlackColor];
     }
@@ -283,7 +283,7 @@
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
     if([titleColor isKindOfClass:[UIColor class]]){
-        [label setTextColor:kGrayColor];
+        [label setTextColor:titleColor];
     }else{
         [label setTextColor:kBlackColor];
     }
@@ -350,11 +350,11 @@
     textField.placeholder =placeholder;
     textField.font = JY_Font_Sys(fontSize);
     if([titleColor isKindOfClass:[UIColor class]]){
-        [textField setTextColor:kGrayColor];
+        [textField setTextColor:titleColor];
     }else{
         [textField setTextColor:kBlackColor];
     }
-    [textField setValue:kGrayColor forKeyPath:@"_placeholderLabel.textColor"];
+    [textField setValue:JYPlaceHolderColor forKeyPath:@"_placeholderLabel.textColor"];
     
     if (superView) {
         [superView addSubview:textField];
@@ -380,7 +380,7 @@
                        andJoinView:(UIView *)superView
 {
     CALayer * lineLayer = [CALayer layer];
-    lineLayer.backgroundColor = kGrayColor.CGColor;
+    lineLayer.backgroundColor = JYLineColor.CGColor;
     lineLayer.frame = aFrame;
     if (superView) {
         [superView.layer addSublayer:lineLayer];
@@ -391,7 +391,7 @@
                      andJoinView:(UIView *)superView
 {
     UIView * lineView = [[UIView alloc]initWithFrame:aFrame];
-    lineView.backgroundColor = kGrayColor;
+    lineView.backgroundColor = JYLineColor;
     lineView.frame = aFrame;
     if (superView) {
         [superView addSubview:lineView];

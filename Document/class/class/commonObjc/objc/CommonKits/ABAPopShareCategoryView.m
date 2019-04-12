@@ -24,48 +24,23 @@ UIView * shareView;
         shareView.backgroundColor = RGBAOF(0x000000, 0.2);
 
         titleDic = [NSMutableDictionary new];
-        PARAMS(titleDic, @"制作卡片", @"more_card_icon@2x");
         PARAMS(titleDic, @"微信好友", @"more_wechat_icon");
         PARAMS(titleDic, @"朋友圈", @"more_friend_icon");
         PARAMS(titleDic, @"微博", @"more_weibo_icon");
         PARAMS(titleDic, @"QQ", @"more_qq_icon");
         PARAMS(titleDic, @"QQ空间", @"more_qqzone_icon");
         PARAMS(titleDic, @"复制链接", @"more_copy_icon");
-        PARAMS(titleDic, @"举报", @"more_report_icon");
-        PARAMS(titleDic, @"收藏", @"more_collect_icon");
-        
-        PARAMS(titleDic, @"警告", @"more_alarm_icon@2x");
-        PARAMS(titleDic, @"禁言", @"more_forbidden_icon@2x");
-        PARAMS(titleDic, @"隐藏动态", @"more_hidden_icon@2x");
-        PARAMS(titleDic, @"删除动态", @"more_delete_icon@2x");
-        PARAMS(titleDic, @"删除文章", @"more_hidden_icon@2x");
-        PARAMS(titleDic, @"隐藏公告", @"more_delete_icon@2x");
-        PARAMS(titleDic, @"取消置顶", @"more_-highlight_icon@2x");
     });
     return shareView;
 }
 - (void)initWithShareConfDic:(NSMutableDictionary *)shareDic
-                  withUserid:(NSString *)userID
-             withNeedRequest:(BOOL)needRequest
-             withShareSource:(int)shareSource
                withShareType:(int)shareType
                 withShareArr:(NSMutableArray *)dataArr{
-    self.userid = userID;
     self.shareDic = shareDic;
-    self.needRequest = needRequest;
     self.shareType = shareType;
-    self.shareSource = shareSource;
     self.dataArr = dataArr;
 }
--(void)setUserid:(NSString *)userid{
-    _userid = userid;
-}
--(void)setNeedRequest:(BOOL)needRequest{
-    _needRequest = needRequest;
-}
-- (void)setShareSource:(int)shareSource{
-    _shareSource = shareSource;
-}
+
 - (void)setShareType:(int)shareType{
     _shareType = shareType;
 }
@@ -156,12 +131,9 @@ UIView * shareView;
     }else if ([title isEqualToString:@"QQ空间"]){
         [self shareWithDic:_shareDic withPlat:UMSocialPlatformType_Qzone];
     }else if ([title isEqualToString:@"复制链接"]){
-
-    }else if ([title isEqualToString:@"举报"]){
-        [self hiddenView];
-
-    }else if ([title isEqualToString:@"收藏"]){
-   
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = WDLTurnIdToString(_shareDic[@"shareUrl"]);
+        [MBProgressHUD showMessage:@"复制成功"];
     }else{
         [self hiddenViewWithBlock:^{
             if (self.cateDelegate && [self.cateDelegate respondsToSelector:@selector(clickWithType:)]) {
@@ -197,35 +169,16 @@ UIView * shareView;
         return;
     }
     //1.分享图片 2.分享图文
-    JYWeakify(self);
     if (_shareType == 1) {
         [self shareImageWithDic:shareDic withPlat:platType withCompleteBlock:^(BOOL status) {
-            if (status == YES) {
- 
-                if (weakSelf.needRequest == YES) {
-                    [weakSelf shareSuccessWithPlateID:platType andTypeID:WDLTurnIntToString(weakSelf.shareSource) andZlid:WDLTurnIdToString(shareDic[@"zlid"])  andDataID:WDLTurnIdToString(shareDic[@"dataid"]) withCompleteBlock:^(BOOL status) {
-                        if (status == YES) {
-                            NSLog(@"回调成功");
-                        }else{
-                            NSLog(@"回调失败");
-                        }
-                    }];
-                }
+            if (status == YES){
+                [MBProgressHUD showMessage:@"分享成功"];
             }
         }];
     }else if (_shareType == 2){
         [self shareContentImageWithDic:shareDic withPlat:platType withCompleteBlock:^(BOOL status) {
-            if (status == YES) {
-
-                if (weakSelf.needRequest == YES) {
-                    [weakSelf shareSuccessWithPlateID:platType andTypeID:WDLTurnIntToString(weakSelf.shareSource) andZlid:WDLTurnIdToString(shareDic[@"zlid"])  andDataID:WDLTurnIdToString(shareDic[@"dataid"]) withCompleteBlock:^(BOOL status) {
-                        if (status == YES) {
-                            NSLog(@"回调成功");
-                        }else{
-                            NSLog(@"回调失败");
-                        }
-                    }];
-                }
+            if (status == YES){
+                [MBProgressHUD showMessage:@"分享成功"];
             }
         }];
     }
@@ -317,36 +270,6 @@ UIView * shareView;
             }
         }
     }];
-}
-//回调接口
-///文章详情 动态详情 个人主页 分享众链 分享快讯
-- (void)shareSuccessWithPlateID:(int)plateID
-                      andTypeID:(NSString *)typeid
-                        andZlid:(NSString *)zlID
-                      andDataID:(NSString *)dataID
-              withCompleteBlock:(void(^)(BOOL status))complete{
-    NSString * channelID = @"";
-    switch (plateID) {
-        case 0:
-            channelID = @"3";
-            break;
-        case 1:
-            channelID = @"1";
-            break;
-        case 2:
-            channelID = @"2";
-            break;
-        case 3:
-            channelID = @"4";
-            break;
-        case 4:
-            channelID = @"5";
-            break;
-            
-        default:
-            break;
-    }
-  
 }
 /*
 // Only override drawRect: if you perform custom drawing.

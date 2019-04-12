@@ -11,7 +11,7 @@
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
 
-@interface jokesVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewDelegate,JYBasicViewControllerDelegate>
+@interface jokesVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate,JYBasicViewControllerDelegate>
 {
     NSMutableArray * typeArr;
     NSMutableArray * titleArr;
@@ -124,7 +124,7 @@
 -(void)setModel:(jokesModel *)model{
     _model = model;
 
-    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(14*JYScale_Height) withLineSpacing:4 text:model.content];
+    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(16*JYScale_Height) withLineSpacing:4 text:model.content];
     _content.attributedText = mutableString;
     [_content sizeToFit];
     [_content setWidth:JYScreenW - oriWidth * 2];

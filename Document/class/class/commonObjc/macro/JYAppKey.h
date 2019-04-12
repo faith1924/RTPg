@@ -17,10 +17,11 @@
  */
 
 // 友盟推送
-#define JPushKey      @"57d6583a67e58e3d75001f15"
+#define JPushKey      @"230ea568a407b67a8399ce3a"
+#define JPushSecret   @"66e7835a3c5ea14ccea6aea2"
 
 // 友盟分享
-#define UMSocialAppKey      @"5ca40a83203657bcf800114c"
+#define UMSocialAppKey      @"5cb03707570df3788e000fc2"
 
 #define WechatAppKey        @"wx5f1db39324aca113"
 #define WechatAppSecret     @"84e0e24c45ad1d6ad56a00d7717b12cb"
@@ -31,10 +32,11 @@
 #define QQRedirectURL       @"http://mobile.umeng.com/social"
 
 //聚合数据
-#define PolymerizationID    @"JH31ff724c85a87ee64b8a626410409f2b"
-#define PolymerizationNewsKey  @"18e0b6d3764d2ba28b617cb614b03b63"
-#define PolymerizationBooksKey  @"0c5d00921ce7243c3ee720845c88a177"
-#define PolymerizationJokesKey  @"bce0e21da69e5d7075801ba59c8f548f"
+#define PolymerizationID    @"JH8a0ba747aa1ef11d42144b11aca506a2"
+#define PolymerizationNewsKey  @"357c19aa023d84db34e5f044aa43458d"
+#define PolymerizationBooksKey  @"246e0da5584bfa26b801932cdc8497f5"
+#define PolymerizationJokesKey  @"4c9bb087680246d35d13f32681f80157"
+#define PolymerizationWchatsKey  @"fde58e5b99d4d7b060543d00837aea6c"
 
 //leancloudKey
 #define LeanCloudID    @"kuTJE0AkNyIEyAOtzPlPNa3x-gzGzoHsz"

@@ -171,7 +171,7 @@
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,SafeAreaTopHeight - kitHeight, 100, kitHeight)];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font =  JY_Font_Sys(NgBarTitleSize);
+        _titleLabel.font =  JY_Font_Sys(NgBarTitleSize*JYScale_Height);
         _titleLabel.textColor = JYDeepColor;
         _titleLabel.center = CGPointMake(JYScreenW/2, _titleLabel.center.y);
     }

@@ -12,7 +12,7 @@
 #import "JYWebViewController.h"
 #import "booksDetailVC.h"
 
-@interface booksVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewDelegate,JYBasicViewControllerDelegate>
+@interface booksVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate,JYBasicViewControllerDelegate>
 {
     NSMutableArray * typeArr;
     NSMutableArray * titleArr;
@@ -110,7 +110,11 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
-
+- (UIView *)listContentFooterView:(JYBasicTableView *)tableView{
+    UIView * lineView = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0, 0, JYScreenW, tableHeaderSpaceH) andJoinView:nil];
+    lineView.backgroundColor = JYLineColor;
+    return lineView;
+}
 #pragma mark 需要重写以下方法
 - (booksModel *)getModelWithObj:(id)obj{
     NSError * error = nil;
@@ -135,7 +139,7 @@
 @end
 
 #define oriWidth 10*JYScale_Width
-#define oriHeight 15*JYScale_Width
+#define oriHeight 18*JYScale_Width
 #define imageWidth 70*JYScale_Height
 
 @interface booksCell ()
@@ -161,7 +165,7 @@
     _lineView = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0,0, JYScreenW,tableHeaderSpaceH) andJoinView:self.contentView];
     _lineView.backgroundColor = JYLineColor;
     
-    _title = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYDeepColor andLabelFont:16*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _lineView.bottom + oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
+    _title = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:kBlackColor andLabelFont:16*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _lineView.bottom + oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
     _title.numberOfLines = 1;
     
     _sub1 = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYMiddleColor andLabelFont:12*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _title.bottom + oriHeight, JYScreenW - oriWidth * 2 - imageWidth, 10) andJoinView:self.contentView];
@@ -179,9 +183,10 @@
 -(void)setModel:(booksModel *)model{
     _model = model;
     
-    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(18*JYScale_Height) withLineSpacing:4 text:model.title];
+    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(16*JYScale_Height) withLineSpacing:4 text:model.title];
     _title.attributedText = mutableString;
     [_title sizeToFit];
+    _title.font = JY_Font_Bold(16*JYScale_Height);
     [_title setWidth:JYScreenW - oriWidth * 2];
     
     mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(12*JYScale_Height) withLineSpacing:4 text:model.sub2];

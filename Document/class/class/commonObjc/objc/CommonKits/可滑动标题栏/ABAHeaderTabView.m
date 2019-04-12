@@ -67,7 +67,7 @@
             [button addTarget:self action:@selector(setButtonIndex:) forControlEvents:UIControlEventTouchUpInside];
             button.tag = btnTag + x;
             
-            [button setTitleColor:JYLightColor forState:UIControlStateNormal];
+            [button setTitleColor:JYMiddleColor forState:UIControlStateNormal];
             [button setTitleColor:JYBlueColor forState:UIControlStateSelected];
             
             if (x == _defaultType) {

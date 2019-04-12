@@ -28,6 +28,7 @@
 #import "UIView+Extension.h"
 #import "UIView+Geometry.h"
 #import "NSObject+Runtime.h"
+#import "MBProgressHUD+JJ.h"
 
 //网络请求
 #import "JYResultModel.h"

@@ -9,10 +9,10 @@
 #import "JYBasicTableView.h"
 #import "JYBasicModel.h"
 
-@interface JYBasicTableView ()<JYBasicTableViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface JYBasicTableView ()<JYBasicTableViewReqDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
-@property (weak , nonatomic) id<JYBasicTableViewDelegate>loadDelegate;
+@property (weak , nonatomic) id<JYBasicTableViewReqDelegate>loadDelegate;
 
 @property (strong , nonatomic) UIView * headerView;
 @property (strong , nonatomic) UIView * footerView;

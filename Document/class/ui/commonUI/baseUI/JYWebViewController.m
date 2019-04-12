@@ -9,6 +9,7 @@
 #import "JYWebViewController.h"
 #import "ABAActivityDetailShowView.h"
 #import "ABAHtmlActionObjc.h"
+#import "ABAPopShareCategoryView.h"
 
 @interface JYWebViewController ()<UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
 
@@ -26,6 +27,10 @@
     [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
     self.webView.urlString = self.urlString;
     [self.view addSubview:self.webView];
+    
+    UIBarButtonItem *shareBtn= [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"subscription_article_detail_more"] style:UIBarButtonItemStyleDone target:self action:@selector(shareArticle)];
+    self.navigationItem.rightBarButtonItems = @[shareBtn];
+
 }
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
@@ -49,6 +54,17 @@
     [_webView removeFromSuperview];
     _webView = nil;
 }
+#pragma mark event
+- (void)shareArticle{
+    NSMutableDictionary * shareDic = [NSMutableDictionary new];
+    PARAMS(shareDic, @"shareThumbnail", @"");
+    PARAMS(shareDic, @"shareUrl", @"");
+    PARAMS(shareDic, @"shareTitle", @"");
+    PARAMS(shareDic, @"shareBrief", @"");
+    
+    [[ABAPopShareCategoryView shareView] initWithShareConfDic:shareDic withShareType:2 withShareArr:[NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"微博",@"QQ",@"QQ空间",@"复制链接",nil]];
+}
+
 /*
 #pragma mark - Navigation
 

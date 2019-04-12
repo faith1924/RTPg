@@ -13,6 +13,7 @@
 #import "booksVC.h"
 #import "jokesVC.h"
 #import "JYNavigationController.h"
+#import "wchatsVC.h"
 
 #define kClassKey   @"rootVCClassString"
 #define kTitleKey   @"title"
@@ -50,16 +51,22 @@
                                    kTitleKey  : @"图书",
                                    kImgKey    : @"icon_zl",
                                    kSelImgKey : @"icon_zl_pre"},
-                                 
+
                                  @{kClassKey  : @"jokesVC",
                                    kTitleKey  : @"笑话",
                                    kImgKey    : @"icon_quotation",
                                    kSelImgKey : @"icon_quotation_pre"},
-                                 
-                                 @{kClassKey  : @"infoVC",
-                                   kTitleKey  : @"我的",
+
+                                 @{kClassKey  : @"wchatsVC",
+                                   kTitleKey  : @"精选",
                                    kImgKey    : @"icon_mine",
-                                   kSelImgKey : @"icon_mine_pre"}
+                                   kSelImgKey : @"icon_mine_pre"},
+//                                 
+//                                 @{kClassKey  : @"infoVC",
+//                                   kTitleKey  : @"我的",
+//                                   kImgKey    : @"icon_mine",
+//                                   kSelImgKey : @"icon_mine_pre"}
+
                                  ];
     
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {

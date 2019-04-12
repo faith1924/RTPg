@@ -11,7 +11,7 @@
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
 
-@interface newsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewDelegate>
+@interface newsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate>
 {
     NSArray * typeArr;
 }

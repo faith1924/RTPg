@@ -26,6 +26,8 @@
 
 @property (strong , nonatomic) UILabel * catalog;
 
+@property (strong , nonatomic) UIView * segmenttationView;
+
 @end
 
 @implementation booksDetailVC
@@ -36,6 +38,7 @@
     self.viewNavigationBar.isShowBack = YES;
     
     [self addSubview:self.headView];
+    [self addSubview:self.segmenttationView];
     [self addSubview:self.contentLabel];
     [self addSubview:self.bottomView];
     // Do any additional setup after loading the view.
@@ -60,14 +63,14 @@
         _headView.reading.bottom = _headView.image.bottom;
         _headView.reading.left = _headView.image.right;
         
-        _headView.height = _headView.image.bottom + oriH;
+        _headView.height = _headView.image.bottom + oriW;
         
     }
     return _headView;
 }
 - (UILabel *)contentLabel{
     if (_contentLabel == nil) {
-        _contentLabel = [JYCommonKits initLabelViewWithLabelDetail:WDLTurnIdToString(_data[@"sub2"]) andLabelColor:JYDeepColor andLabelFont:16*JYScale_Height andLabelFrame:CGRectMake(oriW, _headView.bottom, JYScreenW-oriW*2, 1) andJoinView:nil];
+        _contentLabel = [JYCommonKits initLabelViewWithLabelDetail:WDLTurnIdToString(_data[@"sub2"]) andLabelColor:JYMiddleColor andLabelFont:16*JYScale_Height andLabelFrame:CGRectMake(oriW, _segmenttationView.bottom + oriW, JYScreenW-oriW*2, 1) andJoinView:nil];
         _contentLabel.numberOfLines = 0;
         _contentLabel.textAlignment = NSTextAlignmentLeft;
 
@@ -77,6 +80,13 @@
         [_contentLabel setWidth:JYScreenW - oriW * 2];
     }
     return _contentLabel;
+}
+
+- (UIView *)segmenttationView{
+    if(_segmenttationView == nil){
+        _segmenttationView = [JYCommonKits getViewLineWithFrame:CGRectMake(0, _headView.bottom, JYScreenW,lineSize) andJoinView:nil];
+    }
+    return _segmenttationView;
 }
 
 - (UIView *)bottomView{

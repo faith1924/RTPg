@@ -57,9 +57,12 @@ alpha:a]
 #define kClearColor         [UIColor clearColor]
 #define kRandomFlatColor    [UIColor randomFlatColor]
 
-#define JYDeepColor [UIColor colorWithRed:0.0f/255.0f green:26.0f/255.0f blue:51.0f/255.0f alpha:1.0f]
-#define JYLightColor [UIColor colorWithRed:138.0f/255.0f green:146.0f/255.0f blue:153.0f/255.0f alpha:1.0f]
-#define JYMiddleColor [UIColor colorWithRed:92.0f/255.0f green:97.0f/255.0f blue:102.0f/255.0f alpha:1.0f]
+#define JYDeepColor [UIColor colorWithRed:10.0f/255.0f green:10.0f/255.0f blue:10.0f/255.0f alpha:1.0f]
+#define JYMiddleColor [UIColor colorWithRed:120.0f/255.0f green:120.0f/255.0f blue:120.0f/255.0f alpha:1.0f]
+#define JYLightColor [UIColor colorWithRed:205.0f/255.0f green:205.0f/255.0f blue:205.0f/255.0f alpha:1.0f]
+
+
+
 #define JYPlaceHolderColor [UIColor colorWithRed:154.0f/255.0f green:163.0f/255.0f blue:171.0f/255.0f alpha:1.0f]
 #define JYBlueColor [UIColor colorWithRed:29.0f/255.0f green:153.0f/255.0f blue:242.0f/255.0f alpha:1.0f]
 #define JYLineColor [UIColor colorWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1.0f]

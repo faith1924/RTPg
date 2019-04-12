@@ -10,9 +10,14 @@
 #define JYFontMacro_h
 
 // ====================================通用字体大小==========================================
-#define JY_Font_Sys(size)    [UIFont systemFontOfSize:size]
+#define JY_Font_Sys(x)    [UIFont systemFontOfSize:(JYIsiPhoneX?(x*((float)6/7)):x)]
 //字体类型字符串
-#define JY_JY_Font_Sys(font,x) [UIFont fontWithName:font size:x]
+#define JY_Font_Sys_Name(font,x) [UIFont fontWithName:font size:(JYIsiPhoneX?(x*((float)6/7)):x)]
+
+#define JY_Font_BoldOblique(x) [UIFont fontWithName:@"Helvetica-BoldOblique" size:(JYIsiPhoneX?(x*((CGFloat)6/7)):x)]
+#define JY_Font_LightOblique(x) [UIFont fontWithName:@"Helvetica-LightOblique" size:(JYIsiPhoneX?(x*((CGFloat)6/7)):x)]
+#define JY_Font_Light(x) [UIFont fontWithName:@"Helvetica-Light" size:(JYIsiPhoneX?(x*((CGFloat)6/7)):x)]
+#define JY_Font_Bold(x) [UIFont fontWithName:@"Helvetica-Bold" size:(JYIsiPhoneX?(x*((CGFloat)6/7)):x)]
 
 // ====================================自定义==========================================
 #define JY_Font_Sys_18    [UIFont systemFontOfSize:18]

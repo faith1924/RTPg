@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, JYTabBarType){
 #define NgBarTitleSize 16
 #define defaultNumberData 20
 #define tableHeaderSpaceH 10
-
+#define lineSize 1
 
 #define SUCCESS_CODE 0
 #define SUCCESS_CODE_200 200

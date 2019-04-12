@@ -11,8 +11,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import <AVFoundation/AVFoundation.h>
 
-
-
 static char NSNavigationControllerWithGesKey;
 static MBProgressHUD * ProgressHUD;
 static UILabel * errorLabel;
@@ -772,18 +770,6 @@ static UIView *progressHudView;
     }
 }
 
-+ (MBProgressHUD *)showMBProgressHUDWithoutAllScreen:(NSString *)title{
-    ProgressHUD = nil;
-    ProgressHUD = [[MBProgressHUD alloc] initWithView:[[UIApplication sharedApplication].delegate window]];
-    ProgressHUD.frame = CGRectMake(0, 64, JYScreenW, JYScreenH - 64);
-    ProgressHUD.backgroundColor = kRedColor;
-    ProgressHUD.removeFromSuperViewOnHide = YES;
-    [[[UIApplication sharedApplication].delegate window] addSubview:ProgressHUD];
-    ProgressHUD.alpha = 1;
-    ProgressHUD.label.text = title;
-    [ProgressHUD showAnimated:YES];
-    return ProgressHUD;
-}
 + (CGSize)getStringRectInTextView:(NSString *)string InTextView:(UITextView *)textView
 {
     //
@@ -842,23 +828,6 @@ static UIView *progressHudView;
                                            context:nil].size; // context上下文。包括一些信息，例如如何调整字间距以及缩放。该对象包含的信息将用于文本绘制。该参数可为nil
     return sizeToFit;
 }
-+ (MBProgressHUD *)showMBProgressHUD:(NSString *)title{
-    [ProgressHUD hideAnimated:YES afterDelay:1];
-    ProgressHUD = nil;
-//    NSLog(@"ProgressHUD=%@ start",ProgressHUD);
-//    dispatch_once(&onceProgressHud, ^{
-       ProgressHUD = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-       ProgressHUD.mode = MBProgressHUDModeIndeterminate;
-//        [ProgressHUD setDimBackground:YES];
-//    });
-    ProgressHUD.alpha = 1;
-    ProgressHUD.label.text = title;
-    return ProgressHUD;
-}
-+ (void)hiddenMBProgressHUD{
-    [ProgressHUD hideAnimated:YES];
-}
-
 + (NSString *)dictionaryTurnString:(NSMutableDictionary *)dictionary{
     NSString *postBody=@"";
     for (NSString *keys in dictionary.allKeys) {
