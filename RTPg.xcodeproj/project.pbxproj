@@ -1332,7 +1332,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W8Z784DU27;
+				DEVELOPMENT_TEAM = DJD482YY4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;
@@ -1340,7 +1340,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ybt.shuyu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.shuyu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1356,7 +1356,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W8Z784DU27;
+				DEVELOPMENT_TEAM = DJD482YY4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;
@@ -1364,7 +1364,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ybt.shuyu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wangdongliang.shuyu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
