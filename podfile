@@ -3,6 +3,8 @@ target 'RTPg' do
 pod 'AVOSCloud'  # 数据存储、短信、云引擎调用等基础服务模块
 pod 'AVOSCloudIM' # 即时通讯模块
 
+
+pod 'HBDNavigationBar' #自定义navigationbar
 pod 'Masonry'#自动约束
 pod 'AFNetworking'#网络框架
 pod 'MBProgressHUD' #提示框

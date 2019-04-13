@@ -24,6 +24,7 @@ PODS:
     - AVOSCloudIM/_NOARC (= 11.6.1)
   - AVOSCloudIM/_NOARC (11.6.1):
     - AVOSCloud (= 11.6.1)
+  - HBDNavigationBar (1.5.2)
   - IQKeyboardManager (6.2.0)
   - JCore (1.2.6)
   - JPush (3.1.2):
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - AFNetworking
   - AVOSCloud
   - AVOSCloudIM
+  - HBDNavigationBar
   - IQKeyboardManager
   - JPush
   - JSONModel
@@ -88,6 +90,7 @@ SPEC REPOS:
     - AFNetworking
     - AVOSCloud
     - AVOSCloudIM
+    - HBDNavigationBar
     - IQKeyboardManager
     - JCore
     - JPush
@@ -108,6 +111,7 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AVOSCloud: 75fe137e0d4eae392047824cea66c9b99a2ea574
   AVOSCloudIM: cc2079356c197f69d85d3cf6e1c99c5a1b6c0430
+  HBDNavigationBar: 1c470db0183d1aa8cbb4912196cfb10752eebcc8
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
   JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
@@ -124,6 +128,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: 552b29753f1b4da87b51d96545ed19e6263df397
 
-PODFILE CHECKSUM: cfe10db31a81003a7899a08348217d92c4513dcf
+PODFILE CHECKSUM: 5978db6337371f2b73dd9c232ac6e5323cf15224
 
 COCOAPODS: 1.6.1

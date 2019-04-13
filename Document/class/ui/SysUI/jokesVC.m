@@ -69,7 +69,7 @@
     }else{
         [_bodyView appendArrWithDic:data[@"data"] withParams:params withUrlString:urlString];
     }
-    [_bodyView endRefresh];
+    [_bodyView endRefresh:Req_Success];
 }
 
 - (jokesModel *)getModelWithObj:(id)obj{
@@ -94,7 +94,7 @@
 @end
 
 #define oriWidth 10*JYScale_Width
-#define oriHeight 15*JYScale_Width
+#define oriHeight 10*JYScale_Width
 #define imageWidth 70*JYScale_Height
 
 @interface jokesCell ()

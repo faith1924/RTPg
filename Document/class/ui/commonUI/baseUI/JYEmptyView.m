@@ -31,7 +31,7 @@
         self.messageLabel.text = message;
         self.messageLabel.numberOfLines = 0;
         [self.messageLabel sizeToFit];
-        self.messageLabel.center = CGPointMake(self.frame.size.width/2, 1);
+        self.messageLabel.center = CGPointMake(self.frame.size.width/2, self.messageLabel.centerY);
     }
 }
 - (UILabel *)messageLabel{

@@ -12,6 +12,10 @@
 #import "JYEmptyView.h"
 #import "JYRequesModel.h"
 
+typedef NS_ENUM(NSInteger , RequestStatus){
+    Req_Success = 0,
+    Req_Failure = 1,
+};
 
 NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
@@ -65,14 +69,24 @@ NS_ASSUME_NONNULL_END
 
 @interface JYBasicTableView : UITableView
 @property (weak , nonatomic ) id <JYBasicTableViewReqDelegate>listDelegate;
+
 @property (weak , nonatomic ) id <JYTableViewDataSource>dataDelegate;
+
 @property (assign , nonatomic) NSIndexPath * currentIndex;
+
 @property (strong , nonatomic) NSString * emptyTitle;
+
 @property (nonatomic , assign) int page;
+
 @property (assign , nonatomic) int totalPage;
+
 @property (assign , nonatomic) int EPCount; //每次返回的条数
+
 @property (strong ,nonatomic) NSString * loadStatus;//页面加载状态
+
 @property (strong , nonatomic) JYRequesModel * reqModel;
+
+@property (assign , nonatomic) RequestStatus reqStatus;
 
 /**
  *  头部刷新自定义
@@ -141,7 +155,8 @@ NS_ASSUME_NONNULL_END
            withUrlString:(NSString *)urlString;
 
 - (void)dropDownRefresh;
-- (void)endRefresh;
+
+- (void)endRefresh:(RequestStatus)status;
 @end
 
 

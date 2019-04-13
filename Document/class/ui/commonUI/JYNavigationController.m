@@ -36,6 +36,29 @@
     [self setNavigationBarAppearance];
     // Do any additional setup after loading the view.
 }
+
+/**
+ *  返回手势代理
+ *
+ *  @param gestureRecognizer gestureRecognizer
+ *
+ *  @return BOOL
+ */
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer{
+    if (self.navigationController && self.navigationController.viewControllers.count == 1) {
+        return NO;
+    }
+    return YES;
+}
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
 - (void)setNavigationBarAppearance
 {
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
@@ -59,7 +82,7 @@
 }
 #pragma mark - 自定义返回按钮图片
 -(UIBarButtonItem*)customLeftBackButton{
-    UIImage* itemImage= [UIImage imageNamed:@"back_btn_blue"]; // Colored Image
+    UIImage* itemImage= [UIImage imageNamed:@"back_btn_white"]; // Colored Image
     itemImage = [itemImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIBarButtonItem *leftBtn=[[UIBarButtonItem alloc]initWithImage:itemImage style:UIBarButtonItemStyleDone target:self action:@selector(popself)];

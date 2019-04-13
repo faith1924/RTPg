@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HBDNavigationController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JYNavigationController : UINavigationController
+@interface JYNavigationController : HBDNavigationController
 
 @end
 

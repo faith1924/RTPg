@@ -21,12 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
-    self.webView = [[ABAActivityDetailShowView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, JYScreenW, JYScreenH - SafeAreaTopHeight) withDelegate:self];
+
+    self.webView = [[ABAActivityDetailShowView alloc]initWithFrame:CGRectMake(0, 0, JYScreenW, JYScreenH - SafeAreaTopHeight) withDelegate:self];
     //KVO监听
     [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
     self.webView.urlString = self.urlString;
-    [self.view addSubview:self.webView];
+    [self addSubview:self.webView];
     
     UIBarButtonItem *shareBtn= [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"subscription_article_detail_more"] style:UIBarButtonItemStyleDone target:self action:@selector(shareArticle)];
     self.navigationItem.rightBarButtonItems = @[shareBtn];

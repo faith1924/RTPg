@@ -24,13 +24,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [MobClick beginLogPageView:self.viewNavigationBar.title];
-    self.navigationController.navigationBarHidden = YES;
+    [MobClick beginLogPageView:self.navigationItem.title];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [MobClick endLogPageView:self.viewNavigationBar.title];
-    self.navigationController.navigationBarHidden = NO;
+    [MobClick endLogPageView:self.navigationItem.title];
 }
 - (void)viewConfiInfo{
     self.extendedLayoutIncludesOpaqueBars = YES;
@@ -43,18 +41,21 @@
     self.OpenTheLeftBackOfAll = YES;
     self.reqType = 0;
     
+    //设置导航栏
+    self.hbd_barTintColor = RGBOF(0x1d99f2);
+    self.hbd_tintColor = kWhiteColor;
+    self.hbd_titleTextAttributes = @{
+                                     NSFontAttributeName:JY_Font_Sys(18*JYScale_Height), NSForegroundColorAttributeName:[UIColor whiteColor]
+                                     };
+
+   
     self.contentView = [[JYUIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
     self.contentView.delegate = self;
     self.contentView.bounces = NO;
     self.contentView.showsHorizontalScrollIndicator = NO;
     self.contentView.showsVerticalScrollIndicator = NO;
-    
-    _viewNavigationBar = [[JYUINavigationBar alloc]initWithFrame:CGRectZero];
-    _viewNavigationBar.titleLabel.alpha = 1;
-    _viewNavigationBar.title = self.title;
-    
+ 
     [self setIsShowBar:YES];
-    [self.view addSubview:_viewNavigationBar];
     [self.view addSubview:self.contentView];
 }
 - (JYRequesModel *)reqModel{
@@ -67,31 +68,14 @@
     [super viewDidAppear:animated];
     // 设置基类加载属性
     [self setTheLoadProperties];
-    
-    //重新设置代理
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 - (void)setTheLoadProperties{
-    // 将默认关闭全继承左滑返回手势
+    // 将默认关闭全继承左滑返回手势r
     if (_OpenTheLeftBackOfAll) {
         if (_isArrowPrintLog) {
             NSLog(@"\n开启了全继承左滑返回手势\n");
         }
     }
-}
-/**
- *  返回手势代理
- *
- *  @param gestureRecognizer gestureRecognizer
- *
- *  @return BOOL
- */
-#pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer{
-    if (self.navigationController && self.navigationController.viewControllers.count == 1) {
-        return NO;
-    }
-    return YES;
 }
 
 /**
@@ -125,24 +109,14 @@
  */
 - (void)setIsShowBar:(BOOL)isShowBar{
     _isShowBar = isShowBar;
-    _viewNavigationBar.height = (_isShowBar == NO?0:SafeAreaTopHeight);
     if (_isShowBar == YES) {
-        self.viewNavigationBar.top = 0;
-        self.viewNavigationBar.left = 0;
-        self.contentView.top = _viewNavigationBar.bottom;
-        self.contentView.height = self.view.height - _viewNavigationBar.bottom;
+        self.contentView.top = SafeAreaTopHeight;
+        self.contentView.height = self.view.height - SafeAreaTopHeight;
     }else{
         self.contentView.top = 0;
         self.contentView.left = 0;
         self.contentView.height = self.view.height;
     }
-    _viewNavigationBar.hidden = !_isShowBar;
-}
-
-- (void)setViewNavigationBar:(JYUINavigationBar *)viewNavigationBar{
-    _viewNavigationBar = viewNavigationBar;
-    self.isShowBar = YES;
-    [self.view addSubview:_viewNavigationBar];
 }
 - (void)setIsArrowPrintLog:(BOOL)isArrowPrintLog{
     _isArrowPrintLog = isArrowPrintLog;
@@ -238,17 +212,12 @@
     }
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 /**
  *  内存释放
  */
 - (void)dealloc{
     if (_isArrowPrintLog) {
-        NSLog(@"界面已销毁%@\n %@",self.viewNavigationBar.title,[self class]);
+        NSLog(@"界面已销毁%@\n %@",self.navigationItem.title,[self class]);
     }
     self.loadDelegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];

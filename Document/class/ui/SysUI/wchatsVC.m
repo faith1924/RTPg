@@ -83,7 +83,7 @@
     }else{
         [_bodyView appendArrWithDic:data[@"list"] withParams:params withUrlString:urlString];
     }
-    [_bodyView endRefresh];
+    [_bodyView endRefresh:Req_Success];
 }
 
 - (wchatsModel *)getModelWithObj:(id)obj{
@@ -108,7 +108,7 @@
 @end
 
 #define oriWidth 10*JYScale_Width
-#define oriHeight 15*JYScale_Width
+#define oriHeight 10*JYScale_Width
 #define imageWidth 70*JYScale_Height
 
 @interface wchatsCell ()
@@ -130,7 +130,7 @@
     _lineView = [JYCommonKits initializeViewLineWithFrame:CGRectMake(0,0, JYScreenW,tableHeaderSpaceH) andJoinView:self.contentView];
     _lineView.backgroundColor = JYLineColor;
     
-    _content = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:kBlackColor andLabelFont:16*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _lineView.bottom + oriHeight, JYScreenW - oriWidth * 2 - imageWidth, 16*JYScale_Height) andJoinView:self.contentView];
+    _content = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:kBlackColor andLabelFont:18*JYScale_Height andLabelFrame:CGRectMake(oriWidth, _lineView.bottom + oriHeight, JYScreenW - oriWidth * 2 - imageWidth, 18*JYScale_Height) andJoinView:self.contentView];
     _content.numberOfLines = 0;
     
     _updateTime = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYLightColor andLabelFont:12*JYScale_Height andLabelFrame:CGRectMake(oriWidth, oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
@@ -139,7 +139,7 @@
 -(void)setModel:(wchatsModel *)model{
     _model = model;
     
-    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(14*JYScale_Height) withLineSpacing:4 text:model.title];
+    NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(18*JYScale_Height) withLineSpacing:4 text:model.title];
     _content.attributedText = mutableString;
     [_content sizeToFit];
     [_content setWidth:JYScreenW - oriWidth * 2];

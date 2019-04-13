@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JYWebViewController : UIViewController
+@interface JYWebViewController : JYBasicViewController
 
 @property (strong , nonatomic) NSString * urlString;
 

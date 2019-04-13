@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "JYBasicView.h"
-#import "JYUINavigationBar.h"
 #import "JYRequesModel.h"
 #import "JYEmptyView.h"
 
@@ -29,7 +28,6 @@
 /**
  *  导航栏
  */
-@property (strong , nonatomic) JYUINavigationBar * viewNavigationBar;
 @property (strong , nonatomic) JYUIScrollView * contentView;
 
 /**

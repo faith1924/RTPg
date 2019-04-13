@@ -37,7 +37,6 @@
 		506A51B9225C8C5F003FDFFE /* infoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51B8225C8C5F003FDFFE /* infoVC.m */; };
 		506A51BC225C8C85003FDFFE /* newsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51BB225C8C85003FDFFE /* newsVC.m */; };
 		506A51BF225C9585003FDFFE /* JYUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51BE225C9585003FDFFE /* JYUIScrollView.m */; };
-		506A51C2225C98B7003FDFFE /* JYUINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51C1225C98B7003FDFFE /* JYUINavigationBar.m */; };
 		506A51C5225CA4E4003FDFFE /* JYBasicTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51C3225CA4E4003FDFFE /* JYBasicTableView.m */; };
 		506A51C8225CA5D5003FDFFE /* JYBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51C7225CA5D5003FDFFE /* JYBasicCell.m */; };
 		506A51CB225CA629003FDFFE /* JYEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51CA225CA629003FDFFE /* JYEmptyView.m */; };
@@ -171,8 +170,6 @@
 		506A51BB225C8C85003FDFFE /* newsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newsVC.m; sourceTree = "<group>"; };
 		506A51BD225C9585003FDFFE /* JYUIScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYUIScrollView.h; sourceTree = "<group>"; };
 		506A51BE225C9585003FDFFE /* JYUIScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYUIScrollView.m; sourceTree = "<group>"; };
-		506A51C0225C98B6003FDFFE /* JYUINavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYUINavigationBar.h; sourceTree = "<group>"; };
-		506A51C1225C98B7003FDFFE /* JYUINavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYUINavigationBar.m; sourceTree = "<group>"; };
 		506A51C3225CA4E4003FDFFE /* JYBasicTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBasicTableView.m; sourceTree = "<group>"; };
 		506A51C4225CA4E4003FDFFE /* JYBasicTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBasicTableView.h; sourceTree = "<group>"; };
 		506A51C6225CA5D4003FDFFE /* JYBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBasicCell.h; sourceTree = "<group>"; };
@@ -338,8 +335,6 @@
 				506A51C7225CA5D5003FDFFE /* JYBasicCell.m */,
 				506A51C4225CA4E4003FDFFE /* JYBasicTableView.h */,
 				506A51C3225CA4E4003FDFFE /* JYBasicTableView.m */,
-				506A51C0225C98B6003FDFFE /* JYUINavigationBar.h */,
-				506A51C1225C98B7003FDFFE /* JYUINavigationBar.m */,
 				500E8DEF225C346E00D55408 /* JYBasicViewController.h */,
 				500E8DF0225C346E00D55408 /* JYBasicViewController.m */,
 				500E8DF2225C351F00D55408 /* JYBasicView.h */,
@@ -1144,7 +1139,6 @@
 				500E8E20225C428100D55408 /* WDLUsefulKitModel.m in Sources */,
 				506A51CB225CA629003FDFFE /* JYEmptyView.m in Sources */,
 				923E993422543F9400ECE430 /* AppDelegate+Service.m in Sources */,
-				506A51C2225C98B7003FDFFE /* JYUINavigationBar.m in Sources */,
 				500E8E17225C399800D55408 /* ABAPopShareCategoryView.m in Sources */,
 				92DD96702255E6E5008A4B2F /* JYDataBase.m in Sources */,
 				5034B2F6226037D500D3B906 /* wchatsVC.m in Sources */,
@@ -1332,7 +1326,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJD482YY4W;
+				DEVELOPMENT_TEAM = W8Z784DU27;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;
@@ -1356,7 +1350,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJD482YY4W;
+				DEVELOPMENT_TEAM = W8Z784DU27;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;

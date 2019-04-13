@@ -34,9 +34,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewNavigationBar.title = WDLTurnIdToString(_data[@"title"]);
-    self.viewNavigationBar.isShowBack = YES;
     
+    self.navigationItem.title = WDLTurnIdToString(_data[@"title"]);
+
     [self addSubview:self.headView];
     [self addSubview:self.segmenttationView];
     [self addSubview:self.contentLabel];

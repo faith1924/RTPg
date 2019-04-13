@@ -124,12 +124,14 @@
     _loadStatus = @"开始请求";
     if(self.reqModel.reqType == 0){
         [[JYAFNetManager manager] POSTWithURL:_reqModel.link Parameters:_reqModel.parameters Success:^(NSDictionary *responseJson) {
+            weakSelf.reqStatus = Req_Success;
             if ([weakSelf.listDelegate respondsToSelector:@selector(loadDataSuccess:withParams:withUrlString:)] && weakSelf.listDelegate) {
                 [weakSelf.listDelegate loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters  withUrlString:weakSelf.reqModel.link];
             }else{
                 [weakSelf loadDataSuccess:responseJson withParams:weakSelf.reqModel.parameters withUrlString:weakSelf.reqModel.link];
             }
         } Failure:^(NSError *error) {
+            weakSelf.reqStatus = Req_Failure;
             [weakSelf loadDataFail:error withParams:weakSelf.reqModel.parameters withUrl:weakSelf.reqModel.link];
         }];
     }else{
@@ -151,7 +153,7 @@
     }else{
         [self appendArrWithDic:data[@"data"] withParams:params withUrlString:urlString];
     }
-    [self endRefresh];
+    [self endRefresh:YES];
 }
 /**
  *  获取model类型
@@ -228,9 +230,8 @@
 - (void)loadDataFail:(id)data withParams:(id)params withUrl:(NSString *)urlString{
     _loadStatus = @"请求失败";
     [self.listModel removeAllObjects];
-    self.mj_footer = nil;
     self.emptyView.message = _emptyTitle;
-    [self addSubview:_emptyView];
+    [self endRefresh:_reqStatus];
 }
 
 /**
@@ -249,8 +250,22 @@
     [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
     [self loadData];
 }
-- (void)endRefresh{
-    [_emptyView removeFromSuperview];
+- (void)endRefresh:(RequestStatus)status{
+    if (status == Req_Success)
+    {
+        if([self.subviews containsObject:_emptyView]){
+            [_emptyView removeFromSuperview];
+        }
+    }
+    else
+    {
+        if(![self.subviews containsObject:_emptyView]){
+            [self addSubview:_emptyView];
+        }
+    }
+    [self updateUI];
+}
+- (void)updateUI{
     [self reloadData];
     [self.mj_header endRefreshing];
     [self.mj_footer endRefreshing];
