@@ -9,7 +9,6 @@
 #import "JYTabBarController.h"
 #import "booksVC.h"
 #import "videoVC.h"
-#import "infoVC.h"
 #import "booksVC.h"
 #import "jokesVC.h"
 #import "JYNavigationController.h"

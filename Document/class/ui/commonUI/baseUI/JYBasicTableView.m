@@ -165,7 +165,15 @@
         return [JYBasicModel new];
     }
 }
-
+- (void)setDataArr:(NSMutableArray *)dataArr{
+    if(dataArr != nil && dataArr.count > 0){
+        self.listArray = dataArr;
+        [self.listModel removeAllObjects];
+        [self getModelWithArr:dataArr];
+        self.mj_header = nil;
+        self.mj_footer = nil;
+    }
+}
 /**
  *  获取model数组
  */

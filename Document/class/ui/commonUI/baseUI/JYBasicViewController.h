@@ -74,6 +74,12 @@
 
 
 /**
+ 页面配置
+ */
+- (void)viewInit;
+
+
+/**
  *  页面加载
  */
 - (void)setupUIWithData:(id)data;

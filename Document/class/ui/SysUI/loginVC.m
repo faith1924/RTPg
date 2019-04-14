@@ -1,22 +1,21 @@
 //
-//  infoVC.m
+//  loginVC.m
 //  RTPg
 //
-//  Created by md212 on 2019/4/9.
-//  Copyright © 2019年 atts. All rights reserved.
+//  Created by 汪栋梁 on 2019/4/13.
+//  Copyright © 2019年 汪栋梁. All rights reserved.
 //
 
-#import "infoVC.h"
+#import "loginVC.h"
 
-@interface infoVC ()
+@interface loginVC ()
 
 @end
 
-@implementation infoVC
+@implementation loginVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
 }
 

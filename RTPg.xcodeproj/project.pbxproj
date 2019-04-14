@@ -34,7 +34,6 @@
 		506A51A4225C8121003FDFFE /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51A3225C8121003FDFFE /* UIView+Geometry.m */; };
 		506A51B0225C8453003FDFFE /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51AE225C8453003FDFFE /* HSUpdateApp.m */; };
 		506A51B6225C8C38003FDFFE /* videoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51B5225C8C38003FDFFE /* videoVC.m */; };
-		506A51B9225C8C5F003FDFFE /* infoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51B8225C8C5F003FDFFE /* infoVC.m */; };
 		506A51BC225C8C85003FDFFE /* newsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51BB225C8C85003FDFFE /* newsVC.m */; };
 		506A51BF225C9585003FDFFE /* JYUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51BE225C9585003FDFFE /* JYUIScrollView.m */; };
 		506A51C5225CA4E4003FDFFE /* JYBasicTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506A51C3225CA4E4003FDFFE /* JYBasicTableView.m */; };
@@ -70,6 +69,8 @@
 		92908C1522530E72005B8865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C1422530E72005B8865 /* main.m */; };
 		92908C1F22530E72005B8865 /* RTPgTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C1E22530E72005B8865 /* RTPgTests.m */; };
 		92908C2A22530E72005B8865 /* RTPgUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92908C2922530E72005B8865 /* RTPgUITests.m */; };
+		92DC12212262352600704F9B /* loginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC12202262352600704F9B /* loginVC.m */; };
+		92DC12252262357D00704F9B /* userInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DC12242262357D00704F9B /* userInfoView.m */; };
 		92DD966A2255DE0C008A4B2F /* JYRequesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD96692255DE0C008A4B2F /* JYRequesModel.m */; };
 		92DD966D2255E31B008A4B2F /* JYResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD966C2255E31B008A4B2F /* JYResultModel.m */; };
 		92DD96702255E6E5008A4B2F /* JYDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DD966F2255E6E5008A4B2F /* JYDataBase.m */; };
@@ -164,8 +165,6 @@
 		506A51AF225C8453003FDFFE /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
 		506A51B4225C8C38003FDFFE /* videoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = videoVC.h; sourceTree = "<group>"; };
 		506A51B5225C8C38003FDFFE /* videoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = videoVC.m; sourceTree = "<group>"; };
-		506A51B7225C8C5F003FDFFE /* infoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = infoVC.h; sourceTree = "<group>"; };
-		506A51B8225C8C5F003FDFFE /* infoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = infoVC.m; sourceTree = "<group>"; };
 		506A51BA225C8C85003FDFFE /* newsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = newsVC.h; sourceTree = "<group>"; };
 		506A51BB225C8C85003FDFFE /* newsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newsVC.m; sourceTree = "<group>"; };
 		506A51BD225C9585003FDFFE /* JYUIScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYUIScrollView.h; sourceTree = "<group>"; };
@@ -243,6 +242,10 @@
 		92908C2522530E72005B8865 /* RTPgUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RTPgUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92908C2922530E72005B8865 /* RTPgUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTPgUITests.m; sourceTree = "<group>"; };
 		92908C2B22530E72005B8865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92DC121F2262352600704F9B /* loginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginVC.h; sourceTree = "<group>"; };
+		92DC12202262352600704F9B /* loginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginVC.m; sourceTree = "<group>"; };
+		92DC12232262357D00704F9B /* userInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userInfoView.h; sourceTree = "<group>"; };
+		92DC12242262357D00704F9B /* userInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = userInfoView.m; sourceTree = "<group>"; };
 		92DD96682255DE0C008A4B2F /* JYRequesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYRequesModel.h; sourceTree = "<group>"; };
 		92DD96692255DE0C008A4B2F /* JYRequesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYRequesModel.m; sourceTree = "<group>"; };
 		92DD966B2255E31B008A4B2F /* JYResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYResultModel.h; sourceTree = "<group>"; };
@@ -423,8 +426,8 @@
 		503B71A8225F096400DF4AF2 /* infos */ = {
 			isa = PBXGroup;
 			children = (
-				506A51B7225C8C5F003FDFFE /* infoVC.h */,
-				506A51B8225C8C5F003FDFFE /* infoVC.m */,
+				92DC12232262357D00704F9B /* userInfoView.h */,
+				92DC12242262357D00704F9B /* userInfoView.m */,
 			);
 			name = infos;
 			sourceTree = "<group>";
@@ -715,6 +718,15 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		92DC121E226234CA00704F9B /* login */ = {
+			isa = PBXGroup;
+			children = (
+				92DC121F2262352600704F9B /* loginVC.h */,
+				92DC12202262352600704F9B /* loginVC.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
 		92DD967D225606A4008A4B2F /* WYCoding */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +794,7 @@
 		92FB5E6C2253454200CCDC8B /* SysUI */ = {
 			isa = PBXGroup;
 			children = (
+				92DC121E226234CA00704F9B /* login */,
 				5034B2F3226037A700D3B906 /* wchats */,
 				503B71AD225F205C00DF4AF2 /* jokes */,
 				503B71A9225F097200DF4AF2 /* videos */,
@@ -1102,13 +1115,13 @@
 				92FB5E7D2253478D00CCDC8B /* JYNavigationController.m in Sources */,
 				50756F75225DB85D00619B3C /* ABAHeaderCategoryView.m in Sources */,
 				50756FA1225DE7ED00619B3C /* LYAlertController.m in Sources */,
+				92DC12212262352600704F9B /* loginVC.m in Sources */,
 				50756F7C225DE32C00619B3C /* ABACellImageView.m in Sources */,
 				92DD968D22560785008A4B2F /* JYBasicModel.m in Sources */,
 				92FB5E73225346CB00CCDC8B /* JYTabBarController.m in Sources */,
 				92FB5E8022534DAB00CCDC8B /* NSString+iPhone.m in Sources */,
 				500E8E0D225C378700D55408 /* ABABasicUIButton.m in Sources */,
 				50756F9A225DE75B00619B3C /* UIImage+GKDecoder.m in Sources */,
-				506A51B9225C8C5F003FDFFE /* infoVC.m in Sources */,
 				92DD9686225606A4008A4B2F /* WYProperty.m in Sources */,
 				500E8E0E225C378700D55408 /* ABABasicUIControl.m in Sources */,
 				500E8E01225C36B700D55408 /* JYCommonKits.m in Sources */,
@@ -1151,6 +1164,7 @@
 				503B71AC225F205200DF4AF2 /* jokesVC.m in Sources */,
 				50756F97225DE75B00619B3C /* GKPhoto.m in Sources */,
 				500E8E14225C388300D55408 /* ABAShareAlertView.m in Sources */,
+				92DC12252262357D00704F9B /* userInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,7 +1340,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W8Z784DU27;
+				DEVELOPMENT_TEAM = DJD482YY4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;
@@ -1350,7 +1364,7 @@
 				CODE_SIGN_ENTITLEMENTS = RTPg/RTPg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W8Z784DU27;
+				DEVELOPMENT_TEAM = DJD482YY4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Document/class/class/commonObjc/macro/JYPrefixHeader.pch";
 				INFOPLIST_FILE = RTPg/Info.plist;
