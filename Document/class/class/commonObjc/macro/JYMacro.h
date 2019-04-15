@@ -24,7 +24,6 @@
 #import "JYSystemMacro.h"
 #import "JYMarginMacro.h"
 #import "JYUserDefineMacro.h"
-#import "codeConfuse.h"
 #import "ABCInterfaceUrl.h"
 
 #import "JYHeaderMacro.h"

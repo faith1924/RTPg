@@ -10,6 +10,9 @@
 
 @implementation JYBasicView
 
+- (void)dealloc{
+    NSLog(@"页面已经销毁");
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

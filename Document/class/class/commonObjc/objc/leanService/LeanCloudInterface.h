@@ -21,7 +21,8 @@ typedef void(^resultModel)(LeanCloudResModel * resultModel);
  
  @param className 配置类名
  */
-+ (void) getClassInfo:(NSString *)className complete:(void(^)(BOOL status))success;
++ (void) getClassInfo:(NSString *)className
+             complete:(void(^)(BOOL status))success;
 
 /**
  注册接口

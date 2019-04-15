@@ -9,11 +9,11 @@
 #import "JYTabBarController.h"
 #import "booksVC.h"
 #import "videoVC.h"
-#import "infoVC.h"
 #import "booksVC.h"
 #import "jokesVC.h"
 #import "JYNavigationController.h"
 #import "wchatsVC.h"
+#import "loginVC.h"
 
 #define kClassKey   @"rootVCClassString"
 #define kTitleKey   @"title"
@@ -46,21 +46,26 @@
                                    kTitleKey  : @"资讯",
                                    kImgKey    : @"icon_subscription",
                                    kSelImgKey : @"icon_subscription_pre"},
-
-                                 @{kClassKey  : @"booksVC",
-                                   kTitleKey  : @"图书",
-                                   kImgKey    : @"icon_books_off",
-                                   kSelImgKey : @"icon_books_on"},
-
-                                 @{kClassKey  : @"jokesVC",
-                                   kTitleKey  : @"笑话",
-                                   kImgKey    : @"icon_quotation",
-                                   kSelImgKey : @"icon_quotation_pre"},
-
-                                 @{kClassKey  : @"wchatsVC",
-                                   kTitleKey  : @"精选",
-                                   kImgKey    : @"icon_wchat_off",
-                                   kSelImgKey : @"icon_wchat_on"},
+//
+//                                 @{kClassKey  : @"booksVC",
+//                                   kTitleKey  : @"图书",
+//                                   kImgKey    : @"icon_books_off",
+//                                   kSelImgKey : @"icon_books_on"},
+//
+//                                 @{kClassKey  : @"jokesVC",
+//                                   kTitleKey  : @"笑话",
+//                                   kImgKey    : @"icon_quotation",
+//                                   kSelImgKey : @"icon_quotation_pre"},
+// 
+//                                 @{kClassKey  : @"wchatsVC",
+//                                   kTitleKey  : @"精选",
+//                                   kImgKey    : @"icon_wchat_off",
+//                                   kSelImgKey : @"icon_wchat_on"},
+//                                 
+                                 @{kClassKey  : @"loginVC",
+                                   kTitleKey  : @"我的",
+                                   kImgKey    : @"icon_mine",
+                                   kSelImgKey : @"icon_mine_pre"},
                                  ];
     
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {

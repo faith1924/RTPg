@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85B3348625F281E454BF76EE6AE4B979"
+               BlueprintIdentifier = "3533A0BD127F0DBE4E642BE85FF7CDC7"
                BuildableName = "UMCCommonLog"
                BlueprintName = "UMCCommonLog"
                ReferencedContainer = "container:Pods.xcodeproj">

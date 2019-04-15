@@ -35,6 +35,7 @@
             if ([_dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
                 self.tableFooterView = [self.dataDelegate listContentFooterView:self];
             }
+            [self loadData];
         }else{
             _loadDelegate = self;
             _listDelegate = delegate;
@@ -59,9 +60,6 @@
         self.page = 1;
         _isShowEmpty = YES;
         _emptyTitle = @"未加载到任何数据";
-        
-        //监测加载状态
-        [self loadData];
     }
     return self;
 }
@@ -118,7 +116,10 @@
 }
 #pragma mark JYBasicViewControllerDelegate
 - (void)loadData{
-    self.reqModel = [self.listDelegate getReqModel];
+    if (![self.listDelegate respondsToSelector:@selector(getReqModel)]) {
+        return;
+    }
+    _reqModel = [self.listDelegate getReqModel];
 
     JYWeakify(self);
     _loadStatus = @"开始请求";
@@ -165,7 +166,16 @@
         return [JYBasicModel new];
     }
 }
-
+- (void)setDataArr:(NSMutableArray *)dataArr{
+    if(dataArr != nil && dataArr.count > 0){
+        self.listArray = dataArr;
+        [self.listModel removeAllObjects];
+        self.listModel = [self getModelWithArr:dataArr];
+        [self reloadData];
+        self.mj_header = nil;
+        self.mj_footer = nil;
+    }
+}
 /**
  *  获取model数组
  */
@@ -311,7 +321,7 @@
     return self.listModel.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource respondsToSelector:@selector(listContentView:cellForRowAtIndexPath:)]) {
+    if ([self.dataDelegate respondsToSelector:@selector(listContentView:cellForRowAtIndexPath:)]) {
         return [self.dataDelegate listContentView:self cellForRowAtIndexPath:indexPath];
     }else{
         JYBasicCell * cell = [self.dataDelegate listContentView:self cellForRowAtIndexPath:indexPath];

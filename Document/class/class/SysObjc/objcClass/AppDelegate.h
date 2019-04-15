@@ -17,7 +17,5 @@
 
 - (void)saveContext;
 
-- (void)confuseTest;
-    
 @end
 

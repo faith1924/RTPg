@@ -155,8 +155,14 @@ NS_ASSUME_NONNULL_END
            withUrlString:(NSString *)urlString;
 
 - (void)dropDownRefresh;
-
 - (void)endRefresh:(RequestStatus)status;
+
+/**
+ 设置固定初始数据
+
+ @param dataArr 数据
+ */
+- (void)setDataArr:(NSMutableArray * )dataArr;
 @end
 
 

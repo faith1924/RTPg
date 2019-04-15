@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JYTabBarController.h"
+#import "loginVC.h"
 
 @interface AppDelegate ()
 

@@ -2,7 +2,7 @@ platform :ios, '9.0'
 target 'RTPg' do
 pod 'AVOSCloud'  # 数据存储、短信、云引擎调用等基础服务模块
 pod 'AVOSCloudIM' # 即时通讯模块
-
+pod 'mob_smssdk' # mob短信认证
 
 pod 'HBDNavigationBar' #自定义navigationbar
 pod 'Masonry'#自动约束

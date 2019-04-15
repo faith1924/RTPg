@@ -10,6 +10,7 @@
 #import "ABAHeaderTabView.h"
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
+#import "userInfoView.h"
 
 @interface newsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate>
 {
@@ -20,14 +21,25 @@
 
 @property (strong , nonatomic) ABAHeaderTabView * headerView;
 
+@property (strong , nonatomic) userInfoView * infoView;
+
 @end
 
 @implementation newsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self viewInit];
     [self setupUIWithData:nil];
     // Do any additional setup after loading the view.
+}
+- (void)viewInit{
+    UIImage * leftImage = [UIImage imageNamed:@"index_menu"];
+    leftImage = [leftImage imageWithRenderingMode:UIImageRenderingModeAutomatic];
+    
+    UIBarButtonItem * leftBarBtn = [[UIBarButtonItem alloc]initWithImage:leftImage style:UIBarButtonItemStylePlain target:self action:@selector(shareUserInfo)];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
 }
 - (void)setupUIWithData:(id)data{
     typeArr = @[@"top",@"shehui",@"guonei",@"guoji",@"yule",@"tiyu",@"junshi",@"keji",@"caijing",@"shishang"];
@@ -99,6 +111,21 @@
     }
     return model;
 }
+#pragma mark event
+- (void)shareUserInfo{
+    [WDLGetKeyWindow addSubview:self.infoView];
+    [_infoView showContentView];
+}
+
+#pragma mark 懒加载
+- (userInfoView * )infoView{
+    if(!_infoView){
+        _infoView = [[userInfoView alloc]initWithFrame:CGRectMake(0, 0,JYScreenW, JYScreenH)];
+        _infoView.backgroundColor = RGBA(0, 0, 0, 0.2);
+    }
+    return _infoView;
+}
+
 /*
  #pragma mark - Navigation
  

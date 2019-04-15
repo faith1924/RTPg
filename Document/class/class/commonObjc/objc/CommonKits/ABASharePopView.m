@@ -121,7 +121,7 @@
                       withShareDic:(NSMutableDictionary *)shareDic
 {
     //创建网页内容对象
-    UIImage  * thumbImage = [UIImage imageNamed:@"login_logo"];
+    UIImage  * thumbImage = [UIImage imageNamed:@"icon-40"];
     NSString * zlID = 0;
     NSString * dataID = 0;
     NSString * thumbURL =  @"";
@@ -291,7 +291,7 @@
     //创建图片内容对象
     UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
     //如果有缩略图，则设置缩略图
-//    shareObject.thumbImage = [UIImage imageNamed:@"login_logo"];
+//    shareObject.thumbImage = [UIImage imageNamed:@"icon-40"];
     shareObject.thumbImage = thumbImage;
 
     [shareObject setShareImage:urlString];
