@@ -1,0 +1,869 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19D30C981C34EA9300AD8346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D30C971C34EA9300AD8346 /* main.m */; };
+		19D30C9B1C34EA9300AD8346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D30C9A1C34EA9300AD8346 /* AppDelegate.m */; };
+		19D30CA11C34EA9300AD8346 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D30C9F1C34EA9300AD8346 /* Main.storyboard */; };
+		19D30CA31C34EA9300AD8346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19D30CA21C34EA9300AD8346 /* Assets.xcassets */; };
+		19D30CA61C34EA9300AD8346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D30CA41C34EA9300AD8346 /* LaunchScreen.storyboard */; };
+		19D30CB11C34EA9300AD8346 /* CGColorGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D30CB01C34EA9300AD8346 /* CGColorGameTests.m */; };
+		19D30CBC1C34EA9300AD8346 /* CGColorGameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D30CBB1C34EA9300AD8346 /* CGColorGameUITests.m */; };
+		19D30CCC1C34EC6E00AD8346 /* CGShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D30CCA1C34EC6E00AD8346 /* CGShowVC.m */; };
+		19D30CCD1C34EC6E00AD8346 /* CGShowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19D30CCB1C34EC6E00AD8346 /* CGShowVC.xib */; };
+		501638322269962900A42F1F /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638172269962900A42F1F /* FLAnimatedImage.m */; };
+		501638332269962900A42F1F /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638182269962900A42F1F /* FLAnimatedImageView.m */; };
+		501638342269962900A42F1F /* XHLaunchAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016381F2269962900A42F1F /* XHLaunchAdView.m */; };
+		501638352269962900A42F1F /* XHLaunchAdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638222269962900A42F1F /* XHLaunchAdButton.m */; };
+		501638362269962900A42F1F /* XHLaunchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638242269962900A42F1F /* XHLaunchImageView.m */; };
+		501638372269962900A42F1F /* XHLaunchAdConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638252269962900A42F1F /* XHLaunchAdConst.m */; };
+		501638382269962900A42F1F /* XHLaunchAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638272269962900A42F1F /* XHLaunchAd.m */; };
+		501638392269962900A42F1F /* XHLaunchAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638282269962900A42F1F /* XHLaunchAdController.m */; };
+		5016383A2269962900A42F1F /* XHLaunchAdDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638292269962900A42F1F /* XHLaunchAdDownloader.m */; };
+		5016383B2269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016382B2269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.m */; };
+		5016383C2269962900A42F1F /* XHLaunchAdConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016382C2269962900A42F1F /* XHLaunchAdConfiguration.m */; };
+		5016383D2269962900A42F1F /* XHLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016382E2269962900A42F1F /* XHLaunchAdCache.m */; };
+		5016383E2269962900A42F1F /* XHLaunchAdImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638302269962900A42F1F /* XHLaunchAdImageManager.m */; };
+		50163844226996AD00A42F1F /* LeanCloudResModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50163840226996AD00A42F1F /* LeanCloudResModel.m */; };
+		50163845226996AD00A42F1F /* LeanCloudInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 50163843226996AD00A42F1F /* LeanCloudInterface.m */; };
+		5016384A226997FA00A42F1F /* MBProgressHUD+JJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 50163847226997FA00A42F1F /* MBProgressHUD+JJ.m */; };
+		5016384B226997FA00A42F1F /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 50163849226997FA00A42F1F /* MBProgressHUD.bundle */; };
+		5016388D2269AEC300A42F1F /* CGThumbImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016388B2269AEC300A42F1F /* CGThumbImage.m */; };
+		501638902269AEF100A42F1F /* BaseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5016388E2269AEF100A42F1F /* BaseWebView.m */; };
+		501638932269AFDC00A42F1F /* CGUserInfoConf.m in Sources */ = {isa = PBXBuildFile; fileRef = 501638922269AFDC00A42F1F /* CGUserInfoConf.m */; };
+		501E990522685451006FE200 /* JYCommonObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 501E990422685451006FE200 /* JYCommonObjc.m */; };
+		501E990C22686636006FE200 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 501E990B22686636006FE200 /* ViewController.m */; };
+		501E990F22687036006FE200 /* CGScoreTB.m in Sources */ = {isa = PBXBuildFile; fileRef = 501E990E22687036006FE200 /* CGScoreTB.m */; };
+		506D45E622681C1000CD02A7 /* bgImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 506D45E522681C1000CD02A7 /* bgImage.jpg */; };
+		50B1FD37226735D300A4E824 /* HHCountdowLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B1FD36226735D300A4E824 /* HHCountdowLabel.m */; };
+		8F927A3FC432F7CE988F1D32 /* libPods-CGColorGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4315BC1127E96ADC40E0600B /* libPods-CGColorGame.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19D30CAD1C34EA9300AD8346 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19D30C8B1C34EA9200AD8346 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19D30C921C34EA9200AD8346;
+			remoteInfo = CGColorGame;
+		};
+		19D30CB81C34EA9300AD8346 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19D30C8B1C34EA9200AD8346 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19D30C921C34EA9200AD8346;
+			remoteInfo = CGColorGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19D30C931C34EA9200AD8346 /* CGColorGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGColorGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19D30C971C34EA9300AD8346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		19D30C991C34EA9300AD8346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19D30C9A1C34EA9300AD8346 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19D30CA01C34EA9300AD8346 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		19D30CA21C34EA9300AD8346 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19D30CA51C34EA9300AD8346 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		19D30CA71C34EA9300AD8346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19D30CAC1C34EA9300AD8346 /* CGColorGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CGColorGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19D30CB01C34EA9300AD8346 /* CGColorGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGColorGameTests.m; sourceTree = "<group>"; };
+		19D30CB21C34EA9300AD8346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19D30CB71C34EA9300AD8346 /* CGColorGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CGColorGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19D30CBB1C34EA9300AD8346 /* CGColorGameUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGColorGameUITests.m; sourceTree = "<group>"; };
+		19D30CBD1C34EA9400AD8346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19D30CC91C34EC6E00AD8346 /* CGShowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGShowVC.h; sourceTree = "<group>"; };
+		19D30CCA1C34EC6E00AD8346 /* CGShowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGShowVC.m; sourceTree = "<group>"; };
+		19D30CCB1C34EC6E00AD8346 /* CGShowVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGShowVC.xib; sourceTree = "<group>"; };
+		4315BC1127E96ADC40E0600B /* libPods-CGColorGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CGColorGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		501638172269962900A42F1F /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
+		501638182269962900A42F1F /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		501638192269962900A42F1F /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
+		5016381A2269962900A42F1F /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		5016381C2269962900A42F1F /* XHLaunchAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdController.h; sourceTree = "<group>"; };
+		5016381D2269962900A42F1F /* XHLaunchAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAd.h; sourceTree = "<group>"; };
+		5016381E2269962900A42F1F /* XHLaunchAdDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdDownloader.h; sourceTree = "<group>"; };
+		5016381F2269962900A42F1F /* XHLaunchAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdView.m; sourceTree = "<group>"; };
+		501638202269962900A42F1F /* XHLaunchAdCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdCache.h; sourceTree = "<group>"; };
+		501638212269962900A42F1F /* XHLaunchAdConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdConfiguration.h; sourceTree = "<group>"; };
+		501638222269962900A42F1F /* XHLaunchAdButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdButton.m; sourceTree = "<group>"; };
+		501638232269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XHLaunchAdImageView+XHLaunchAdCache.h"; sourceTree = "<group>"; };
+		501638242269962900A42F1F /* XHLaunchImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchImageView.m; sourceTree = "<group>"; };
+		501638252269962900A42F1F /* XHLaunchAdConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdConst.m; sourceTree = "<group>"; };
+		501638262269962900A42F1F /* XHLaunchAdImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdImageManager.h; sourceTree = "<group>"; };
+		501638272269962900A42F1F /* XHLaunchAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAd.m; sourceTree = "<group>"; };
+		501638282269962900A42F1F /* XHLaunchAdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdController.m; sourceTree = "<group>"; };
+		501638292269962900A42F1F /* XHLaunchAdDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdDownloader.m; sourceTree = "<group>"; };
+		5016382A2269962900A42F1F /* XHLaunchImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchImageView.h; sourceTree = "<group>"; };
+		5016382B2269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XHLaunchAdImageView+XHLaunchAdCache.m"; sourceTree = "<group>"; };
+		5016382C2269962900A42F1F /* XHLaunchAdConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdConfiguration.m; sourceTree = "<group>"; };
+		5016382D2269962900A42F1F /* XHLaunchAdButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdButton.h; sourceTree = "<group>"; };
+		5016382E2269962900A42F1F /* XHLaunchAdCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdCache.m; sourceTree = "<group>"; };
+		5016382F2269962900A42F1F /* XHLaunchAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdView.h; sourceTree = "<group>"; };
+		501638302269962900A42F1F /* XHLaunchAdImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdImageManager.m; sourceTree = "<group>"; };
+		501638312269962900A42F1F /* XHLaunchAdConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdConst.h; sourceTree = "<group>"; };
+		50163840226996AD00A42F1F /* LeanCloudResModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeanCloudResModel.m; sourceTree = "<group>"; };
+		50163841226996AD00A42F1F /* LeanCloudInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeanCloudInterface.h; sourceTree = "<group>"; };
+		50163842226996AD00A42F1F /* LeanCloudResModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeanCloudResModel.h; sourceTree = "<group>"; };
+		50163843226996AD00A42F1F /* LeanCloudInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeanCloudInterface.m; sourceTree = "<group>"; };
+		50163847226997FA00A42F1F /* MBProgressHUD+JJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+JJ.m"; sourceTree = "<group>"; };
+		50163848226997FA00A42F1F /* MBProgressHUD+JJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JJ.h"; sourceTree = "<group>"; };
+		50163849226997FA00A42F1F /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		5016384C2269990F00A42F1F /* CGAppKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGAppKey.h; sourceTree = "<group>"; };
+		5016388B2269AEC300A42F1F /* CGThumbImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGThumbImage.m; sourceTree = "<group>"; };
+		5016388C2269AEC300A42F1F /* CGThumbImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGThumbImage.h; sourceTree = "<group>"; };
+		5016388E2269AEF100A42F1F /* BaseWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebView.m; sourceTree = "<group>"; };
+		5016388F2269AEF100A42F1F /* BaseWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWebView.h; sourceTree = "<group>"; };
+		501638912269AFDC00A42F1F /* CGUserInfoConf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGUserInfoConf.h; sourceTree = "<group>"; };
+		501638922269AFDC00A42F1F /* CGUserInfoConf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGUserInfoConf.m; sourceTree = "<group>"; };
+		501638942269E49E00A42F1F /* CGColorGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CGColorGame.entitlements; sourceTree = "<group>"; };
+		501E990322685451006FE200 /* JYCommonObjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYCommonObjc.h; sourceTree = "<group>"; };
+		501E990422685451006FE200 /* JYCommonObjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYCommonObjc.m; sourceTree = "<group>"; };
+		501E990A22686636006FE200 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		501E990B22686636006FE200 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		501E990D22687036006FE200 /* CGScoreTB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGScoreTB.h; sourceTree = "<group>"; };
+		501E990E22687036006FE200 /* CGScoreTB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGScoreTB.m; sourceTree = "<group>"; };
+		506D45E522681C1000CD02A7 /* bgImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgImage.jpg; sourceTree = "<group>"; };
+		50B1FD35226735D300A4E824 /* HHCountdowLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHCountdowLabel.h; sourceTree = "<group>"; };
+		50B1FD36226735D300A4E824 /* HHCountdowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHCountdowLabel.m; sourceTree = "<group>"; };
+		7D7F9DEA0A7185347BF657F8 /* Pods-CGColorGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CGColorGame.release.xcconfig"; path = "Target Support Files/Pods-CGColorGame/Pods-CGColorGame.release.xcconfig"; sourceTree = "<group>"; };
+		F5071768EF651A32E25D5DA3 /* Pods-CGColorGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CGColorGame.debug.xcconfig"; path = "Target Support Files/Pods-CGColorGame/Pods-CGColorGame.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19D30C901C34EA9200AD8346 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F927A3FC432F7CE988F1D32 /* libPods-CGColorGame.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CA91C34EA9300AD8346 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CB41C34EA9300AD8346 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19D30C8A1C34EA9200AD8346 = {
+			isa = PBXGroup;
+			children = (
+				19D30C951C34EA9200AD8346 /* CGColorGame */,
+				19D30CAF1C34EA9300AD8346 /* CGColorGameTests */,
+				19D30CBA1C34EA9300AD8346 /* CGColorGameUITests */,
+				19D30C941C34EA9200AD8346 /* Products */,
+				67119CFFF25F254337F6E772 /* Pods */,
+				FF3023CAB45C51120BFC15A6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		19D30C941C34EA9200AD8346 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19D30C931C34EA9200AD8346 /* CGColorGame.app */,
+				19D30CAC1C34EA9300AD8346 /* CGColorGameTests.xctest */,
+				19D30CB71C34EA9300AD8346 /* CGColorGameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19D30C951C34EA9200AD8346 /* CGColorGame */ = {
+			isa = PBXGroup;
+			children = (
+				501638942269E49E00A42F1F /* CGColorGame.entitlements */,
+				5016388A2269AEB600A42F1F /* aboutUs */,
+				501638132269962000A42F1F /* third */,
+				501E99062268654C006FE200 /* scoreListVC */,
+				501E990222685436006FE200 /* commonObjc */,
+				506D45E222681AB700CD02A7 /* res */,
+				50B1FD34226735B700A4E824 /* 倒计时 */,
+				19D30C991C34EA9300AD8346 /* AppDelegate.h */,
+				19D30C9A1C34EA9300AD8346 /* AppDelegate.m */,
+				501E990A22686636006FE200 /* ViewController.h */,
+				501E990B22686636006FE200 /* ViewController.m */,
+				5016384C2269990F00A42F1F /* CGAppKey.h */,
+				19D30CC91C34EC6E00AD8346 /* CGShowVC.h */,
+				19D30CCA1C34EC6E00AD8346 /* CGShowVC.m */,
+				19D30CCB1C34EC6E00AD8346 /* CGShowVC.xib */,
+				19D30C9F1C34EA9300AD8346 /* Main.storyboard */,
+				19D30CA21C34EA9300AD8346 /* Assets.xcassets */,
+				19D30CA41C34EA9300AD8346 /* LaunchScreen.storyboard */,
+				19D30CA71C34EA9300AD8346 /* Info.plist */,
+				19D30C961C34EA9300AD8346 /* Supporting Files */,
+			);
+			path = CGColorGame;
+			sourceTree = "<group>";
+		};
+		19D30C961C34EA9300AD8346 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19D30C971C34EA9300AD8346 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19D30CAF1C34EA9300AD8346 /* CGColorGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				19D30CB01C34EA9300AD8346 /* CGColorGameTests.m */,
+				19D30CB21C34EA9300AD8346 /* Info.plist */,
+			);
+			path = CGColorGameTests;
+			sourceTree = "<group>";
+		};
+		19D30CBA1C34EA9300AD8346 /* CGColorGameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				19D30CBB1C34EA9300AD8346 /* CGColorGameUITests.m */,
+				19D30CBD1C34EA9400AD8346 /* Info.plist */,
+			);
+			path = CGColorGameUITests;
+			sourceTree = "<group>";
+		};
+		501638132269962000A42F1F /* third */ = {
+			isa = PBXGroup;
+			children = (
+				50163846226997FA00A42F1F /* MBProgressHUD */,
+				5016383F226996AD00A42F1F /* leanService */,
+				501638142269962900A42F1F /* XHLaunchAd */,
+			);
+			name = third;
+			sourceTree = "<group>";
+		};
+		501638142269962900A42F1F /* XHLaunchAd */ = {
+			isa = PBXGroup;
+			children = (
+				501638152269962900A42F1F /* Lib */,
+				5016381B2269962900A42F1F /* XHLaunchAd */,
+			);
+			path = XHLaunchAd;
+			sourceTree = "<group>";
+		};
+		501638152269962900A42F1F /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				501638162269962900A42F1F /* FLAnimatedImage */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		501638162269962900A42F1F /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				501638172269962900A42F1F /* FLAnimatedImage.m */,
+				501638182269962900A42F1F /* FLAnimatedImageView.m */,
+				501638192269962900A42F1F /* FLAnimatedImage.h */,
+				5016381A2269962900A42F1F /* FLAnimatedImageView.h */,
+			);
+			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		5016381B2269962900A42F1F /* XHLaunchAd */ = {
+			isa = PBXGroup;
+			children = (
+				5016381C2269962900A42F1F /* XHLaunchAdController.h */,
+				5016381D2269962900A42F1F /* XHLaunchAd.h */,
+				5016381E2269962900A42F1F /* XHLaunchAdDownloader.h */,
+				5016381F2269962900A42F1F /* XHLaunchAdView.m */,
+				501638202269962900A42F1F /* XHLaunchAdCache.h */,
+				501638212269962900A42F1F /* XHLaunchAdConfiguration.h */,
+				501638222269962900A42F1F /* XHLaunchAdButton.m */,
+				501638232269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.h */,
+				501638242269962900A42F1F /* XHLaunchImageView.m */,
+				501638252269962900A42F1F /* XHLaunchAdConst.m */,
+				501638262269962900A42F1F /* XHLaunchAdImageManager.h */,
+				501638272269962900A42F1F /* XHLaunchAd.m */,
+				501638282269962900A42F1F /* XHLaunchAdController.m */,
+				501638292269962900A42F1F /* XHLaunchAdDownloader.m */,
+				5016382A2269962900A42F1F /* XHLaunchImageView.h */,
+				5016382B2269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.m */,
+				5016382C2269962900A42F1F /* XHLaunchAdConfiguration.m */,
+				5016382D2269962900A42F1F /* XHLaunchAdButton.h */,
+				5016382E2269962900A42F1F /* XHLaunchAdCache.m */,
+				5016382F2269962900A42F1F /* XHLaunchAdView.h */,
+				501638302269962900A42F1F /* XHLaunchAdImageManager.m */,
+				501638312269962900A42F1F /* XHLaunchAdConst.h */,
+			);
+			path = XHLaunchAd;
+			sourceTree = "<group>";
+		};
+		5016383F226996AD00A42F1F /* leanService */ = {
+			isa = PBXGroup;
+			children = (
+				50163840226996AD00A42F1F /* LeanCloudResModel.m */,
+				50163841226996AD00A42F1F /* LeanCloudInterface.h */,
+				50163842226996AD00A42F1F /* LeanCloudResModel.h */,
+				50163843226996AD00A42F1F /* LeanCloudInterface.m */,
+			);
+			path = leanService;
+			sourceTree = "<group>";
+		};
+		50163846226997FA00A42F1F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				50163847226997FA00A42F1F /* MBProgressHUD+JJ.m */,
+				50163848226997FA00A42F1F /* MBProgressHUD+JJ.h */,
+				50163849226997FA00A42F1F /* MBProgressHUD.bundle */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		5016388A2269AEB600A42F1F /* aboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				5016388F2269AEF100A42F1F /* BaseWebView.h */,
+				5016388E2269AEF100A42F1F /* BaseWebView.m */,
+				5016388C2269AEC300A42F1F /* CGThumbImage.h */,
+				5016388B2269AEC300A42F1F /* CGThumbImage.m */,
+				501638912269AFDC00A42F1F /* CGUserInfoConf.h */,
+				501638922269AFDC00A42F1F /* CGUserInfoConf.m */,
+			);
+			name = aboutUs;
+			sourceTree = "<group>";
+		};
+		501E990222685436006FE200 /* commonObjc */ = {
+			isa = PBXGroup;
+			children = (
+				501E990322685451006FE200 /* JYCommonObjc.h */,
+				501E990422685451006FE200 /* JYCommonObjc.m */,
+			);
+			name = commonObjc;
+			sourceTree = "<group>";
+		};
+		501E99062268654C006FE200 /* scoreListVC */ = {
+			isa = PBXGroup;
+			children = (
+				501E990D22687036006FE200 /* CGScoreTB.h */,
+				501E990E22687036006FE200 /* CGScoreTB.m */,
+			);
+			name = scoreListVC;
+			sourceTree = "<group>";
+		};
+		506D45E222681AB700CD02A7 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				506D45E522681C1000CD02A7 /* bgImage.jpg */,
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
+		50B1FD34226735B700A4E824 /* 倒计时 */ = {
+			isa = PBXGroup;
+			children = (
+				50B1FD35226735D300A4E824 /* HHCountdowLabel.h */,
+				50B1FD36226735D300A4E824 /* HHCountdowLabel.m */,
+			);
+			name = "倒计时";
+			sourceTree = "<group>";
+		};
+		67119CFFF25F254337F6E772 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5071768EF651A32E25D5DA3 /* Pods-CGColorGame.debug.xcconfig */,
+				7D7F9DEA0A7185347BF657F8 /* Pods-CGColorGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF3023CAB45C51120BFC15A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4315BC1127E96ADC40E0600B /* libPods-CGColorGame.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19D30C921C34EA9200AD8346 /* CGColorGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19D30CC01C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGame" */;
+			buildPhases = (
+				EB2131E11D1E98C4CBB3E2B0 /* [CP] Check Pods Manifest.lock */,
+				19D30C8F1C34EA9200AD8346 /* Sources */,
+				19D30C901C34EA9200AD8346 /* Frameworks */,
+				19D30C911C34EA9200AD8346 /* Resources */,
+				4BFA8C6DD255D6F7ACCC5932 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CGColorGame;
+			productName = CGColorGame;
+			productReference = 19D30C931C34EA9200AD8346 /* CGColorGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19D30CAB1C34EA9300AD8346 /* CGColorGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19D30CC31C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGameTests" */;
+			buildPhases = (
+				19D30CA81C34EA9300AD8346 /* Sources */,
+				19D30CA91C34EA9300AD8346 /* Frameworks */,
+				19D30CAA1C34EA9300AD8346 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19D30CAE1C34EA9300AD8346 /* PBXTargetDependency */,
+			);
+			name = CGColorGameTests;
+			productName = CGColorGameTests;
+			productReference = 19D30CAC1C34EA9300AD8346 /* CGColorGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		19D30CB61C34EA9300AD8346 /* CGColorGameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19D30CC61C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGameUITests" */;
+			buildPhases = (
+				19D30CB31C34EA9300AD8346 /* Sources */,
+				19D30CB41C34EA9300AD8346 /* Frameworks */,
+				19D30CB51C34EA9300AD8346 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19D30CB91C34EA9300AD8346 /* PBXTargetDependency */,
+			);
+			name = CGColorGameUITests;
+			productName = CGColorGameUITests;
+			productReference = 19D30CB71C34EA9300AD8346 /* CGColorGameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19D30C8B1C34EA9200AD8346 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = cyg;
+				TargetAttributes = {
+					19D30C921C34EA9200AD8346 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = W8Z784DU27;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					19D30CAB1C34EA9300AD8346 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 19D30C921C34EA9200AD8346;
+					};
+					19D30CB61C34EA9300AD8346 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 19D30C921C34EA9200AD8346;
+					};
+				};
+			};
+			buildConfigurationList = 19D30C8E1C34EA9200AD8346 /* Build configuration list for PBXProject "CGColorGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19D30C8A1C34EA9200AD8346;
+			productRefGroup = 19D30C941C34EA9200AD8346 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19D30C921C34EA9200AD8346 /* CGColorGame */,
+				19D30CAB1C34EA9300AD8346 /* CGColorGameTests */,
+				19D30CB61C34EA9300AD8346 /* CGColorGameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19D30C911C34EA9200AD8346 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19D30CA61C34EA9300AD8346 /* LaunchScreen.storyboard in Resources */,
+				19D30CA31C34EA9300AD8346 /* Assets.xcassets in Resources */,
+				506D45E622681C1000CD02A7 /* bgImage.jpg in Resources */,
+				19D30CA11C34EA9300AD8346 /* Main.storyboard in Resources */,
+				19D30CCD1C34EC6E00AD8346 /* CGShowVC.xib in Resources */,
+				5016384B226997FA00A42F1F /* MBProgressHUD.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CAA1C34EA9300AD8346 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CB51C34EA9300AD8346 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BFA8C6DD255D6F7ACCC5932 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CGColorGame/Pods-CGColorGame-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/UMCCommonLog/UMCommonLog/UMCommonLog.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMCommonLog.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CGColorGame/Pods-CGColorGame-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2131E11D1E98C4CBB3E2B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CGColorGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19D30C8F1C34EA9200AD8346 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5016383A2269962900A42F1F /* XHLaunchAdDownloader.m in Sources */,
+				501638392269962900A42F1F /* XHLaunchAdController.m in Sources */,
+				5016383C2269962900A42F1F /* XHLaunchAdConfiguration.m in Sources */,
+				501638342269962900A42F1F /* XHLaunchAdView.m in Sources */,
+				501E990C22686636006FE200 /* ViewController.m in Sources */,
+				501638932269AFDC00A42F1F /* CGUserInfoConf.m in Sources */,
+				5016388D2269AEC300A42F1F /* CGThumbImage.m in Sources */,
+				19D30C9B1C34EA9300AD8346 /* AppDelegate.m in Sources */,
+				501638362269962900A42F1F /* XHLaunchImageView.m in Sources */,
+				5016383B2269962900A42F1F /* XHLaunchAdImageView+XHLaunchAdCache.m in Sources */,
+				501638352269962900A42F1F /* XHLaunchAdButton.m in Sources */,
+				501638332269962900A42F1F /* FLAnimatedImageView.m in Sources */,
+				5016383D2269962900A42F1F /* XHLaunchAdCache.m in Sources */,
+				501638902269AEF100A42F1F /* BaseWebView.m in Sources */,
+				19D30C981C34EA9300AD8346 /* main.m in Sources */,
+				50B1FD37226735D300A4E824 /* HHCountdowLabel.m in Sources */,
+				5016383E2269962900A42F1F /* XHLaunchAdImageManager.m in Sources */,
+				501638322269962900A42F1F /* FLAnimatedImage.m in Sources */,
+				501638382269962900A42F1F /* XHLaunchAd.m in Sources */,
+				501638372269962900A42F1F /* XHLaunchAdConst.m in Sources */,
+				50163845226996AD00A42F1F /* LeanCloudInterface.m in Sources */,
+				50163844226996AD00A42F1F /* LeanCloudResModel.m in Sources */,
+				19D30CCC1C34EC6E00AD8346 /* CGShowVC.m in Sources */,
+				501E990522685451006FE200 /* JYCommonObjc.m in Sources */,
+				5016384A226997FA00A42F1F /* MBProgressHUD+JJ.m in Sources */,
+				501E990F22687036006FE200 /* CGScoreTB.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CA81C34EA9300AD8346 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19D30CB11C34EA9300AD8346 /* CGColorGameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19D30CB31C34EA9300AD8346 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19D30CBC1C34EA9300AD8346 /* CGColorGameUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19D30CAE1C34EA9300AD8346 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19D30C921C34EA9200AD8346 /* CGColorGame */;
+			targetProxy = 19D30CAD1C34EA9300AD8346 /* PBXContainerItemProxy */;
+		};
+		19D30CB91C34EA9300AD8346 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19D30C921C34EA9200AD8346 /* CGColorGame */;
+			targetProxy = 19D30CB81C34EA9300AD8346 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		19D30C9F1C34EA9300AD8346 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19D30CA01C34EA9300AD8346 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		19D30CA41C34EA9300AD8346 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19D30CA51C34EA9300AD8346 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19D30CBE1C34EA9400AD8346 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		19D30CBF1C34EA9400AD8346 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		19D30CC11C34EA9400AD8346 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5071768EF651A32E25D5DA3 /* Pods-CGColorGame.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = CGColorGame/CGColorGame.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = W8Z784DU27;
+				INFOPLIST_FILE = CGColorGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CGGame.App;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
+			};
+			name = Debug;
+		};
+		19D30CC21C34EA9400AD8346 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D7F9DEA0A7185347BF657F8 /* Pods-CGColorGame.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = CGColorGame/CGColorGame.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = W8Z784DU27;
+				INFOPLIST_FILE = CGColorGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CGGame.App;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = "";
+			};
+			name = Release;
+		};
+		19D30CC41C34EA9400AD8346 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CGColorGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bet500.ytx.CGColorGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CGColorGame.app/CGColorGame";
+			};
+			name = Debug;
+		};
+		19D30CC51C34EA9400AD8346 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CGColorGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bet500.ytx.CGColorGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CGColorGame.app/CGColorGame";
+			};
+			name = Release;
+		};
+		19D30CC71C34EA9400AD8346 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CGColorGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bet500.ytx.CGColorGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CGColorGame;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		19D30CC81C34EA9400AD8346 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CGColorGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bet500.ytx.CGColorGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CGColorGame;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19D30C8E1C34EA9200AD8346 /* Build configuration list for PBXProject "CGColorGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D30CBE1C34EA9400AD8346 /* Debug */,
+				19D30CBF1C34EA9400AD8346 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19D30CC01C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D30CC11C34EA9400AD8346 /* Debug */,
+				19D30CC21C34EA9400AD8346 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19D30CC31C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D30CC41C34EA9400AD8346 /* Debug */,
+				19D30CC51C34EA9400AD8346 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19D30CC61C34EA9400AD8346 /* Build configuration list for PBXNativeTarget "CGColorGameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19D30CC71C34EA9400AD8346 /* Debug */,
+				19D30CC81C34EA9400AD8346 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 19D30C8B1C34EA9200AD8346 /* Project object */;
+}

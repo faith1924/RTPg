@@ -1,0 +1,11 @@
+platform :ios,'9.0' 
+target 'sudoku' do
+
+pod 'AFNetworking'
+pod 'AVOSCloud'
+pod 'UMCCommon'
+pod 'JPush'
+pod 'UMCCommonLog'  
+pod 'UMCSecurityPlugins'
+
+end

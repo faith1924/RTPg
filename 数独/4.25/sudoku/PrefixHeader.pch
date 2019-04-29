@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  sudoku
+//
+//  Created by md212 on 2019/4/24.
+//  Copyright © 2019年 com/qianfeng/mac. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "SDHomeVC.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

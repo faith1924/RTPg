@@ -1,0 +1,19 @@
+//
+//  AppDelegate.h
+//  HitMouse_Project
+//
+//  Created by Rainy on 2018/4/18.
+//  Copyright © 2018年 WealthOnline_iOS_team. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "pbMusicTool.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, strong) pbMusicTool * appMusicTool;
+
+@end
+

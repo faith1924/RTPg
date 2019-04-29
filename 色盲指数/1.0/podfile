@@ -1,0 +1,14 @@
+platform :ios, '9.0'
+target 'CGColorGame' do
+pod 'AVOSCloud'  # 数据存储、短信、云引擎调用等基础服务模块
+pod 'AFNetworking'#网络框架
+pod 'MBProgressHUD' #提示框
+
+pod 'IQKeyboardManager' #键盘自动管理
+pod 'UMCCommon' #友盟统计
+pod 'JPush' #极光推送
+pod 'UMCCommonLog'  
+pod 'UMCSecurityPlugins' 
+
+
+end

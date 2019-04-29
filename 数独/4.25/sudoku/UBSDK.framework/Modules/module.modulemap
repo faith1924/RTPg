@@ -1,0 +1,6 @@
+framework module UBSDK {
+  umbrella header "UBSDK.h"
+
+  export *
+  module * { export * }
+}
