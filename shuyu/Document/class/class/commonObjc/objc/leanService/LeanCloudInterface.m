@@ -57,7 +57,7 @@
             for (int x = 0; x < objects.count; x++) {
                 object = objects[x];
                 for (NSString * key in keys) {
-                    [userInfo setObject:WDLTurnIdToString([object objectForKey:key]) forKey:key];
+                    [userInfo setObject:[object objectForKey:key] forKey:key];
                     if ([keys containsObject:@"name"]) {
                         flag = [userInfo[@"name"] boolValue];
                     }

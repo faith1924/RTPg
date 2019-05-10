@@ -54,6 +54,7 @@
     self.contentView.bounces = NO;
     self.contentView.showsHorizontalScrollIndicator = NO;
     self.contentView.showsVerticalScrollIndicator = NO;
+    self.contentView.backgroundColor = [UIColor clearColor];
  
     [self setIsShowBar:YES];
     [self.view addSubview:self.contentView];
@@ -76,6 +77,11 @@
             NSLog(@"\n开启了全继承左滑返回手势\n");
         }
     }
+}
+
+- (void)setHbd_barHidden:(BOOL)hbd_barHidden{
+    [super setHbd_barHidden:hbd_barHidden];
+    [self setIsShowBar:!hbd_barHidden];
 }
 
 /**

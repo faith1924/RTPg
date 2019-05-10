@@ -11,7 +11,7 @@
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
 
-@interface jokesVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate,JYBasicViewControllerDelegate>
+@interface jokesVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYTableViewDelegate,JYBasicViewControllerDelegate>
 {
     NSMutableArray * typeArr;
     NSMutableArray * titleArr;

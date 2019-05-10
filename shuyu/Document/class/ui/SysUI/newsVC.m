@@ -17,7 +17,7 @@
 #import "TZImagePickerController.h"
 #import "verificationVC.h"
 
-@interface newsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate,userInfoDelegate,TZImagePickerControllerDelegate>
+@interface newsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYTableViewDelegate,userInfoDelegate,TZImagePickerControllerDelegate>
 {
     NSArray * typeArr;
 }
@@ -79,7 +79,7 @@
 #pragma mark标题按钮
 - (void)headerTabView:(ABAHeaderTabView *)headerTabView didSelectRowAtIndexPath:(NSInteger )indexPath{
     [self.reqModel.parameters setObject:typeArr[indexPath] forKey:@"type"];
-    [self.bodyView dropDownRefresh];
+    [self.bodyView.listDelegate dropDownRefresh];
 }
 
 #pragma mark JYTableViewListDelegate

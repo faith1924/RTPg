@@ -11,7 +11,7 @@
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
 
-@interface wchatsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYBasicTableViewReqDelegate,JYBasicViewControllerDelegate>
+@interface wchatsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYTableViewDelegate,JYBasicViewControllerDelegate>
 {
     NSMutableArray * typeArr;
     NSMutableArray * titleArr;

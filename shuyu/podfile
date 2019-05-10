@@ -22,6 +22,10 @@ pod 'UMCShare/Social/WeChat' # 集成QQ/QZone/TIM(完整版7.6M)
 pod 'UMCShare/Social/QQ' # 集成QQ/QZone/TIM(完整版7.6M)
 pod 'JPush' #极光推送
 
+pod 'Charts'
+pod 'ChartsRealm'
+
+
 pod 'FDFullscreenPopGesture'
 pod 'ZFPlayer/ControlView', '~> 3.0'
 pod 'ZFPlayer/AVPlayer', '~> 3.0'

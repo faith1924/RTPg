@@ -15,6 +15,13 @@
 #import "HSUpdateApp.h"
 
 @interface WDLUsefulKitModel : NSObject
+//uilabel显示不同的颜色
++ (void)labelShowDifColorKey:(NSString *)key
+                  frontColor:(UIColor *)fcolor
+                   lastColor:(UIColor *)lColor
+                       fSize:(float)fz
+                    lastSize:(float)lz
+                         lab:(UILabel *)lab;
 //字典转url
 + (NSString *)keyValueStringWithDict:(NSDictionary *)dict;
 //url转字典

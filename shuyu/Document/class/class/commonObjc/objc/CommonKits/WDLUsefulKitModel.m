@@ -18,6 +18,28 @@ static UILabel * showLabel;
 static UIView *progressHudView;
 
 @implementation WDLUsefulKitModel
++ (void)labelShowDifColorKey:(NSString *)key
+                  frontColor:(UIColor *)fcolor
+                   lastColor:(UIColor *)lColor
+                       fSize:(float)fz
+                    lastSize:(float)lz
+                         lab:(UILabel *)lab{
+    if (lab == nil || key == nil || fcolor == nil || lColor == nil || [key isEqualToString:@""]) {
+        return;
+    }
+    NSString * text = lab.text;
+    NSRange range = [text rangeOfString:key];
+    
+    NSMutableAttributedString * attrString = [[NSMutableAttributedString alloc] initWithString:text];
+
+    [attrString addAttribute:NSForegroundColorAttributeName value:fcolor range:NSMakeRange(0,range.location)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:lColor range:NSMakeRange(range.location+1,text.length-range.location-1)];
+    
+    [attrString addAttribute:NSFontAttributeName value:JY_Font_Sys(fz) range:NSMakeRange(0,range.location)];
+    [attrString addAttribute:NSFontAttributeName value:JY_Font_Sys(lz) range:NSMakeRange(range.location+1,text.length-range.location-1)];
+    
+    lab.attributedText = attrString;
+}
 //画虚线
 + (void)drawDottedLineWithLayer:(CALayer *)layer
                  withLineHeight:(CGFloat)height

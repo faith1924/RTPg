@@ -11,6 +11,9 @@
 #import "ABAHtmlActionObjc.h"
 #import "ABAPopShareCategoryView.h"
 
+#define tabBgColor RGBA(31.0f, 40.0f, 58.0f, 1)
+#define cellBgColor RGBA(42.0f, 58.0f, 82.0f, 1);
+
 @interface JYWebViewController ()<UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
 
 @property (strong , nonatomic) ABAActivityDetailShowView * webView;
@@ -21,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.webView = [[ABAActivityDetailShowView alloc]initWithFrame:CGRectMake(0, 0, JYScreenW, JYScreenH - SafeAreaTopHeight) withDelegate:self];
     //KVO监听
     [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
@@ -40,8 +43,28 @@
         UIBarButtonItem *shareBtn= [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"subscription_article_detail_more"] style:UIBarButtonItemStyleDone target:self action:@selector(shareArticle)];
         self.navigationItem.rightBarButtonItems = @[shareBtn];
     }
-}
+    
+#if (isManager==0)
+    
+#else
+    self.view.backgroundColor = tabBgColor;
+    self.hbd_barHidden = NO;
+    self.hbd_barTintColor = tabBgColor;
+    self.hbd_tintColor = kWhiteColor;
+    self.webView.backgroundColor = cellBgColor;
+    self.webView.tintColor = RGBA(255.0f, 255.0f, 255.0f, 0.4);
+    
+    UIImage* itemImage= [UIImage imageNamed:@"back_btn_white"]; // Colored Image
+    itemImage = [itemImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIBarButtonItem *leftBtn=[[UIBarButtonItem alloc]initWithImage:itemImage style:UIBarButtonItemStyleDone target:self action:@selector(popself)];
+    self.navigationItem.leftBarButtonItem=leftBtn;
+#endif
 
+}
+- (void)popself{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {

@@ -83,7 +83,7 @@
         failure(error,model);
         
     }else{
-        if([urlStr isEqualToString:videoServerUrl])
+        if([urlStr isEqualToString:videoServerUrl] || [urlStr isEqualToString:plantServerUrl])
         {
             success(model.result,model);
         }else if ([responseDic[@"error_code"] integerValue] == SUCCESS_CODE)

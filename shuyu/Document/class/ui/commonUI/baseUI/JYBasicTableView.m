@@ -9,13 +9,16 @@
 #import "JYBasicTableView.h"
 #import "JYBasicModel.h"
 
-@interface JYBasicTableView ()<JYBasicTableViewReqDelegate,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface JYBasicTableView ()<JYTableViewDelegate,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>
 
 
-@property (weak , nonatomic) id<JYBasicTableViewReqDelegate>loadDelegate;
+@property (weak , nonatomic) id<JYTableViewDelegate>loadDelegate;
 
 @property (strong , nonatomic) UIView * headerView;
 @property (strong , nonatomic) UIView * footerView;
+
+@property (strong , nonatomic) UIView * tbHeaderView;
+@property (strong , nonatomic) UIView * tbFooterView;
 
 @property (strong , nonatomic) MJRefreshNormalHeader * refreshHeaderView;
 @property (strong , nonatomic) MJRefreshAutoNormalFooter * refreshFooterView;
@@ -25,16 +28,23 @@
 - (instancetype)initWithFrame:(CGRect)frame
                  withDelegate:(id)delegate{
     if(self = [super initWithFrame:frame style:UITableViewStylePlain]){
+        
+        if (@available(iOS 11.0, *)) {
+            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        
         if (delegate) {
             _loadDelegate = delegate;
             _listDelegate = delegate;
             _dataDelegate = delegate;
+            
             if ([_dataDelegate respondsToSelector:@selector(listContentHeaderView:)]) {
                 self.tableHeaderView = [self.dataDelegate listContentHeaderView:self];
             }
             if ([_dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
                 self.tableFooterView = [self.dataDelegate listContentFooterView:self];
             }
+
             [self loadData];
         }else{
             _loadDelegate = self;
@@ -47,8 +57,8 @@
         self.delegate = self;
         self.dataSource = self;
 
-        _refreshHeaderView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
-        self.mj_header =_refreshHeaderView;
+//        _refreshHeaderView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
+//        self.mj_header =_refreshHeaderView;
         
 //        _refreshFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
 //        self.mj_footer = _refreshFooterView;
@@ -57,11 +67,20 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         
-        self.page = 1;
+        _isDropDownRefresh = YES;
+        _isDropUpRefresh = YES;
+        
+        _page = 1;
         _isShowEmpty = YES;
         _emptyTitle = @"未加载到任何数据";
     }
     return self;
+}
+-(void)setIsDropUpRefresh:(BOOL)isDropUpRefresh{
+    _isDropUpRefresh = isDropUpRefresh;
+}
+-(void)setIsDropDownRefresh:(BOOL)isDropDownRefresh{
+    _isDropDownRefresh = isDropDownRefresh;
 }
 - (void)setRefreshBgColor:(UIColor *)refreshBgColor{
     if (refreshBgColor == nil) {
@@ -117,6 +136,7 @@
 #pragma mark JYBasicViewControllerDelegate
 - (void)loadData{
     if (![self.listDelegate respondsToSelector:@selector(getReqModel)]) {
+        [self endRefresh:NO];
         return;
     }
     _reqModel = [self.listDelegate getReqModel];
@@ -199,7 +219,7 @@
     [self.listArray addObjectsFromArray:arr];
     self.listModel = [self getModelWithArr:arr];
     
-    if (self.mj_header == nil) {
+    if (self.mj_header == nil && _isDropDownRefresh) {
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownRefresh)];
     }
     
@@ -217,7 +237,7 @@
         }
         else
         {
-            if (self.mj_footer == nil) {
+            if (self.mj_footer == nil && _isDropUpRefresh) {
                 self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
             }
         }
@@ -232,12 +252,16 @@
     if (arr.count < _EPCount) {
         self.mj_footer = nil;
     }else{
-        if (self.mj_footer == nil) {
+        if (self.mj_footer == nil && _isDropUpRefresh) {
             self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(dropUpLoadMore)];
         }
     }
 }
 - (void)loadDataFail:(id)data withParams:(id)params withUrl:(NSString *)urlString{
+    if (data == nil || params == nil || urlString == nil) {
+        [self endRefresh:_reqStatus];
+        return;
+    }
     _loadStatus = @"请求失败";
     [self.listModel removeAllObjects];
     self.emptyView.message = _emptyTitle;
@@ -248,6 +272,10 @@
  *   下拉刷新
  */
 - (void)dropDownRefresh{
+    if(self.listDelegate && [self.listDelegate respondsToSelector:@selector(dropDownRefresh)]){
+        [self.listDelegate dropDownRefresh];
+        return;
+    }
     self.page = 1;
     [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
     [self loadData];
@@ -256,6 +284,10 @@
  *  上拉加载
  */
 - (void)dropUpLoadMore{
+    if(self.listDelegate && [self.listDelegate respondsToSelector:@selector(dropUpLoadMore)]){
+        [self.listDelegate dropUpLoadMore];
+        return;
+    }
     self.page++;
     [self.reqModel.parameters setObject:WDLTurnIntToString(_page) forKey:@"page"];
     [self loadData];
@@ -345,13 +377,7 @@
     JYBasicModel * model = self.listModel[indexPath.row];
     return MAX(model.cellHeight.floatValue, 10);
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if ([self.dataDelegate respondsToSelector:@selector(heightForSectionHeaderHeight:)]) {
-        return [self.dataDelegate heightForSectionHeaderHeight:self];
-    }else{
-        return 0;
-    }
-}
+
 //是否支持编辑
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.dataDelegate respondsToSelector:@selector(listContentView:canEditRowAtIndexPath:)]) {
@@ -376,26 +402,67 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if ([self.dataDelegate respondsToSelector:@selector(heightForSectionHeader:)]) {
-        _headerView = [self.dataDelegate heightForSectionHeader:self];
+    if ([self.dataDelegate respondsToSelector:@selector(headerViewForSection:)]) {
+        _headerView = [self.dataDelegate headerViewForSection:self];
         return _headerView;
     }else{
         return nil;
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if ([self.dataDelegate respondsToSelector:@selector(heightViewForSectionHeaderView:)]) {
+        return [self.dataDelegate heightViewForSectionHeaderView:self];
+    }else{
+        return 0;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if ([self.dataDelegate respondsToSelector:@selector(heightForSectionFooterHeight:)]) {
-        return [self.dataDelegate heightForSectionFooterHeight:self];
+    if ([self.dataDelegate respondsToSelector:@selector(heightViewForSectionFooterView:)]) {
+        return [self.dataDelegate heightViewForSectionFooterView:self];
     }else{
         return 0;
     }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if ([self.dataDelegate respondsToSelector:@selector(heightForSectionFooter:)]) {
-        _footerView = [self.dataDelegate heightForSectionFooter:self];
+    if ([self.dataDelegate respondsToSelector:@selector(footerViewForSection:)]) {
+        _footerView = [self.dataDelegate footerViewForSection:self];
         return _footerView;
     }else{
         return nil;
+    }
+}
+
+-(UIView *)listContentHeaderView:(JYBasicTableView *)tableView{
+    if ([self.dataDelegate respondsToSelector:@selector(listContentHeaderView:)]) {
+        _tbHeaderView = [self.dataDelegate listContentHeaderView:self];
+        return _tbHeaderView;
+    }else{
+        return nil;
+    }
+}
+-(CGFloat)listContentHeaderHeightView:(JYBasicTableView *)tableView{
+    if ([self.dataDelegate respondsToSelector:@selector(listContentHeaderHeightView:)]) {
+        return [self.dataDelegate listContentHeaderHeightView:self];
+    }else{
+        return 0;
+    }
+}
+
+-(UIView *)listContentFooterView:(JYBasicTableView *)tableView{
+    if ([self.dataDelegate respondsToSelector:@selector(listContentFooterView:)]) {
+        _tbFooterView = [self.dataDelegate listContentFooterView:self];
+        return _tbFooterView;
+    }else{
+        return nil;
+    }
+}
+-(CGFloat)listContentFooterHeightView:(JYBasicTableView *)tableView{
+    if ([self.dataDelegate respondsToSelector:@selector(listContentFooterHeightView:)]) {
+        return [self.dataDelegate listContentFooterHeightView:self];
+    }else{
+        return 0;
     }
 }
 /**

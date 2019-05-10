@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 @class JYBasicTableView;
 
-@protocol JYBasicTableViewReqDelegate <NSObject>
+@protocol JYTableViewDelegate <NSObject>
 @optional
 /**
  *  获取加载参数
@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_END
  *  有可能需要重写
  */
 - (void)loadDataSuccess:(id)data withParams:(NSMutableDictionary *)params withUrlString:(NSString *)urlString;
+- (void)dropDownRefresh;
+- (void)dropUpLoadMore;
 @end
 
 @protocol JYTableViewDataSource <NSObject>
@@ -55,11 +57,11 @@ NS_ASSUME_NONNULL_END
 -(UIView *)listContentFooterView:(JYBasicTableView *)tableView;
 -(CGFloat)listContentFooterHeightView:(JYBasicTableView *)tableView;
 
--(UIView *)heightForSectionHeader:(JYBasicTableView *)tableView;
--(CGFloat)heightForSectionHeaderHeight:(JYBasicTableView *)tableView;
+-(UIView *)headerViewForSection:(JYBasicTableView *)tableView;
+-(CGFloat)heightViewForSectionHeaderView:(JYBasicTableView *)tableView;
 
--(UIView *)heightForSectionFooter:(JYBasicTableView *)tableView;
--(CGFloat)heightForSectionFooterHeight:(JYBasicTableView *)tableView;
+-(UIView *)footerViewForSection:(JYBasicTableView *)tableView;
+-(CGFloat)heightViewForSectionFooterView:(JYBasicTableView *)tableView;
 
 //滑动删除
 - (BOOL)listContentView:(JYBasicTableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -68,7 +70,7 @@ NS_ASSUME_NONNULL_END
 @end
 
 @interface JYBasicTableView : UITableView
-@property (weak , nonatomic ) id <JYBasicTableViewReqDelegate>listDelegate;
+@property (weak , nonatomic ) id <JYTableViewDelegate>listDelegate;
 
 @property (weak , nonatomic ) id <JYTableViewDataSource>dataDelegate;
 
@@ -94,6 +96,17 @@ NS_ASSUME_NONNULL_END
 @property (strong , nonatomic) UIColor * refreshBgColor;//设置刷新背景颜色
 @property (strong , nonatomic) UIColor * refreshTextColor;//设置文字颜色
 @property (assign , nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+
+
+/**
+ *  是否支持下拉，默认支持
+ */
+@property (assign , nonatomic) BOOL isDropDownRefresh;
+
+/**
+ *  是否支持上拉，默认支持
+ */
+@property (assign , nonatomic) BOOL isDropUpRefresh;
 
 /**
  *  数据
@@ -153,8 +166,6 @@ NS_ASSUME_NONNULL_END
 - (void)appendArrWithDic:(id )dic
               withParams:(NSMutableDictionary *)params
            withUrlString:(NSString *)urlString;
-
-- (void)dropDownRefresh;
 - (void)endRefresh:(RequestStatus)status;
 - (void)loadData;
 /**

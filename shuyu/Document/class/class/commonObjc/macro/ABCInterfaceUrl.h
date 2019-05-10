@@ -17,5 +17,5 @@
 #define jokeServerUrl @"http://api.budejie.com/api/api_open.php"
 #define wchatsServerUrl @"http://v.juhe.cn/weixin/query"
 #define videoServerUrl @"http://api.budejie.com/api/api_open.php"
-
+#define plantServerUrl @"http://zwbk.idwoo.com/api"
 #endif /* ABCInterfaceUrl_h */

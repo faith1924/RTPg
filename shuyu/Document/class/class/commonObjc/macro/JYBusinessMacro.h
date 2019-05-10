@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger, JYTabBarType){
 #define SUCCESS_CODE 0
 #define SUCCESS_CODE_200 200
 
+#define isManager 1
+
 /**
  typedef NS_ENUM(NSInteger, FW_LIVE_TYPE)
  {

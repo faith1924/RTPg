@@ -4,30 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>RTPg.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>RTPg.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
 			<integer>25</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>92908BFE22530E70005B8865</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>92908C1922530E72005B8865</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>92908C2422530E72005B8865</key>
-		<dict>
-			<key>primary</key>
-			<true/>
 		</dict>
 	</dict>
 </dict>

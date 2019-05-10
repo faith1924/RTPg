@@ -22,7 +22,7 @@
 //ui
 #import "JYTabBarController.h"
 #import "JYNavigationController.h"
-
+#import "JYBasicViewController.h"
 
 //category
 #import "AppDelegate+Service.h"

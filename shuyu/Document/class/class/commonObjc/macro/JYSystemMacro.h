@@ -14,14 +14,16 @@
 #define SafeNaviTopHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 24 : 0)
 #define SafeTabbarBottomHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 83 : 49)
 #define StatusBarHeight (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? 44 : 20)
+#define JYStatusBarHeight        ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define JYNavigationBarHeight    ([GlobalVariables sharedInstance].appNavigationBarHeight ? : self.navigationController.navigationBar.frame.size.height)
+#define JYTabBarHeight           ([GlobalVariables sharedInstance].appTabBarHeight ? : self.tabBarController.tabBar.frame.size.height)
+
+
 
 #define JYWeakify(objc)                __weak  typeof(self) weakSelf = objc;
 #define JYStrongify(objc)              __strong typeof(self) strongSelf = objc;
 #define JYGetWeakSelf(objc)            __block __weak typeof(objc) weakSelf = objc;
 
-
-#define WSF     __weak  typeof(self) weakSelf = self;
-#define SSF     __strong typeof(self) strongSelf = self;
 
 #define JYIsiPhoneX (([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.height == 896) ? YES : NO)
 
@@ -52,11 +54,6 @@ static __inline__ CGFloat MainScreenHeight()
     return UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? [UIScreen mainScreen].bounds.size.height : [UIScreen mainScreen].bounds.size.width;
 }
 
-// 状态栏、导航栏、标签栏高度
-#define JYStatusBarHeight        ([UIApplication sharedApplication].statusBarFrame.size.height)
-#define JYNavigationBarHeight    ([GlobalVariables sharedInstance].appNavigationBarHeight ? : self.navigationController.navigationBar.frame.size.height)
-#define JYTabBarHeight           ([GlobalVariables sharedInstance].appTabBarHeight ? : self.tabBarController.tabBar.frame.size.height)
-
 
 //自定义高效率的 NSLog
 #ifdef DEBUG
@@ -79,4 +76,26 @@ return self;\
 [self wy_encode:aCoder];\
 }
 #define JYGetStrongSelf(objc) __block __weak typeof(objc) strongSelf = objc;JYGetVersion(objc);
+
+#define  JYAdjustsScrollViewInsets(scrollView)\
+do {\
+_Pragma("clang diagnostic push")\
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")\
+if ([scrollView respondsToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
+NSMethodSignature *signature = [UIScrollView instanceMethodSignatureForSelector:@selector(setContentInsetAdjustmentBehavior:)];\
+NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];\
+NSInteger argument = 2;\
+invocation.target = scrollView;\
+invocation.selector = @selector(setContentInsetAdjustmentBehavior:);\
+[invocation setArgument:&argument atIndex:2];\
+[invocation retainArguments];\
+[invocation invoke];\
+}\
+_Pragma("clang diagnostic pop")\
+} while (0)
+
+
+
+
+
 #endif /* JYSystemMacro_h */

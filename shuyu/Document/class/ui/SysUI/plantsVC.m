@@ -1,18 +1,18 @@
 //
-//  booksVC.m
+//  plantsVC.m
 //  RTPg
 //
 //  Created by md212 on 2019/4/9.
 //  Copyright © 2019年 atts. All rights reserved.
 //
 
-#import "booksVC.h"
+#import "plantsVC.h"
 #import "ABAHeaderTabView.h"
 #import "ABACellImageView.h"
 #import "JYWebViewController.h"
-#import "booksDetailVC.h"
+//#import "plantsDetailVC.h"
 
-@interface booksVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYTableViewDelegate,JYBasicViewControllerDelegate>
+@interface plantsVC ()<JYTableViewDataSource,ABAHeaderTabViewDelegate,JYTableViewDelegate,JYBasicViewControllerDelegate>
 {
     NSMutableArray * typeArr;
     NSMutableArray * titleArr;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation booksVC
+@implementation plantsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,38 +34,30 @@
 }
 - (void)initConfiguraton{
     self.reqType = 1;
-    self.reqModel.link = bookServerUrl;
+    self.reqModel.link = plantServerUrl;
     [self.reqModel.parameters setObject:@"json" forKey:@"dtype"];
-    [self.reqModel.parameters setObject:PolymerizationBooksKey forKey:@"key"];
-    
     self.loadDelegate = self;
 }
 - (void)setupUIWithData:(id)data{
     if (typeArr == nil) {
-        typeArr = [NSMutableArray new];
-        titleArr = [NSMutableArray new];
+        titleArr = @[@"首页",@"居家",@"水本",@"水培",@"水生",@"草本",@"观叶",@"观花",@"食用"].mutableCopy;
+        typeArr = @[@"553",@"7",@"4",@"3",@"2",@"6",@"5",@"1",@"8"].mutableCopy;
     }
-    NSMutableDictionary * dic ;
-    for (int x = 0; x < [data count]; x++) {
-        dic = data[x];
-        [typeArr addObject:dic[@"id"]];
-        [titleArr addObject:dic[@"catalog"]];
-    }
-    
+
     _headerView = [[ABAHeaderTabView alloc]initWithFrame:CGRectMake(0,0, JYScreenW, 40*JYScale_Height)];
     _headerView.titleArr = titleArr;
     _headerView.headerTabViewDelegate = self;
     [self addSubview:_headerView];
-
+    
     tableReqModel = [[JYRequesModel alloc]init];
     tableReqModel.reqType = 1;
-    tableReqModel.link = bookListServerUrl;
-    [tableReqModel.parameters setObject:PolymerizationBooksKey forKey:@"key"];
-    [tableReqModel.parameters setObject:typeArr[0] forKey:@"catalog_id"];
-    [tableReqModel.parameters setObject:@"json" forKey:@"dtype"];
+    tableReqModel.link = plantServerUrl;
+    [tableReqModel.parameters setObject:@"0" forKey:@"page"];
+    [tableReqModel.parameters setObject:typeArr[0] forKey:@"id"];
+    [tableReqModel.parameters setObject:@"get_category_posts" forKey:@"json"];
     
     _bodyView = [[JYBasicTableView alloc]initWithFrame:CGRectMake(0,_headerView.bottom, JYScreenW,self.contentView.height - _headerView.height - SafeTabbarBottomHeight) withDelegate:self];
-
+    
     [self addSubview:_bodyView];
 }
 
@@ -85,29 +77,29 @@
     return tableReqModel;
 }
 #pragma mark JYTableViewDataSource
-- (booksCell *)listContentView:(JYBasicTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    booksCell * cell = nil;
+- (plantsCell *)listContentView:(JYBasicTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    plantsCell * cell = nil;
     static NSString * cellStr = @"cellStr";
     if (cell == nil) {
-        cell = [[booksCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+        cell = [[plantsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
     }
-    cell.model = (booksModel *)_bodyView.listModel[indexPath.row];
+    cell.model = (plantsModel *)_bodyView.listModel[indexPath.row];
     return cell;
 }
 - (void)listContentView:(JYBasicTableView *)listContentView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    booksModel * model = (booksModel *)_bodyView.listModel[indexPath.row];
+    plantsModel * model = (plantsModel *)_bodyView.listModel[indexPath.row];
     if (model && ![model.title isEqualToString:@""]) {
         new_Dic(data);
-        PARAMS(data, @"title", model.title);
-        PARAMS(data, @"sub1", model.sub1);
-        PARAMS(data, @"sub2", model.sub2);
-        PARAMS(data, @"reading", model.reading);
-        PARAMS(data, @"img", model.img);
-        PARAMS(data, @"catalog", model.catalog);
+//        PARAMS(data, @"title", model.title);
+//        PARAMS(data, @"sub1", model.sub1);
+//        PARAMS(data, @"sub2", model.sub2);
+//        PARAMS(data, @"reading", model.reading);
+//        PARAMS(data, @"img", model.img);
+//        PARAMS(data, @"catalog", model.catalog);
         
-        new_ControllerWithOutPush(booksDetailVC);
-        controller.data = data;
-        [self.navigationController pushViewController:controller animated:YES];
+//        new_ControllerWithOutPush(plantsDetailVC);
+//        controller.data = data;
+//        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 - (UIView *)listContentFooterView:(JYBasicTableView *)tableView{
@@ -116,13 +108,24 @@
     return lineView;
 }
 #pragma mark 需要重写以下方法
-- (booksModel *)getModelWithObj:(id)obj{
+- (void)loadDataSuccess:(id)data withParams:(NSMutableDictionary *)params withUrlString:(NSString *)urlString{
+    _bodyView.loadStatus = @"请求成功";
+    if (_bodyView.page <= 1) {
+        [_bodyView initArrWithDic:data[@"posts"][@"attachments"] withParams:params withUrlString:urlString];
+    }else{
+        [_bodyView appendArrWithDic:data[@"posts"][@"attachments"] withParams:params withUrlString:urlString];
+    }
+    [_bodyView endRefresh:Req_Success];
+}
+
+#pragma mark 需要重写以下方法
+- (plantsModel *)getModelWithObj:(id)obj{
     NSError * error = nil;
-    booksModel * model = [[booksModel alloc]initWithDictionary:obj error:&error];
+    plantsModel * model = [[plantsModel alloc]initWithDictionary:obj error:&error];
     
     if (error) {
         NSLog(@"error = %@",error);
-        model = [[booksModel alloc]init];
+        model = [[plantsModel alloc]init];
     }
     return model;
 }
@@ -142,7 +145,7 @@
 #define oriHeight 18*JYScale_Width
 #define imageWidth 70*JYScale_Height
 
-@interface booksCell ()
+@interface plantsCell ()
 @property (strong , nonatomic) UIView * lineView;
 @property (strong , nonatomic) UILabel * title;
 @property (strong , nonatomic) UILabel * sub1;
@@ -152,7 +155,7 @@
 
 @end
 
-@implementation booksCell
+@implementation plantsCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -180,7 +183,7 @@
     
     _reading = [JYCommonKits initLabelViewWithLabelDetail:@"" andLabelColor:JYLightColor andLabelFont:12*JYScale_Height andLabelFrame:CGRectMake(oriWidth, oriHeight, JYScreenW - oriWidth * 2, 10) andJoinView:self.contentView];
 }
--(void)setModel:(booksModel *)model{
+-(void)setModel:(plantsModel *)model{
     _model = model;
     
     NSMutableAttributedString * mutableString = [WDLUsefulKitModel attributedStringFromStingWithFont:JY_Font_Sys(16*JYScale_Height) withLineSpacing:4 text:model.title];
@@ -208,11 +211,11 @@
     _reading.text = _model.reading;
     [_reading sizeToFit];
     [_reading setCenterY:_category.centerY];
-
+    
     model.cellHeight = [NSNumber numberWithFloat:_image.bottom + 10*JYScale_Width];
 }
 @end
 
-@implementation booksModel
+@implementation plantsModel
 
 @end

@@ -159,6 +159,7 @@
                             andLabelFrame:(CGRect )frame
                               andJoinView:(UIView *)superView{
     UILabel * label = [[UILabel alloc]initWithFrame:frame];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
     if ([labelDetail isKindOfClass:[NSString class]]) {
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
@@ -200,6 +201,7 @@
     }
     CGFloat width = [WDLUsefulKitModel stringSize:labelDetail font:font width:maxWidth].width;
     UILabel * label = [[UILabel alloc]initWithFrame:frame];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
     if ([labelDetail isKindOfClass:[NSString class]]) {
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
@@ -242,6 +244,7 @@
     }
     CGFloat width = [WDLUsefulKitModel stringSize:labelDetail font:JY_Font_Sys(fontSize) width:maxWidth].width;
     UILabel * label = [[UILabel alloc]initWithFrame:frame];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
     if ([labelDetail isKindOfClass:[NSString class]]) {
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }
@@ -279,6 +282,7 @@
                             andLabelFrame:(CGRect )frame
                               andJoinView:(UIView *)superView{
     UILabel * label = [[UILabel alloc]initWithFrame:frame];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
     if ([labelDetail isKindOfClass:[NSString class]]) {
         [label setText:[NSString stringWithFormat:@"%@",labelDetail]];
     }

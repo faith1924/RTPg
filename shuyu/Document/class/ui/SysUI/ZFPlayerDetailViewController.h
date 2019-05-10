@@ -13,8 +13,8 @@
 
 @property (nonatomic, strong) ZFPlayerController *player;
 
-@property (nonatomic, copy) void(^detailVCPopCallback)();
+@property (nonatomic, copy) void(^detailVCPopCallback)(void);
 
-@property (nonatomic, copy) void(^detailVCPlayCallback)();
+@property (nonatomic, copy) void(^detailVCPlayCallback)(void);
 
 @end

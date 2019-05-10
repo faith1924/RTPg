@@ -9,7 +9,17 @@
 #import "AppDelegate.h"
 #import "JYTabBarController.h"
 #import "loginVC.h"
+
 #import "ABASharePopView.h"
+
+
+#if (isManager==1)
+
+#import "Close_Db_Object.h"
+#import "easyLoginVC.h"
+
+#endif
+
 
 @interface AppDelegate ()
 
@@ -31,10 +41,32 @@
     
     //版本更新检测
     [ABASharePopView versionCheck:nil];
-
+    
+    //需要登录
+#if (isManager==1)
+    if ([Close_Db_Object Close_GetLoginStatus] == NO) {
+        easyLoginVC * logVC = [easyLoginVC shareAasyLoginVC];
+        UINavigationController * nv = [[UINavigationController alloc]initWithRootViewController:logVC];
+        self.window.rootViewController = nv;
+        
+        JYWeakify(self);
+        logVC.loginCom = ^(BOOL status) {
+            if (status == YES) {
+                [Close_Db_Object Close_SaveLoginStatus:YES];
+                
+                JYTabBarController * rootVC = [[JYTabBarController alloc]initWithTabbarType:defaultModel];
+                weakSelf.window.rootViewController = rootVC;
+            }
+        };
+    }else{
+        JYTabBarController * rootVC = [[JYTabBarController alloc]initWithTabbarType:defaultModel];
+        self.window.rootViewController = rootVC;
+    }
+#else
     JYTabBarController * rootVC = [[JYTabBarController alloc]initWithTabbarType:defaultModel];
     self.window.rootViewController = rootVC;
-    
+#endif
+
     //设置广告页
     [self JYConfAdView];
     
